@@ -1,0 +1,24 @@
+{
+    "name": "acrosswp/wordpress-plugin-boilerplate",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "description": "Composer to autoload the condition checking for which this add-on is made",
+    "homepage": "https://acrosswp.com/",
+    "require": {
+        "acrosswp/buddyboss-platform-dependency": "*"
+    },
+    "keywords": [
+        "wordpress",
+        "plugin",
+        "donations"
+    ],
+    "support": {
+        "issues": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"
+    },
+    "authors": [
+        {
+            "name": "acrosswp",
+            "email": "contant@acrosswp.com"
+        }
+    ]
+}
