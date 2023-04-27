@@ -76,8 +76,29 @@ class Wordpress_Plugin_Boilerplate {
 
 		$this->load_dependencies();
 		$this->set_locale();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
+
+		add_action( 'plugins_loaded', array( $this, 'load_hooks' ) );
+	}
+
+	/**
+	 * Register all the hook once all the active plugins are loaded
+	 *
+	 * Uses the plugins_loaded to load all the hooks and filters
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function load_hooks() {
+
+		/**
+		 * Check if plugin can be loaded safely or not
+		 * 
+		 * @since    1.0.0
+		 */
+		if( apply_filters( 'wordpress-plugin-boilerplate-load', true ) ) {
+			$this->define_admin_hooks();
+			$this->define_public_hooks();
+		}
 
 	}
 
