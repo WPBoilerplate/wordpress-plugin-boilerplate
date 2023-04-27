@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "fb98a3b66dffa1d29ea03970ff17533f",
     "packages": [
         {
             "name": "acrosswp/buddyboss-platform-dependency",
             "version": "v0.0.1",
+            "version_normalized": "0.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acrosswp/buddyboss-platform-dependency.git",
@@ -20,7 +15,9 @@
                 "reference": "81cdcdffcf7c94feda0968c2d8b88e7d7764256a",
                 "shasum": ""
             },
+            "time": "2023-04-27T23:27:58+00:00",
             "type": "library",
+            "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0-or-later"
@@ -42,16 +39,9 @@
                 "issues": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues",
                 "source": "https://github.com/acrosswp/buddyboss-platform-dependency/tree/v0.0.1"
             },
-            "time": "2023-04-27T23:27:58+00:00"
+            "install-path": "../acrosswp/buddyboss-platform-dependency"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "dev": true,
+    "dev-package-names": []
 }

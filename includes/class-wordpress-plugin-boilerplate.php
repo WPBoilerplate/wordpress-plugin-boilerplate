@@ -88,7 +88,7 @@ class Wordpress_Plugin_Boilerplate {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_hooks() {
+	public function load_hooks() {
 
 		/**
 		 * Check if plugin can be loaded safely or not
