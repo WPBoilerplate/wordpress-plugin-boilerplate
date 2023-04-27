@@ -111,6 +111,20 @@ cd "$repo"
 
 git mv wordpress-plugin-boilerplate.php "$slug.php"
 
+git mv includes/class-wordpress-plugin-boilerplate-activator.php includes/"class-$slug-activator.php"
+git mv includes/class-wordpress-plugin-boilerplate-deactivator.php includes/"class-$slug-deactivator.php"
+git mv includes/class-wordpress-plugin-boilerplate-i18n.php includes/"class-$slug-i18n.php"
+git mv includes/class-wordpress-plugin-boilerplate.php includes/"class-$slug.php"
+git mv includes/class-wordpress-plugin-boilerplate-loader.php includes/"class-$slug-loader.php"
+
+git mv admin/class-wordpress-plugin-boilerplate-admin.php admin/"class-$slug-admin.php"
+git mv admin/partials/wordpress-plugin-boilerplate-admin-display.php admin/partials/"$slug-admin-display.php"
+
+git mv public/class-wordpress-plugin-boilerplate-public.php public/"class-$slug-public.php"
+git mv public/partials/wordpress-plugin-boilerplate-public-display.php public/partials/"$slug-public-display.php"
+
+git mv languages/wordpress-plugin-boilerplate.pot languages/"$slug.pot"
+
 git grep -lz "raftaar1191%2Fwordpress-plugin-boilerplate" | xargs -0 sed -i '' -e "s|raftaar1191%2Fwordpress-plugin-boilerplate|$org_lower%2F$repo|g"
 git grep -lz "raftaar1191/wordpress-plugin-boilerplate" | xargs -0 sed -i '' -e "s|raftaar1191/wordpress-plugin-boilerplate|$org_lower/$repo|g"
 git grep -lz "wordpress-plugin-boilerplate" | xargs -0 sed -i '' -e "s/wordpress-plugin-boilerplate/$repo/g"
