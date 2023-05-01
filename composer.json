@@ -5,7 +5,7 @@
     "description": "Composer to autoload the condition checking for which this add-on is made",
     "homepage": "https://acrosswp.com/",
     "require": {
-        "acrosswp/buddyboss-platform-dependency": "^0"
+        "acrosswp/buddyboss-platform-dependency": "^1.0.0"
     },
     "keywords": [
         "wordpress",

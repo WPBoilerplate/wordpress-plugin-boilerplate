@@ -9,6 +9,12 @@
         "plugin",
         "donations"
     ],
+    "require": {
+        "acrosswp/wordpress-plugins-dependency": "^1"
+    },
+    "autoload": {
+        "files": ["buddyboss-platform-dependency.php"]
+    },
     "support": {
         "issues": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"
     },

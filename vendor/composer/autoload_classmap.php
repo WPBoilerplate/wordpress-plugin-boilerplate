@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'acrosswp\\WordPress_Plugins_Dependency' => $vendorDir . '/acrosswp/wordpress-plugins-dependency/wordpress-plugins-dependency.php',
 );

@@ -1,0 +1,24 @@
+{
+    "name": "acrosswp/wordpress-plugins-dependency",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "description": "Composer to autoload the condition checking for WordPress Plugin Boilerplate Dependency Class",
+    "homepage": "https://acrosswp.com/",
+    "keywords": [
+        "wordpress",
+        "plugin",
+        "donations"
+    ],
+    "autoload": {
+        "classmap": ["wordpress-plugins-dependency.php"]
+    },
+    "support": {
+        "issues": "https://github.com/acrosswp/wordpress-plugins-dependency/issues"
+    },
+    "authors": [
+        {
+            "name": "acrosswp",
+            "email": "contant@acrosswp.com"
+        }
+    ]
+}
