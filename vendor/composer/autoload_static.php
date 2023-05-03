@@ -6,13 +6,8 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitd560eb6c4f82dd3e82a0136eb2edeba9
 {
-    public static $files = array (
-        '0ca1801dc4c7be44fe2550adb82e9c0f' => __DIR__ . '/..' . '/acrosswp/buddyboss-platform-dependency/buddyboss-platform-dependency.php',
-    );
-
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'acrosswp\\WordPress_Plugins_Dependency' => __DIR__ . '/..' . '/acrosswp/wordpress-plugins-dependency/wordpress-plugins-dependency.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
