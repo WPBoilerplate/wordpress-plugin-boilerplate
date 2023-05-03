@@ -75,7 +75,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wordpress-plugin-boilerpla
  */
 function run_wordpress_plugin_boilerplate() {
 
-	require plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+	if ( file_exists( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' ) ) {
+		require plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+	}
 
 	$plugin = new Wordpress_Plugin_Boilerplate();
 	$plugin->run();
