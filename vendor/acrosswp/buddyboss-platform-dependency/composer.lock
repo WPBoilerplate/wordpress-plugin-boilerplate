@@ -1,0 +1,62 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "42b02948ef97f7db9aed26768a7aefa5",
+    "packages": [
+        {
+            "name": "acrosswp/wordpress-plugins-dependency",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/acrosswp/wordpress-plugins-dependency.git",
+                "reference": "e04cf27e0150a9fe1ff33e6f0daa6355360e4fc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/acrosswp/wordpress-plugins-dependency/zipball/e04cf27e0150a9fe1ff33e6f0daa6355360e4fc9",
+                "reference": "e04cf27e0150a9fe1ff33e6f0daa6355360e4fc9",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "wordpress-plugins-dependency.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "acrosswp",
+                    "email": "contant@acrosswp.com"
+                }
+            ],
+            "description": "Composer to autoload the condition checking for WordPress Plugin Boilerplate Dependency Class",
+            "homepage": "https://acrosswp.com/",
+            "keywords": [
+                "donations",
+                "plugin",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/acrosswp/wordpress-plugins-dependency/issues",
+                "source": "https://github.com/acrosswp/wordpress-plugins-dependency/tree/v1.0.0"
+            },
+            "time": "2023-05-01T20:51:05+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

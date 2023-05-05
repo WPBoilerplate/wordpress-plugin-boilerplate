@@ -74,10 +74,37 @@ class Wordpress_Plugin_Boilerplate {
 		}
 		$this->plugin_name = 'wordpress-plugin-boilerplate';
 
+		$this->define_constants();
 		$this->load_dependencies();
 		$this->set_locale();
 
 		add_action( 'plugins_loaded', array( $this, 'load_hooks' ) );
+	}
+
+	/**
+	 * Define WCE Constants
+	 */
+	private function define_constants() {
+
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE', WORDPRESS_PLUGIN_BOILERPLATE_FILES );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_BASENAME', plugin_basename( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH', plugin_dir_path( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', plugin_dir_url( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
+		
+		$plugin_data = get_plugin_data( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE );
+		$version = $plugin_data['Version'];
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION', $version );
+	}
+
+	/**
+	 * Define constant if not already set
+	 * @param  string $name
+	 * @param  string|bool $value
+	 */
+	private function define( $name, $value ) {
+		if ( ! defined( $name ) ) {
+			define( $name, $value );
+		}
 	}
 
 	/**

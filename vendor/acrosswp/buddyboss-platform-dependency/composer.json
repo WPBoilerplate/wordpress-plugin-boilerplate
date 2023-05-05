@@ -1,17 +1,20 @@
 {
-    "name": "acrosswp/wordpress-plugin-boilerplate",
-    "type": "wordpress-plugin",
+    "name": "acrosswp/buddyboss-platform-dependency",
+    "type": "library",
     "license": "GPL-2.0-or-later",
-    "description": "Composer to autoload the condition checking for which this add-on is made",
+    "description": "Composer to autoload the condition checking for BuddyBoss Platform in WordPress Plugin Boilerplate",
     "homepage": "https://acrosswp.com/",
-    "require": {
-        "acrosswp/buddyboss-platform-dependency": "^1.0"
-    },
     "keywords": [
         "wordpress",
         "plugin",
         "donations"
     ],
+    "require": {
+        "acrosswp/wordpress-plugins-dependency": "^1.0.0"
+    },
+    "autoload": {
+        "files": ["buddyboss-platform-dependency.php"]
+    },
     "support": {
         "issues": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"
     },

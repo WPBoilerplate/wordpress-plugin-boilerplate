@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION', '1.0.0' );
+define( 'WORDPRESS_PLUGIN_BOILERPLATE_FILES', __FILE__ );
 
 /**
  * The code that runs during plugin activation.

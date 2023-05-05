@@ -1,5 +1,101 @@
 {
-    "packages": [],
+    "packages": [
+        {
+            "name": "acrosswp/buddyboss-platform-dependency",
+            "version": "v1.0.05",
+            "version_normalized": "1.0.05.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/acrosswp/buddyboss-platform-dependency.git",
+                "reference": "c6695e9b520af4361fee707127886f3c78e9bc2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/acrosswp/buddyboss-platform-dependency/zipball/c6695e9b520af4361fee707127886f3c78e9bc2c",
+                "reference": "c6695e9b520af4361fee707127886f3c78e9bc2c",
+                "shasum": ""
+            },
+            "require": {
+                "acrosswp/wordpress-plugins-dependency": "^1.0.0"
+            },
+            "time": "2023-05-03T16:55:23+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "buddyboss-platform-dependency.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "acrosswp",
+                    "email": "contant@acrosswp.com"
+                }
+            ],
+            "description": "Composer to autoload the condition checking for BuddyBoss Platform in WordPress Plugin Boilerplate",
+            "homepage": "https://acrosswp.com/",
+            "keywords": [
+                "donations",
+                "plugin",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues",
+                "source": "https://github.com/acrosswp/buddyboss-platform-dependency/tree/v1.0.05"
+            },
+            "install-path": "../acrosswp/buddyboss-platform-dependency"
+        },
+        {
+            "name": "acrosswp/wordpress-plugins-dependency",
+            "version": "v1.0.5",
+            "version_normalized": "1.0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/acrosswp/wordpress-plugins-dependency.git",
+                "reference": "dfe4671333db048b2d3e235dd6b784145869df31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/acrosswp/wordpress-plugins-dependency/zipball/dfe4671333db048b2d3e235dd6b784145869df31",
+                "reference": "dfe4671333db048b2d3e235dd6b784145869df31",
+                "shasum": ""
+            },
+            "time": "2023-05-03T16:45:28+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "wordpress-plugins-dependency.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "acrosswp",
+                    "email": "contant@acrosswp.com"
+                }
+            ],
+            "description": "Composer to autoload the condition checking for WordPress Plugin Boilerplate Dependency Class",
+            "homepage": "https://acrosswp.com/",
+            "keywords": [
+                "donations",
+                "plugin",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/acrosswp/wordpress-plugins-dependency/issues",
+                "source": "https://github.com/acrosswp/wordpress-plugins-dependency/tree/v1.0.5"
+            },
+            "install-path": "../acrosswp/wordpress-plugins-dependency"
+        }
+    ],
     "dev": true,
     "dev-package-names": []
 }
