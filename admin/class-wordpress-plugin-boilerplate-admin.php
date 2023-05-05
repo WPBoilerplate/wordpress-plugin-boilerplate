@@ -73,7 +73,7 @@ class Wordpress_Plugin_Boilerplate_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/dist/css/backend-style.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'assets/dist/css/backend-style.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,7 +96,7 @@ class Wordpress_Plugin_Boilerplate_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/dist/js/backend-script.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'assets/dist/js/backend-script.js', array( 'jquery' ), $this->version, false );
 
 	}
 
