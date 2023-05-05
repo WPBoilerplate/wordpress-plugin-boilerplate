@@ -1,4 +1,6 @@
 <?php
+// Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 abstract class WordPress_Plugins_Dependency {
 

@@ -1,4 +1,6 @@
 <?php
+// Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 class BuddyBoss_Platform_Dependency extends WordPress_Plugins_Dependency {
     /**
