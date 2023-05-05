@@ -151,7 +151,7 @@ class Wordpress_Plugin_Boilerplate {
 		 * The class responsible for loading the dependency main class
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/dependency/class-dependency.php.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/dependency/class-dependency.php';
 
 		/**
 		 * The class responsible for loading the dependency main class
