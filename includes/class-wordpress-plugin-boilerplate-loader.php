@@ -126,19 +126,4 @@ class Wordpress_Plugin_Boilerplate_Loader {
 
 	}
 
-	/**
-     * Get the currnet plugin name
-     */
-    public function get_plugin_name() {
-        $plugin_data = get_plugin_data( WORDPRESS_PLUGIN_BOILERPLATE_FILES );
-		return $plugin_data['Name'];
-    }
-
-	/**
-     * Get the currnet plugin paths
-     */
-    public function get_plugin_name_slug() {
-        return sanitize_title_with_dashes( $this->get_plugin_name() );
-    }
-
 }
