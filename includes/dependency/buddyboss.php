@@ -1,5 +1,4 @@
 <?php
-namespace acrosswp;
 
 class BuddyBoss_Platform_Dependency extends WordPress_Plugins_Dependency {
     /**

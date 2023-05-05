@@ -148,6 +148,18 @@ class Wordpress_Plugin_Boilerplate {
 	private function load_dependencies() {
 
 		/**
+		 * The class responsible for loading the dependency main class
+		 * core plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/dependency/class-wordpress-plugin-boilerplate-dependency-main.php';
+
+		/**
+		 * The class responsible for loading the dependency main class
+		 * core plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/dependency/buddyboss.php';
+
+		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */

@@ -1,5 +1,4 @@
 <?php
-namespace acrosswp;
 
 abstract class WordPress_Plugins_Dependency {
 
@@ -12,19 +11,9 @@ abstract class WordPress_Plugins_Dependency {
     /**
      * Get the currnet plugin paths
      */
-    public function get_plugin_file() {
-        $file = dirname( __FILE__ , 4 );
-        $plugin_file_basename = basename( plugin_dir_path(  dirname( __FILE__ , 3 ) ) );
-
-        return $file . '/'. $plugin_file_basename . '.php';
-    }
-
-    /**
-     * Get the currnet plugin paths
-     */
     public function get_plugin_name() {
 
-        $plugin_data = get_plugin_data( $this->get_plugin_file() );
+        $plugin_data = get_plugin_data( WORDPRESS_PLUGIN_BOILERPLATE_FILES );
 		return $plugin_data['Name'];
     }
 
