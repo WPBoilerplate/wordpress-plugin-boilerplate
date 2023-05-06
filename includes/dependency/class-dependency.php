@@ -2,7 +2,7 @@
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
-abstract class WordPress_Plugins_Dependency {
+abstract class Wordpress_Plugin_Boilerplate_Plugins_Dependency {
 
     function __construct() {
 
