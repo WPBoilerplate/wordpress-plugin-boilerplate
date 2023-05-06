@@ -44,6 +44,14 @@ class Wordpress_Plugin_Boilerplate_Loader {
 	protected $filters;
 
 	/**
+	 * The single instance of the class.
+	 *
+	 * @var Wordpress_Plugin_Boilerplate_Loader
+	 * @since 1.0.0
+	 */
+	protected static $_instance = null;
+
+	/**
 	 * Initialize the collections used to maintain the actions and filters.
 	 *
 	 * @since    1.0.0
@@ -53,6 +61,23 @@ class Wordpress_Plugin_Boilerplate_Loader {
 		$this->actions = array();
 		$this->filters = array();
 
+	}
+
+	/**
+	 * Main Wordpress_Plugin_Boilerplate_Loader Instance.
+	 *
+	 * Ensures only one instance of WooCommerce is loaded or can be loaded.
+	 *
+	 * @since 1.0.0
+	 * @static
+	 * @see Wordpress_Plugin_Boilerplate_Loader()
+	 * @return Wordpress_Plugin_Boilerplate_Loader - Main instance.
+	 */
+	public static function instance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
 	}
 
 	/**

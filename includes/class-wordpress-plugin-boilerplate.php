@@ -29,7 +29,15 @@ defined( 'ABSPATH' ) || exit;
  * @subpackage Wordpress_Plugin_Boilerplate/includes
  * @author     AcrossWP <contact@acrosswp.com>
  */
-class Wordpress_Plugin_Boilerplate {
+final class Wordpress_Plugin_Boilerplate {
+	
+	/**
+	 * The single instance of the class.
+	 *
+	 * @var Wordpress_Plugin_Boilerplate
+	 * @since 1.0.0
+	 */
+	protected static $_instance = null;
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -81,6 +89,23 @@ class Wordpress_Plugin_Boilerplate {
 		$this->set_locale();
 
 		add_action( 'plugins_loaded', array( $this, 'load_hooks' ) );
+	}
+
+	/**
+	 * Main Wordpress_Plugin_Boilerplate Instance.
+	 *
+	 * Ensures only one instance of WooCommerce is loaded or can be loaded.
+	 *
+	 * @since 1.0.0
+	 * @static
+	 * @see Wordpress_Plugin_Boilerplate()
+	 * @return Wordpress_Plugin_Boilerplate - Main instance.
+	 */
+	public static function instance() {
+		if ( is_null( self::$_instance ) ) {
+			self::$_instance = new self();
+		}
+		return self::$_instance;
 	}
 
 	/**
@@ -184,7 +209,7 @@ class Wordpress_Plugin_Boilerplate {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wordpress-plugin-boilerplate-public.php';
 
-		$this->loader = new Wordpress_Plugin_Boilerplate_Loader();
+		$this->loader = Wordpress_Plugin_Boilerplate_Loader::instance();
 
 	}
 
