@@ -85,6 +85,7 @@ final class Wordpress_Plugin_Boilerplate {
 		$this->plugin_name = 'wordpress-plugin-boilerplate';
 
 		$this->define_constants();
+
 		$this->load_dependencies();
 		$this->set_locale();
 
@@ -118,6 +119,9 @@ final class Wordpress_Plugin_Boilerplate {
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH', plugin_dir_path( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', plugin_dir_url( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
 		
+		if( ! function_exists( 'get_plugin_data' ) ){
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
 		$plugin_data = get_plugin_data( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE );
 		$version = $plugin_data['Version'];
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION', $version );
