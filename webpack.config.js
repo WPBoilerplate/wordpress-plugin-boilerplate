@@ -68,12 +68,12 @@ var frontend_style = Object.assign({}, custom_module, style_output, {
 
 //// POT file.
 wpPot( {
-	package: 'Sorting Option In Network Search For BuddyBoss',
-	domain: 'sorting-option-in-network-search-for-buddyboss',
-	destFile: 'languages/sorting-option-in-network-search-for-buddyboss.pot',
+	package: 'WordPress Plugin Boilerplate',
+	domain: 'wordpress-plugin-boilerplate',
+	destFile: 'languages/wordpress-plugin-boilerplate.pot',
 	relativeTo: './',
 	src: [ './**/*.php' ],
-	bugReport: 'https://github.com/acrosswp/sorting-option-in-network-search-for-buddyboss/issues'
+	bugReport: 'https://github.com/acrosswp/wordpress-plugin-boilerplate/issues'
 } );
 
 // Return Array of Configurations
