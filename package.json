@@ -17,7 +17,7 @@
     "build": "webpack --mode=none",
     "build-dev": "webpack --mode=production",
     "build-production": "webpack --mode=production",
-    "preinstall": "npx only-allow pnpm",
+    "//preinstall": "npx only-allow pnpm",
     "start": "pnpm start",
     "update": "pnpm update"
   },
