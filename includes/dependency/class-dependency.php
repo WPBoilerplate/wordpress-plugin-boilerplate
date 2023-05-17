@@ -2,12 +2,11 @@
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
-abstract class Wordpress_Plugin_Boilerplate_Plugins_Dependency {
+abstract class Moderation_For_BuddyBoss_Plugins_Dependency {
 
     function __construct() {
 
-        add_filter( 'wordpress-plugin-boilerplate-load', array( $this, 'boilerplate_load' ) );
-
+        add_filter( 'moderation-for-buddyboss-load', array( $this, 'boilerplate_load' ) );
     }
 
     /**
@@ -15,7 +14,7 @@ abstract class Wordpress_Plugin_Boilerplate_Plugins_Dependency {
      */
     public function get_plugin_name() {
 
-        $plugin_data = get_plugin_data( WORDPRESS_PLUGIN_BOILERPLATE_FILES );
+        $plugin_data = get_plugin_data( MODERATION_FOR_BUDDYBOSS_FILES );
 		return $plugin_data['Name'];
     }
 
