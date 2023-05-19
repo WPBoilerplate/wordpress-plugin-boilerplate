@@ -2,7 +2,7 @@
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
-class Photo_Tagging_For_BuddyBoss_BuddyBoss_Platform_Dependency extends Photo_Tagging_For_BuddyBoss_Plugins_Dependency {
+class Wordpress_Plugin_Boilerplate_BuddyBoss_Platform_Dependency extends Wordpress_Plugin_Boilerplate_Plugins_Dependency {
 
     /**
      * Load this function on plugin load hook
@@ -84,7 +84,7 @@ class Photo_Tagging_For_BuddyBoss_BuddyBoss_Platform_Dependency extends Photo_Ta
      * Load this function on plugin load hook
      */
     public function component_required() {
-        return array( 'friends', 'media' );
+        return array();
     }
 
     /**
