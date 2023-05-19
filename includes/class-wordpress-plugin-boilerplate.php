@@ -207,6 +207,8 @@ final class Wordpress_Plugin_Boilerplate {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wordpress-plugin-boilerplate-admin.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/wordpress-plugin-boilerplate-admin-display.php';
+
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
