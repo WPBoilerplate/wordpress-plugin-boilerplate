@@ -111,4 +111,4 @@ class Wordpress_Plugin_Boilerplate_BuddyBoss_Platform_Dependency extends Wordpre
     }
 }
 
-new Photo_Tagging_For_BuddyBoss_BuddyBoss_Platform_Dependency();
+new Wordpress_Plugin_Boilerplate_BuddyBoss_Platform_Dependency();
