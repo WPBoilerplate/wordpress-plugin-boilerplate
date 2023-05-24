@@ -53,6 +53,8 @@ class Wordpress_Plugin_Boilerplate_BuddyBoss_Platform_Dependency extends Wordpre
         if( count( $component_required_label ) > 1 ) {
             $last = array_pop( $component_required_label );
             $component_required_label = implode( ', ', $component_required_label ) . ' and ' . $last;
+        } else {
+            $component_required_label = $component_required_label[0];
         }
 
         printf( 
@@ -61,8 +63,7 @@ class Wordpress_Plugin_Boilerplate_BuddyBoss_Platform_Dependency extends Wordpre
                 'wordpress-plugin-boilerplate'
             ),
             $this->get_plugin_name(),
-            $component_required_label,
-            $this->mini_version()
+            $component_required_label
         );
     }
 
@@ -84,7 +85,7 @@ class Wordpress_Plugin_Boilerplate_BuddyBoss_Platform_Dependency extends Wordpre
      * Load this function on plugin load hook
      */
     public function component_required() {
-        return array();
+        return array( 'media' );
     }
 
     /**
