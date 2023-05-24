@@ -182,38 +182,36 @@ final class Wordpress_Plugin_Boilerplate {
 		 * The class responsible for loading the dependency main class
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/dependency/class-dependency.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/dependency/class-dependency.php';
 
 		/**
 		 * The class responsible for loading the dependency main class
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/dependency/buddyboss.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/dependency/buddyboss.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wordpress-plugin-boilerplate-loader.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/class-wordpress-plugin-boilerplate-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wordpress-plugin-boilerplate-i18n.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/class-wordpress-plugin-boilerplate-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wordpress-plugin-boilerplate-admin.php';
-
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/wordpress-plugin-boilerplate-admin-display.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/class-wordpress-plugin-boilerplate-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wordpress-plugin-boilerplate-public.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'public/class-wordpress-plugin-boilerplate-public.php';
 
 		$this->loader = Wordpress_Plugin_Boilerplate_Loader::instance();
 

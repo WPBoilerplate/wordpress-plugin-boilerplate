@@ -54,6 +54,15 @@ class Wordpress_Plugin_Boilerplate_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		add_action( 'bp_setup_integrations', array( $this, 'register_integration' ) );
+	}
+
+	/**
+	 * Add class
+	 */
+	public function register_integration() {
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/integration/buddyboss-integration.php';
+		buddypress()->integrations['addon'] = new Wordpress_Plugin_Boilerplate_BuddyBoss_Integration( $this->plugin_name );
 	}
 
 	/**
