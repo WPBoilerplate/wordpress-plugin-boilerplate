@@ -20,27 +20,29 @@ defined( 'ABSPATH' ) || exit;
  * @since BuddyBoss 1.0.0
  */
 class Wordpress_Plugin_Boilerplate_Admin_Integration_Tab extends BP_Admin_Integration_tab {
+
 	public function initialize() {
 		$this->tab_order       = 60;
 	}
+	
 
 	public function is_active() {
 		return true;
 	}
 
 	public function is_addon_field_enabled( $default = 1 ) {
-		return (bool) get_option( 'wordpress_plugin_boilerplate_field', $default );
+		return (bool) get_option( 'wordpress-plugin-boilerplate_field', $default );
 	}
 
 	public function settings_callback_field() {
 		?>
-        <input name="wordpress_plugin_boilerplate_field"
-               id="wordpress_plugin_boilerplate_field"
+        <input name="wordpress-plugin-boilerplate_field"
+               id="wordpress-plugin-boilerplate_field"
                type="checkbox"
                value="1"
 			<?php checked( $this->is_addon_field_enabled() ); ?>
         />
-        <label for="wordpress_plugin_boilerplate_field">
+        <label for="wordpress-plugin-boilerplate_field">
 			<?php _e( 'Enable this option', 'wordpress-plugin-boilerplate' ); ?>
         </label>
 		<?php
@@ -49,9 +51,9 @@ class Wordpress_Plugin_Boilerplate_Admin_Integration_Tab extends BP_Admin_Integr
 	public function get_settings_fields() {
 		$fields = array();
 
-		$fields['wordpress_plugin_boilerplate_settings_section'] = array(
+		$fields['wordpress-plugin-boilerplate_settings_section'] = array(
 
-			'wordpress_plugin_boilerplate_field' => array(
+			'wordpress-plugin-boilerplate_field' => array(
 				'title'             => __( 'Add-on Field', 'wordpress-plugin-boilerplate' ),
 				'callback'          => array( $this, 'settings_callback_field' ),
 				'sanitize_callback' => 'absint',
@@ -66,7 +68,7 @@ class Wordpress_Plugin_Boilerplate_Admin_Integration_Tab extends BP_Admin_Integr
     /**
      * Add the setting fields for the add-on
      */
-    public function get_settings_fields_for_section() {
+    public function get_settings_fields_for_section( $section_id ) {
         // Bail if section is empty
 		if ( empty( $section_id ) ) {
 			return false;
@@ -81,8 +83,8 @@ class Wordpress_Plugin_Boilerplate_Admin_Integration_Tab extends BP_Admin_Integr
      */
     public function get_settings_sections() {
         return array(
-			'wordpress_plugin_boilerplate_settings_section' => array(
-				'page'  => 'addon',
+			'wordpress-plugin-boilerplate_settings_section' => array(
+				'page'  => 'wordpress-plugin-boilerplate',
 				'title' => __( 'Add-on Settings', 'wordpress-plugin-boilerplate' ),
 			),
 		);

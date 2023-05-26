@@ -76,7 +76,11 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wordpress-plugin-boilerpla
 function run_wordpress_plugin_boilerplate() {
 
 	$plugin = Wordpress_Plugin_Boilerplate::instance();
-	$plugin->run();
+
+	/**
+	 * Run this plugin on the plugins_loaded functions
+	 */
+	add_action( 'plugins_loaded', array( $plugin, 'run' ), 0 );
 
 }
 run_wordpress_plugin_boilerplate();

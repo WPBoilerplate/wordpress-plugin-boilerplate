@@ -30,7 +30,7 @@ class Wordpress_Plugin_Boilerplate_BuddyBoss_Integration extends BP_Integration 
 
 		$this->start(
 			$this->plugin_name,
-			__( 'Add-on', 'buddyboss-platform-addon' ),
+			__( 'WordPress Plugin Boilerplate', 'wordpress-plugin-boilerplate' ),
 			$this->plugin_name,
 			array(
 				'required_plugin' => array(),
@@ -49,11 +49,9 @@ class Wordpress_Plugin_Boilerplate_BuddyBoss_Integration extends BP_Integration 
 		 */
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/integration/buddyboss-addon-integration-tab.php';
 
-		var_dump( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/integration/buddyboss-addon-integration-tab.php' );
-
 		new Wordpress_Plugin_Boilerplate_Admin_Integration_Tab(
-			"bp-{$this->plugin_name}",
-			$this->plugin_name,
+			"{$this->id}",
+			$this->name,
 			array(
 				'root_path'       => WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/integration',
 				'root_url'        => WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'admin/integration',

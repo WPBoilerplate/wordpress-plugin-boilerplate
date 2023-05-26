@@ -87,9 +87,11 @@ final class Wordpress_Plugin_Boilerplate {
 		$this->define_constants();
 
 		$this->load_dependencies();
+
 		$this->set_locale();
 
-		add_action( 'plugins_loaded', array( $this, 'load_hooks' ) );
+		$this->load_hooks();
+
 	}
 
 	/**
@@ -242,10 +244,13 @@ final class Wordpress_Plugin_Boilerplate {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
-
+		
 		$plugin_admin = new Wordpress_Plugin_Boilerplate_Admin( $this->get_plugin_name(), $this->get_version() );
 
+		$this->loader->add_action( 'bp_setup_integrations', $plugin_admin, 'register_integration' );
+
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 	}
@@ -262,6 +267,7 @@ final class Wordpress_Plugin_Boilerplate {
 		$plugin_public = new Wordpress_Plugin_Boilerplate_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+		
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 	}

@@ -53,8 +53,6 @@ class Wordpress_Plugin_Boilerplate_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
-		add_action( 'bp_setup_integrations', array( $this, 'register_integration' ) );
 	}
 
 	/**
