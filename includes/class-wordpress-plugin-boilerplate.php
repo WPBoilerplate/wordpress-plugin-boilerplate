@@ -127,6 +127,8 @@ final class Wordpress_Plugin_Boilerplate {
 		$plugin_data = get_plugin_data( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE );
 		$version = $plugin_data['Version'];
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION', $version );
+
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', $version );
 	}
 
 	/**
@@ -191,6 +193,31 @@ final class Wordpress_Plugin_Boilerplate {
 		 * core plugin.
 		 */
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/dependency/buddyboss.php';
+
+
+		/**
+		 * Check if the class does not exits then only allow the file to add
+		 */
+		if( ! class_exists( 'AcrossWP_Main_Menu' ) ) {
+			/**
+			 * The class responsible for loading the dependency main class
+			 * core plugin.
+			 */
+			require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/integration/acrosswp-menu.php';
+			AcrossWP_Main_Menu::instance();
+		}
+
+		/**
+		 * Check if the class does not exits then only allow the file to add
+		 */
+		if( ! class_exists( 'AcrossWP_Main_Menu_Licenses' ) ) {
+			/**
+			 * The class responsible for loading the dependency main class
+			 * core plugin.
+			 */
+			require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/integration/licenses/across-menu-license.php';
+			AcrossWP_Main_Menu_Licenses::instance();
+		}
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
