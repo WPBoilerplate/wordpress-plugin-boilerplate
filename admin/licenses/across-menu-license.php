@@ -18,7 +18,7 @@ if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
      * The class responsible for loading edd updater class
      * core plugin.
      */
-    require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/integration/licenses/EDD_SL_Plugin_Updater.php';
+    require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/licenses/EDD_SL_Plugin_Updater.php';
 }
 
 

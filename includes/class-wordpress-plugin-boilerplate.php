@@ -215,7 +215,7 @@ final class Wordpress_Plugin_Boilerplate {
 			 * The class responsible for loading the dependency main class
 			 * core plugin.
 			 */
-			require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/integration/licenses/across-menu-license.php';
+			require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/licenses/across-menu-license.php';
 			AcrossWP_Main_Menu_Licenses::instance();
 		}
 
