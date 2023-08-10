@@ -232,14 +232,14 @@ final class Wordpress_Plugin_Boilerplate {
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/class-wordpress-plugin-boilerplate-i18n.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the admin area for update.
-		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/update/class-wordpress-plugin-boilerplate-update.php';
-
-		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/class-wordpress-plugin-boilerplate-admin.php';
+
+		/**
+		 * The class responsible for defining all actions that occur in the admin area for update.
+		 */
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/update/class-wordpress-plugin-boilerplate-update.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing

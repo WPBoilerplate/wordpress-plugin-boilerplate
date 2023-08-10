@@ -64,14 +64,6 @@ class Wordpress_Plugin_Boilerplate_Admin {
 	}
 
 	/**
-	 * Add plugin update files and classes
-	 */
-	public function updater() {
-
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/update/class-wordpress-plugin-boilerplate-update.php';
-	}
-
-	/**
 	 * Register the stylesheets for the admin area.
 	 *
 	 * @since    1.0.0
