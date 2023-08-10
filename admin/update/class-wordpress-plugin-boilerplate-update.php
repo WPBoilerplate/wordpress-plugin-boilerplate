@@ -32,6 +32,15 @@ class Wordpress_Plugin_Boilerplate_Update {
 	private $plugin_name;
 
 	/**
+	 * The DB version slug of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $plugin_name    The ID of this plugin.
+	 */
+	private $plugin_name_db_version;
+
+	/**
 	 * The version of this plugin.
 	 *
 	 * @since    1.0.0
@@ -50,6 +59,7 @@ class Wordpress_Plugin_Boilerplate_Update {
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
+		$this->plugin_name_db_version = '_' . $this->plugin_name . '_db_version';
 		$this->version = $version;
 	}
 
@@ -72,7 +82,7 @@ class Wordpress_Plugin_Boilerplate_Update {
 	 * @since WordPress Plugin Boilerplate 1.0.0
 	 */
 	public function get_db_version_raw() {
-		return get_option( '_wordpress_plugin_boilerplate_db_version', '0.0.1' );
+		return get_option( $this->plugin_name_db_version, '0.0.1' );
 	}
 
 	/**
@@ -81,7 +91,7 @@ class Wordpress_Plugin_Boilerplate_Update {
 	 * @since WordPress Plugin Boilerplate 1.0.0
 	 */
 	function version_bump() {
-		update_option( '_wordpress_plugin_boilerplate_db_version', WORDPRESS_PLUGIN_BOILERPLATE_VERSION );
+		update_option( $this->plugin_name_db_version, WORDPRESS_PLUGIN_BOILERPLATE_VERSION );
 	}
 
 	/**
