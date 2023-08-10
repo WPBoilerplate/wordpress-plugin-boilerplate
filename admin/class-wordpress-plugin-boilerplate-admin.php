@@ -56,11 +56,19 @@ class Wordpress_Plugin_Boilerplate_Admin {
 	}
 
 	/**
-	 * Add class
+	 * Add integration class class and files
 	 */
 	public function register_integration() {
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/integration/buddyboss-integration.php';
 		buddypress()->integrations['addon'] = new Wordpress_Plugin_Boilerplate_BuddyBoss_Integration( $this->plugin_name );
+	}
+
+	/**
+	 * Add plugin update files and classes
+	 */
+	public function updater() {
+
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/update/class-wordpress-plugin-boilerplate-update.php';
 	}
 
 	/**

@@ -232,6 +232,11 @@ final class Wordpress_Plugin_Boilerplate {
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/class-wordpress-plugin-boilerplate-i18n.php';
 
 		/**
+		 * The class responsible for defining all actions that occur in the admin area for update.
+		 */
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/update/class-wordpress-plugin-boilerplate-update.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/class-wordpress-plugin-boilerplate-admin.php';
@@ -274,11 +279,15 @@ final class Wordpress_Plugin_Boilerplate {
 		
 		$plugin_admin = new Wordpress_Plugin_Boilerplate_Admin( $this->get_plugin_name(), $this->get_version() );
 
+		$plugin_update = new Wordpress_Plugin_Boilerplate_Update( $this->get_plugin_name(), $this->get_version() );
+
 		$this->loader->add_action( 'bp_setup_integrations', $plugin_admin, 'register_integration' );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+		$this->loader->add_action( 'admin_init', $plugin_update, 'setup_updater' );
 
 	}
 
