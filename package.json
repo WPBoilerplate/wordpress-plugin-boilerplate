@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/acrosswp/wordpress-plugin-boilerplate.git"
   },
-  "author": "BuddyBoss",
+  "author": "AcrossWP",
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"
@@ -22,8 +22,6 @@
     "update": "pnpm update"
   },
   "keywords": [
-    "buddyboss",
-    "buddyboss-platform",
     "wordpress-plugin-boilerplate"
   ],
   "devDependencies": {
