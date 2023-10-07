@@ -77,6 +77,7 @@ final class Wordpress_Plugin_Boilerplate {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
+
 		if ( defined( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION' ) ) {
 			$this->version = WORDPRESS_PLUGIN_BOILERPLATE_VERSION;
 		} else {
@@ -183,6 +184,11 @@ final class Wordpress_Plugin_Boilerplate {
 	private function load_dependencies() {
 
 		/**
+		 * Add composer file
+		 */
+		require_once( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'vendor/autoload.php' );
+
+		/**
 		 * The class responsible for loading the dependency main class
 		 * core plugin.
 		 */
@@ -198,12 +204,7 @@ final class Wordpress_Plugin_Boilerplate {
 		/**
 		 * Check if the class does not exits then only allow the file to add
 		 */
-		if( ! class_exists( 'AcrossWP_Main_Menu' ) ) {
-			/**
-			 * The class responsible for loading the dependency main class
-			 * core plugin.
-			 */
-			require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/integration/acrosswp-menu.php';
+		if( class_exists( 'AcrossWP_Main_Menu' ) ) {
 			AcrossWP_Main_Menu::instance();
 		}
 
