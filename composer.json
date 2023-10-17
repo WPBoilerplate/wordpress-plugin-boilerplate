@@ -9,7 +9,9 @@
         "plugin"
     ],
     "require": {
-        "acrosswp/acrosswp-about-us": "dev-main"
+        "acrosswp/acrosswp-about-us": "dev-main",
+        "acrosswp/acrosswp-plugin-edd-licence": "dev-main",
+        "yahnis-elsts/plugin-update-checker": "dev-master"
     },
     "support": {
         "issues": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"

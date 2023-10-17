@@ -209,18 +209,6 @@ final class Wordpress_Plugin_Boilerplate {
 		}
 
 		/**
-		 * Check if the class does not exits then only allow the file to add
-		 */
-		if( ! class_exists( 'AcrossWP_Main_Menu_Licenses' ) ) {
-			/**
-			 * The class responsible for loading the dependency main class
-			 * core plugin.
-			 */
-			require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/licenses/across-menu-license.php';
-			AcrossWP_Main_Menu_Licenses::instance();
-		}
-
-		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
