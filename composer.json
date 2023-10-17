@@ -10,6 +10,7 @@
     ],
     "require": {
         "acrosswp/acrosswp-about-us": "dev-main",
+        "alledia/edd-sl-plugin-updater": "dev-master",
         "acrosswp/acrosswp-plugin-edd-licence": "dev-main",
         "yahnis-elsts/plugin-update-checker": "dev-master"
     },
