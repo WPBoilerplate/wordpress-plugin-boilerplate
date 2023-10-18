@@ -78,14 +78,15 @@ final class Wordpress_Plugin_Boilerplate {
 	 */
 	public function __construct() {
 
+		$this->define_constants();
+
 		if ( defined( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION' ) ) {
 			$this->version = WORDPRESS_PLUGIN_BOILERPLATE_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'wordpress-plugin-boilerplate';
 
-		$this->define_constants();
+		$this->plugin_name = 'wordpress-plugin-boilerplate';
 
 		$this->load_dependencies();
 
@@ -121,6 +122,8 @@ final class Wordpress_Plugin_Boilerplate {
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_BASENAME', plugin_basename( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH', plugin_dir_path( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', plugin_dir_url( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME_SLUG', $this->plugin_name );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME', 'WordPress Plugin Boilerplate' );
 		
 		if( ! function_exists( 'get_plugin_data' ) ){
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );

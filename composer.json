@@ -12,7 +12,8 @@
         "acrosswp/acrosswp-about-us": "dev-main",
         "alledia/edd-sl-plugin-updater": "dev-master",
         "acrosswp/acrosswp-plugin-edd-licence": "dev-main",
-        "yahnis-elsts/plugin-update-checker": "dev-master"
+        "yahnis-elsts/plugin-update-checker": "dev-master",
+        "acrosswp/acrosswp-plugin-update-checker-github": "dev-main"
     },
     "support": {
         "issues": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bc688c8ced49a214cdf30f82624c8e1",
+    "content-hash": "927918b91621e81b00423cc450dc8fc3",
     "packages": [
         {
             "name": "acrosswp/acrosswp-about-us",
@@ -55,22 +55,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acrosswp/acrosswp-plugin-edd-licence.git",
-                "reference": "f46fa890426e232ad89ccdb045b5a501b6c6f991"
+                "reference": "fa5c92ab7af57eed0b68391667cd7061426aa44a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-edd-licence/zipball/f46fa890426e232ad89ccdb045b5a501b6c6f991",
-                "reference": "f46fa890426e232ad89ccdb045b5a501b6c6f991",
+                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-edd-licence/zipball/fa5c92ab7af57eed0b68391667cd7061426aa44a",
+                "reference": "fa5c92ab7af57eed0b68391667cd7061426aa44a",
                 "shasum": ""
-            },
-            "require": {
-                "alledia/edd-sl-plugin-updater": "dev-master"
             },
             "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
-                    "across-menu-license.php"
+                    "menu-license.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -93,7 +90,50 @@
                 "issues": "https://github.com/acrosswp/acrosswp-plugin-edd-licence/issues",
                 "source": "https://github.com/acrosswp/acrosswp-plugin-edd-licence/tree/main"
             },
-            "time": "2023-10-17T15:33:17+00:00"
+            "time": "2023-10-17T16:31:56+00:00"
+        },
+        {
+            "name": "acrosswp/acrosswp-plugin-update-checker-github",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/acrosswp/acrosswp-plugin-update-checker-github.git",
+                "reference": "78f677ce4121cd0152095256dbf71aefaeca0b2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-update-checker-github/zipball/78f677ce4121cd0152095256dbf71aefaeca0b2a",
+                "reference": "78f677ce4121cd0152095256dbf71aefaeca0b2a",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "updater.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "acrosswp",
+                    "email": "contant@acrosswp.com"
+                }
+            ],
+            "description": "Composer to autoload the AcrossWP Admin Dashboard licence Menu",
+            "homepage": "https://acrosswp.com/",
+            "keywords": [
+                "plugin",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/acrosswp/acrosswp-plugin-update-checker-github/issues",
+                "source": "https://github.com/acrosswp/acrosswp-plugin-update-checker-github/tree/main"
+            },
+            "time": "2023-10-18T08:50:21+00:00"
         },
         {
             "name": "alledia/edd-sl-plugin-updater",
@@ -206,10 +246,11 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "alledia/edd-sl-plugin-updater": 20,
         "acrosswp/acrosswp-about-us": 20,
+        "alledia/edd-sl-plugin-updater": 20,
         "acrosswp/acrosswp-plugin-edd-licence": 20,
-        "yahnis-elsts/plugin-update-checker": 20
+        "yahnis-elsts/plugin-update-checker": 20,
+        "acrosswp/acrosswp-plugin-update-checker-github": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
