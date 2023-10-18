@@ -55,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acrosswp/acrosswp-plugin-edd-licence.git",
-                "reference": "fa5c92ab7af57eed0b68391667cd7061426aa44a"
+                "reference": "b731f6a20b67b09478be81cab4e6142fdc5128b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-edd-licence/zipball/fa5c92ab7af57eed0b68391667cd7061426aa44a",
-                "reference": "fa5c92ab7af57eed0b68391667cd7061426aa44a",
+                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-edd-licence/zipball/b731f6a20b67b09478be81cab4e6142fdc5128b9",
+                "reference": "b731f6a20b67b09478be81cab4e6142fdc5128b9",
                 "shasum": ""
             },
             "default-branch": true,
@@ -90,7 +90,7 @@
                 "issues": "https://github.com/acrosswp/acrosswp-plugin-edd-licence/issues",
                 "source": "https://github.com/acrosswp/acrosswp-plugin-edd-licence/tree/main"
             },
-            "time": "2023-10-17T16:31:56+00:00"
+            "time": "2023-10-18T14:49:28+00:00"
         },
         {
             "name": "acrosswp/acrosswp-plugin-update-checker-github",
@@ -98,12 +98,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acrosswp/acrosswp-plugin-update-checker-github.git",
-                "reference": "78f677ce4121cd0152095256dbf71aefaeca0b2a"
+                "reference": "7ad3773e524f1eecea9ec53bf497864b71c630a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-update-checker-github/zipball/78f677ce4121cd0152095256dbf71aefaeca0b2a",
-                "reference": "78f677ce4121cd0152095256dbf71aefaeca0b2a",
+                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-update-checker-github/zipball/7ad3773e524f1eecea9ec53bf497864b71c630a8",
+                "reference": "7ad3773e524f1eecea9ec53bf497864b71c630a8",
                 "shasum": ""
             },
             "default-branch": true,
@@ -133,7 +133,7 @@
                 "issues": "https://github.com/acrosswp/acrosswp-plugin-update-checker-github/issues",
                 "source": "https://github.com/acrosswp/acrosswp-plugin-update-checker-github/tree/main"
             },
-            "time": "2023-10-18T08:50:21+00:00"
+            "time": "2023-10-18T15:11:13+00:00"
         },
         {
             "name": "alledia/edd-sl-plugin-updater",
