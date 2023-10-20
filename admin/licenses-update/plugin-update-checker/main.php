@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || exit;
 function wordpress_plugin_boilerplate_plugins_update_checker_github( $packages ) {
 
     $packages[1000] = array(
-        'repo' 		        => 'https://github.com/acrosswp/acrosswp-testing-plugin-update',
+        'repo' 		        => 'https://github.com/acrosswp/wordpress-plugin-boilerplate',
         'file_path' 		=> WORDPRESS_PLUGIN_BOILERPLATE_FILES,
         'plugin_name_slug'	=> WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME_SLUG,
         'release_branch' 	=> 'main'
