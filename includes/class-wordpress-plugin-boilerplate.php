@@ -78,6 +78,8 @@ final class Wordpress_Plugin_Boilerplate {
 	 */
 	public function __construct() {
 
+		$this->plugin_name = 'wordpress-plugin-boilerplate';
+
 		$this->define_constants();
 
 		if ( defined( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION' ) ) {
@@ -85,8 +87,6 @@ final class Wordpress_Plugin_Boilerplate {
 		} else {
 			$this->version = '1.0.0';
 		}
-
-		$this->plugin_name = 'wordpress-plugin-boilerplate';
 
 		$this->load_dependencies();
 
