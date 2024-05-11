@@ -43,6 +43,15 @@ class Wordpress_Plugin_Boilerplate_Public {
 	private $version;
 
 	/**
+	 * The asset_file of the frountend
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $version    The current version of this plugin.
+	 */
+	private $asset_file;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -54,6 +63,7 @@ class Wordpress_Plugin_Boilerplate_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		$this->asset_file = include( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'assets/dist/frontend/index.asset.php' );
 	}
 
 	/**
@@ -74,8 +84,7 @@ class Wordpress_Plugin_Boilerplate_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_enqueue_style( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'assets/dist/css/frontend-style.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'assets/dist/frontend/index.css', array(), $this->asset_file['version'], 'all' );
 
 	}
 
@@ -98,7 +107,7 @@ class Wordpress_Plugin_Boilerplate_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'assets/dist/js/frontend-script.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'assets/dist/frontend/index.js', $this->asset_file['dependencies'], $this->asset_file['version'], false );
 
 	}
 

@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acrosswp/acrosswp-about-us.git",
-                "reference": "876cf303d5fbfbff675b383caaecf07f23550228"
+                "reference": "ce0279d30e0963b892bd18202af2a72e318c9993"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acrosswp/acrosswp-about-us/zipball/876cf303d5fbfbff675b383caaecf07f23550228",
-                "reference": "876cf303d5fbfbff675b383caaecf07f23550228",
+                "url": "https://api.github.com/repos/acrosswp/acrosswp-about-us/zipball/ce0279d30e0963b892bd18202af2a72e318c9993",
+                "reference": "ce0279d30e0963b892bd18202af2a72e318c9993",
                 "shasum": ""
             },
             "default-branch": true,
@@ -47,7 +47,7 @@
                 "issues": "https://github.com/acrosswp/acrosswp-about-us/issues",
                 "source": "https://github.com/acrosswp/acrosswp-about-us/tree/main"
             },
-            "time": "2023-10-07T07:29:06+00:00"
+            "time": "2024-02-27T14:41:25+00:00"
         },
         {
             "name": "acrosswp/acrosswp-plugin-edd-licence",
@@ -55,13 +55,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acrosswp/acrosswp-plugin-edd-licence.git",
-                "reference": "b731f6a20b67b09478be81cab4e6142fdc5128b9"
+                "reference": "e5fbca014fff9be789d6a6cf08f6d3fbd26502b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-edd-licence/zipball/b731f6a20b67b09478be81cab4e6142fdc5128b9",
-                "reference": "b731f6a20b67b09478be81cab4e6142fdc5128b9",
+                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-edd-licence/zipball/e5fbca014fff9be789d6a6cf08f6d3fbd26502b6",
+                "reference": "e5fbca014fff9be789d6a6cf08f6d3fbd26502b6",
                 "shasum": ""
+            },
+            "require": {
+                "acrosswp/acrosswp-about-us": "dev-main",
+                "alledia/edd-sl-plugin-updater": "dev-master"
             },
             "default-branch": true,
             "type": "library",
@@ -90,7 +94,7 @@
                 "issues": "https://github.com/acrosswp/acrosswp-plugin-edd-licence/issues",
                 "source": "https://github.com/acrosswp/acrosswp-plugin-edd-licence/tree/main"
             },
-            "time": "2023-10-18T14:49:28+00:00"
+            "time": "2023-11-30T08:37:12+00:00"
         },
         {
             "name": "acrosswp/acrosswp-plugin-update-checker-github",
@@ -98,19 +102,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acrosswp/acrosswp-plugin-update-checker-github.git",
-                "reference": "7ad3773e524f1eecea9ec53bf497864b71c630a8"
+                "reference": "26440611149bb3de0bb2d00375025814fe651369"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-update-checker-github/zipball/7ad3773e524f1eecea9ec53bf497864b71c630a8",
-                "reference": "7ad3773e524f1eecea9ec53bf497864b71c630a8",
+                "url": "https://api.github.com/repos/acrosswp/acrosswp-plugin-update-checker-github/zipball/26440611149bb3de0bb2d00375025814fe651369",
+                "reference": "26440611149bb3de0bb2d00375025814fe651369",
                 "shasum": ""
+            },
+            "require": {
+                "yahnis-elsts/plugin-update-checker": "dev-master"
             },
             "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
-                    "updater.php"
+                    "acrosswp-plugin-update-checker-github.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -133,7 +140,7 @@
                 "issues": "https://github.com/acrosswp/acrosswp-plugin-update-checker-github/issues",
                 "source": "https://github.com/acrosswp/acrosswp-plugin-update-checker-github/tree/main"
             },
-            "time": "2023-10-18T15:11:13+00:00"
+            "time": "2024-02-13T15:20:22+00:00"
         },
         {
             "name": "alledia/edd-sl-plugin-updater",
@@ -196,12 +203,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/YahnisElsts/plugin-update-checker.git",
-                "reference": "0f7296123e9ddf303d6da5f968e04ba7899fa88d"
+                "reference": "040a2ef65832ce4486f8ab1b5fdb5631a6dbc076"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/0f7296123e9ddf303d6da5f968e04ba7899fa88d",
-                "reference": "0f7296123e9ddf303d6da5f968e04ba7899fa88d",
+                "url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/040a2ef65832ce4486f8ab1b5fdb5631a6dbc076",
+                "reference": "040a2ef65832ce4486f8ab1b5fdb5631a6dbc076",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +219,7 @@
             "type": "library",
             "autoload": {
                 "files": [
-                    "load-v5p2.php"
+                    "load-v5p4.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -239,7 +246,7 @@
                 "issues": "https://github.com/YahnisElsts/plugin-update-checker/issues",
                 "source": "https://github.com/YahnisElsts/plugin-update-checker/tree/master"
             },
-            "time": "2023-08-23T17:26:40+00:00"
+            "time": "2024-05-10T15:24:45+00:00"
         }
     ],
     "packages-dev": [],
