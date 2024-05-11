@@ -14,32 +14,17 @@
     "url": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"
   },
   "scripts": {
-    "build": "webpack --mode=none",
-    "build-dev": "webpack --mode=production",
-    "build-production": "webpack --mode=production",
-    "//preinstall": "npx only-allow pnpm",
-    "start": "pnpm start",
-    "update": "pnpm update"
+    "start": "npm run start-frontend && npm run start-backend",
+    "build": "npm run build-frontend && npm run build-backend",
+    "start-frontend": "wp-scripts start --webpack-src-dir=assets/src/frontend/ --output-path=assets/dist/frontend/",
+    "build-frontend": "wp-scripts build --webpack-src-dir=assets/src/frontend/ --output-path=assets/dist/frontend/",
+    "start-backend": "wp-scripts start --webpack-src-dir=assets/src/backend/ --output-path=assets/dist/backend/",
+    "build-backend": "wp-scripts build --webpack-src-dir=assets/src/backend/ --output-path=assets/dist/backend/"
   },
   "keywords": [
     "wordpress-plugin-boilerplate"
   ],
   "devDependencies": {
-    "@babel/cli": "7.12.8",
-    "@babel/core": "7.12.9",
-    "@babel/preset-env": "7.12.7",
-    "@babel/register": "7.12.1",
-    "@wordpress/babel-plugin-import-jsx-pragma": "1.1.3",
-    "@wordpress/babel-preset-default": "3.0.2",
-    "babel-eslint": "10.1.0",
-    "css-loader": "^6.7.3",
-    "eslint": "^8.39.0",
-    "mini-css-extract-plugin": "^2.7.5",
-    "sass": "^1.62.1",
-    "sass-loader": "^12.6.0",
-    "webpack": "^5.81.0",
-    "webpack-cli": "^5.0.2",
-    "wp-pot": "^1.10.2",
-    "wp-textdomain": "^1.0.1"
+    "@wordpress/scripts": "^27.8.0"
   }
 }
