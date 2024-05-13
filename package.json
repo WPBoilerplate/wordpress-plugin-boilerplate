@@ -16,10 +16,10 @@
   "scripts": {
     "start": "npm run start-frontend && npm run start-backend",
     "build": "npm run build-frontend && npm run build-backend",
-    "start-frontend": "wp-scripts start --webpack-src-dir=assets/src/frontend/ --output-path=assets/dist/frontend/",
-    "build-frontend": "wp-scripts build --webpack-src-dir=assets/src/frontend/ --output-path=assets/dist/frontend/",
-    "start-backend": "wp-scripts start --webpack-src-dir=assets/src/backend/ --output-path=assets/dist/backend/",
-    "build-backend": "wp-scripts build --webpack-src-dir=assets/src/backend/ --output-path=assets/dist/backend/"
+    "start-frontend": "wp-scripts start",
+    "build-frontend": "wp-scripts build",
+    "start-backend": "wp-scripts start --webpack-src-dir=src/backend/ --output-path=build/backend/",
+    "build-backend": "wp-scripts build --webpack-src-dir=src/backend/ --output-path=build/backend/"
   },
   "keywords": [
     "wordpress-plugin-boilerplate"
