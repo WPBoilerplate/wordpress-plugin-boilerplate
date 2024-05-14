@@ -55,22 +55,6 @@ read org
 org_lower="$( echo "$org" | tr '[:upper:]' '[:lower:]' )"
 
 echo
-echo -n "Do you want to prepend 'bb-' to your repository name? [Y/N]: "
-read prepend
-
-if [[ "$prepend" != Y ]] && [[ "$prepend" != y ]]; then
-	echo
-	echo -n "Do you want to append '-bb' to your repository name? [Y/N]: "
-    read append
-
-	if [[ "$append" == Y ]] || [[ "$append" == y ]]; then
-		repo="${slug}-bb"
-	fi
-else
-	repo="bb-${slug}"
-fi
-
-echo
 echo -n "Do you want to make the initial commit? [Y/N]: "
 read commit
 
