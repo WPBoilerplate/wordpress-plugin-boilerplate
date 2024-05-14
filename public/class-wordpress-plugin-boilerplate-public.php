@@ -84,7 +84,7 @@ class Wordpress_Plugin_Boilerplate_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_style( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'assets/dist/frontend/index.css', array(), $this->asset_file['version'], 'all' );
+		wp_enqueue_style( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'build/index.css', array(), $this->asset_file['version'], 'all' );
 
 	}
 
@@ -107,7 +107,7 @@ class Wordpress_Plugin_Boilerplate_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'assets/dist/frontend/index.js', $this->asset_file['dependencies'], $this->asset_file['version'], false );
+		wp_enqueue_script( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'build/index.js', $this->asset_file['dependencies'], $this->asset_file['version'], false );
 
 	}
 
