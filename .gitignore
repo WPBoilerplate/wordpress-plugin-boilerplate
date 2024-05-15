@@ -48,7 +48,6 @@ tests/cli/vendor
 /logs
 
 # Composer
-/vendor/
 contributors.md
 
 # Packages

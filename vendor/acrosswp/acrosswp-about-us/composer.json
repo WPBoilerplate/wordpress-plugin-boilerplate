@@ -1,18 +1,18 @@
 {
-    "name": "acrosswp/wordpress-plugin-boilerplate",
+    "name": "acrosswp/acrosswp-about-us",
     "type": "library",
     "license": "GPL-2.0-or-later",
-    "description": "Composer to autoload the WordPress Plugin Boilerplate",
+    "description": "Composer to autoload the AcrossWP Admin Dashboard Main Menu",
     "homepage": "https://acrosswp.com/",
     "keywords": [
         "wordpress",
         "plugin"
     ],
-    "require": {
-        "acrosswp/acrosswp-about-us": "dev-main"
+    "autoload": {
+        "files": ["acrosswp-menu.php"]
     },
     "support": {
-        "issues": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"
+        "issues": "https://github.com/acrosswp/acrosswp-about-us/issues"
     },
     "authors": [
         {

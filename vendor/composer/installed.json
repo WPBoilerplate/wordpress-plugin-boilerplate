@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "947d20c4cfc0022b4071bcef826c3aae",
     "packages": [
         {
             "name": "acrosswp/acrosswp-about-us",
             "version": "dev-main",
+            "version_normalized": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acrosswp/acrosswp-about-us.git",
@@ -20,8 +15,10 @@
                 "reference": "ce0279d30e0963b892bd18202af2a72e318c9993",
                 "shasum": ""
             },
+            "time": "2024-02-27T14:41:25+00:00",
             "default-branch": true,
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "acrosswp-menu.php"
@@ -47,18 +44,9 @@
                 "issues": "https://github.com/acrosswp/acrosswp-about-us/issues",
                 "source": "https://github.com/acrosswp/acrosswp-about-us/tree/main"
             },
-            "time": "2024-02-27T14:41:25+00:00"
+            "install-path": "../acrosswp/acrosswp-about-us"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {
-        "acrosswp/acrosswp-about-us": 20
-    },
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "dev": true,
+    "dev-package-names": []
 }
