@@ -11,6 +11,7 @@
     "require": {
         "acrosswp/acrosswp-about-us": "dev-main"
     },
+    "minimum-stability": "dev",
     "support": {
         "issues": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"
     },
