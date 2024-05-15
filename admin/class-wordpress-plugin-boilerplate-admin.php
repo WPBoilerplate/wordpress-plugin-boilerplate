@@ -140,8 +140,8 @@ class Wordpress_Plugin_Boilerplate_Admin {
 		return array_merge(
 			$links,
 			array(
-				'settings'      => '<a href="' . esc_url( bp_get_admin_url( 'admin.php?page=bp-settings' ) ) . '">' . esc_html__( 'Settings', 'wordpress-plugin-boilerplate' ) . '</a>',
-				'about'         => '<a href="' . esc_url( bp_get_admin_url( '?page=acrosswp' ) ) . '">' . esc_html__( 'About', 'wordpress-plugin-boilerplate' ) . '</a>',
+				'settings'      => '<a href="' . esc_url( admin_url( 'admin.php?page=bp-settings' ) ) . '">' . esc_html__( 'Settings', 'wordpress-plugin-boilerplate' ) . '</a>',
+				'about'         => '<a href="' . esc_url( admin_url( '?page=acrosswp' ) ) . '">' . esc_html__( 'About', 'wordpress-plugin-boilerplate' ) . '</a>',
 			)
 		);
 	}
