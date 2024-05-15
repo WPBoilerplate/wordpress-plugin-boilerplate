@@ -231,7 +231,7 @@ final class Wordpress_Plugin_Boilerplate {
 		/**
 		 * The class responsible for defining all actions that occur in the admin area for update.
 		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/update/class-wordpress-plugin-boilerplate-update.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/update/wordpress-plugin-boilerplate-update.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
