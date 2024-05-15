@@ -173,5 +173,7 @@ if( ! class_exists( 'AcrossWP_Main_Menu' ) ) {
 				define( $name, $value );
 			}
 		}
-	}	
+	}
+
+	AcrossWP_Main_Menu::instance();
 }

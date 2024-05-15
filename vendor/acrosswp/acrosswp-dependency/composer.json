@@ -1,0 +1,23 @@
+{
+    "name": "acrosswp/acrosswp-dependency",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "description": "Composer to autoload the AcrossWP Dependency Class",
+    "homepage": "https://acrosswp.com/",
+    "keywords": [
+        "wordpress",
+        "plugin"
+    ],
+    "autoload": {
+        "files": ["acrosswp-dependency.php"]
+    },
+    "support": {
+        "issues": "https://github.com/acrosswp/acrosswp-dependency/issues"
+    },
+    "authors": [
+        {
+            "name": "acrosswp",
+            "email": "contant@acrosswp.com"
+        }
+    ]
+}

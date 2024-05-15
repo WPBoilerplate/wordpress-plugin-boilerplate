@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "947d20c4cfc0022b4071bcef826c3aae",
+    "content-hash": "83b54dee11c5e3c7fc401beb88006e13",
     "packages": [
         {
             "name": "acrosswp/acrosswp-about-us",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acrosswp/acrosswp-about-us.git",
-                "reference": "ce0279d30e0963b892bd18202af2a72e318c9993"
+                "reference": "231b8c1ebbc2b81e808025bf8ac5b2adc09795ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acrosswp/acrosswp-about-us/zipball/ce0279d30e0963b892bd18202af2a72e318c9993",
-                "reference": "ce0279d30e0963b892bd18202af2a72e318c9993",
+                "url": "https://api.github.com/repos/acrosswp/acrosswp-about-us/zipball/231b8c1ebbc2b81e808025bf8ac5b2adc09795ee",
+                "reference": "231b8c1ebbc2b81e808025bf8ac5b2adc09795ee",
                 "shasum": ""
             },
             "default-branch": true,
@@ -47,14 +47,104 @@
                 "issues": "https://github.com/acrosswp/acrosswp-about-us/issues",
                 "source": "https://github.com/acrosswp/acrosswp-about-us/tree/main"
             },
-            "time": "2024-02-27T14:41:25+00:00"
+            "time": "2024-05-15T08:18:41+00:00"
+        },
+        {
+            "name": "acrosswp/acrosswp-buddypress-or-buddyboss-dependency",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/acrosswp/acrosswp-buddypress-or-buddyboss-dependency.git",
+                "reference": "f8a59b7163f3475f9b35563f642aa5616519b1e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/acrosswp/acrosswp-buddypress-or-buddyboss-dependency/zipball/f8a59b7163f3475f9b35563f642aa5616519b1e8",
+                "reference": "f8a59b7163f3475f9b35563f642aa5616519b1e8",
+                "shasum": ""
+            },
+            "require": {
+                "acrosswp/acrosswp-dependency": "dev-main"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "dependency.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "acrosswp",
+                    "email": "contant@acrosswp.com"
+                }
+            ],
+            "description": "Composer to autoload the AcrossWP Dependency Class",
+            "homepage": "https://acrosswp.com/",
+            "keywords": [
+                "plugin",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/acrosswp/acrosswp-buddypress-or-buddyboss-dependency/issues",
+                "source": "https://github.com/acrosswp/acrosswp-buddypress-or-buddyboss-dependency/tree/main"
+            },
+            "time": "2023-11-12T21:14:12+00:00"
+        },
+        {
+            "name": "acrosswp/acrosswp-dependency",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/acrosswp/acrosswp-dependency.git",
+                "reference": "11c2cd9cfa097508d06b3b4718811107917ff2be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/acrosswp/acrosswp-dependency/zipball/11c2cd9cfa097508d06b3b4718811107917ff2be",
+                "reference": "11c2cd9cfa097508d06b3b4718811107917ff2be",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "acrosswp-dependency.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "acrosswp",
+                    "email": "contant@acrosswp.com"
+                }
+            ],
+            "description": "Composer to autoload the AcrossWP Dependency Class",
+            "homepage": "https://acrosswp.com/",
+            "keywords": [
+                "plugin",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/acrosswp/acrosswp-dependency/issues",
+                "source": "https://github.com/acrosswp/acrosswp-dependency/tree/main"
+            },
+            "time": "2023-11-12T21:14:31+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
-        "acrosswp/acrosswp-about-us": 20
+        "acrosswp/acrosswp-about-us": 20,
+        "acrosswp/acrosswp-buddypress-or-buddyboss-dependency": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

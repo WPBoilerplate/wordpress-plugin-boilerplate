@@ -1,0 +1,26 @@
+{
+    "name": "acrosswp/acrosswp-buddypress-or-buddyboss-dependency",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "description": "Composer to autoload the AcrossWP Dependency Class",
+    "homepage": "https://acrosswp.com/",
+    "keywords": [
+        "wordpress",
+        "plugin"
+    ],
+    "autoload": {
+        "files": ["dependency.php"]
+    },
+    "support": {
+        "issues": "https://github.com/acrosswp/acrosswp-buddypress-or-buddyboss-dependency/issues"
+    },
+    "require": {
+        "acrosswp/acrosswp-dependency": "dev-main"
+    },
+    "authors": [
+        {
+            "name": "acrosswp",
+            "email": "contant@acrosswp.com"
+        }
+    ]
+}

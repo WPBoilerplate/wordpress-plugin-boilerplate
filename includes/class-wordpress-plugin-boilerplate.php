@@ -192,26 +192,6 @@ final class Wordpress_Plugin_Boilerplate {
 		require_once( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'vendor/autoload.php' );
 
 		/**
-		 * The class responsible for loading the dependency main class
-		 * core plugin.
-		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/dependency/class-dependency.php';
-
-		/**
-		 * The class responsible for loading the dependency main class
-		 * core plugin.
-		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/dependency/buddyboss.php';
-
-
-		/**
-		 * Check if the class does not exits then only allow the file to add
-		 */
-		if( class_exists( 'AcrossWP_Main_Menu' ) ) {
-			AcrossWP_Main_Menu::instance();
-		}
-
-		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
