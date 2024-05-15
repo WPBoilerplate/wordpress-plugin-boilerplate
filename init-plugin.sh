@@ -122,7 +122,6 @@ git grep -lz "Wordpress_Plugin_Boilerplate" | xargs -0 sed -i '' -e "s/Wordpress
 # Clean slate.
 rm -rf .git
 rm -rf node_modules
-rm -rf vendor
 rm -f init-plugin.sh
 rm -f composer.lock
 rm -f package-lock.json
