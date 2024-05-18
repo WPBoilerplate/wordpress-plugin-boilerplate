@@ -63,7 +63,7 @@ class Wordpress_Plugin_Boilerplate_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-		$this->asset_file = include( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'assets/dist/backend/index.asset.php' );
+		$this->asset_file = include( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'build/backend/index.asset.php' );
 	}
 
 	/**
