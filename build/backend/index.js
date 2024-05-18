@@ -1,1 +1,1 @@
-(()=>{"use strict";const o=window.wp.i18n;console.log((0,o.__)("Coming from Froutend"),"wordpress-plugin-boilerplate")})();
+(()=>{"use strict";const o=window.wp.i18n;console.log((0,o.__)("Coming from backend"),"wordpress-plugin-boilerplate")})();
