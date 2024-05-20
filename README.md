@@ -13,3 +13,20 @@ https://developer.wordpress.org/block-editor/reference-guides/packages/packages-
 3.  Now run `npm run build` command and it will generate new file
 
 # Composer
+
+### Adding dependency for Custom Plugins
+
+1. Adding BuddyBoss Platform and Platform Pro dependency
+```composer require acrosswp/acrosswp-buddypress-or-buddyboss-dependency```
+
+2. Adding BuddyBoss Platform dependency
+```composer require acrosswp/acrosswp-buddyboss-dependency```
+
+3. Adding WooCommerce dependency
+```composer require acrosswp/acrosswp-woocommerce-dependency``` 
+
+4. Adding ACF Pro dependency
+```composer require acrosswp/acrossswp-acf-pro-dependency``` 
+
+4. Adding View Analytics dependency
+```composer require acrosswp/acrosswp-view-analytics-dependency``` 
