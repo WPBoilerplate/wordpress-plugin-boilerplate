@@ -15,11 +15,11 @@ https://developer.wordpress.org/block-editor/reference-guides/packages/packages-
 
 ### Create blocks
 
-1. Run `npm install @wordpress/scripts --save-dev` inside plugin folder terminal
-2. Once everything install goto src folder and run `npx @wordpress/create-block@latest wordpress-plugin-boilerplate-block --variant=dynamic --no-plugin`
-3. Once that is install run `npm run build`
-4. Now run `composer require acrosswp/acrosswp-register-blocks`
-5. Now run `composer update`
+1. Now run `composer require acrosswp/acrosswp-register-blocks`
+2. Now run `composer update`
+3. Run `npm install @wordpress/scripts --save-dev` inside plugin folder terminal
+4. Once everything install goto src folder and run `npx @wordpress/create-block@latest wordpress-plugin-boilerplate-block --variant=dynamic --no-plugin`
+5. Once that is install run `npm run build`
 
 # Composer
 
