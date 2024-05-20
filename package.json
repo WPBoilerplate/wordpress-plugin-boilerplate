@@ -17,7 +17,7 @@
     "start": "wp-scripts start && npm run start-frontend && npm run start-backend",
     "build": "wp-scripts build && npm run build-frontend && npm run build-backend",
     "start-frontend": "wp-scripts start --webpack-src-dir=src/frontend/ --output-path=build/frontend/",
-    "build-frontend": "wp-scripts build src/frontend/index.js src/frontend/index-2.js --output-path=build/frontend/",
+    "build-frontend": "wp-scripts build --webpack-src-dir=src/frontend/ --output-path=build/frontend/",
     "start-backend": "wp-scripts start --webpack-src-dir=src/backend/ --output-path=build/backend/",
     "build-backend": "wp-scripts build --webpack-src-dir=src/backend/ --output-path=build/backend/"
   },
