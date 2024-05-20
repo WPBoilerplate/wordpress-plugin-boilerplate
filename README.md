@@ -1,4 +1,5 @@
 # @wordpress/scripts
+https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/
 
 ### Adding multipal input file
 
