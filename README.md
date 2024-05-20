@@ -1,4 +1,5 @@
 # @wordpress/scripts
+
 https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/
 
 ### Adding multipal input file
@@ -12,13 +13,22 @@ https://developer.wordpress.org/block-editor/reference-guides/packages/packages-
 2.  Create new file inside the src/frontend/index-2.js
 3.  Now run `npm run build` command and it will generate new file
 
+### Create blocks
+
+1. Run `npm install @wordpress/scripts --save-dev` inside plugin folder terminal
+2. Once everything install goto src folder and run `npx @wordpress/create-block@latest wordpress-plugin-boilerplate-block --variant=dynamic --no-plugin`
+3. Once that is install run `npm run build`
+4. Now run `composer require acrosswp/acrosswp-register-blocks`
+5. Now run `composer update`
+
 # Composer
 
 ### Adding dependency for Custom Plugins
 
 1. Adding BuddyBoss Platform and Platform Pro dependency
-```composer require acrosswp/acrosswp-buddypress-or-buddyboss-dependency``` 
-and then add the below code in function load_dependencies after vendor autoload file included ```require_once( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'vendor/autoload.php' );```
+   `composer require acrosswp/acrosswp-buddypress-or-buddyboss-dependency`
+   and then add the below code in function load_dependencies after vendor autoload file included `require_once( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'vendor/autoload.php' );`
+
 ```
 /**
  * Add the dependency for the call
@@ -26,16 +36,16 @@ and then add the below code in function load_dependencies after vendor autoload 
     if ( class_exists( 'AcrossWP_BuddyPress_BuddyBoss_Platform_Dependency' ) ) {
         new AcrossWP_BuddyPress_BuddyBoss_Platform_Dependency( $this->get_plugin_name(), WORDPRESS_PLUGIN_BOILERPLATE_FILES );
     }
-``` 
+```
 
 2. Adding BuddyBoss Platform dependency
-```composer require acrosswp/acrosswp-buddyboss-dependency```
+   `composer require acrosswp/acrosswp-buddyboss-dependency`
 
 3. Adding WooCommerce dependency
-```composer require acrosswp/acrosswp-woocommerce-dependency``` 
+   `composer require acrosswp/acrosswp-woocommerce-dependency`
 
 4. Adding ACF Pro dependency
-```composer require acrosswp/acrossswp-acf-pro-dependency``` 
+   `composer require acrosswp/acrossswp-acf-pro-dependency`
 
-4. Adding View Analytics dependency
-```composer require acrosswp/acrosswp-view-analytics-dependency``` 
+5. Adding View Analytics dependency
+   `composer require acrosswp/acrosswp-view-analytics-dependency`
