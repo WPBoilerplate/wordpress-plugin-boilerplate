@@ -7,9 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit3f8437b7f8a049623acc129bd94ed35c
 {
     public static $files = array (
-        'ba3e6311190fef6b803d614907261c88' => __DIR__ . '/..' . '/acrosswp/acrosswp-dependency/acrosswp-dependency.php',
         'b63f3776920c9d542d2eda719625843e' => __DIR__ . '/..' . '/acrosswp/acrosswp-about-us/acrosswp-menu.php',
-        'dc38373a0e8e9b61437f4120cca10acf' => __DIR__ . '/..' . '/acrosswp/acrosswp-buddypress-or-buddyboss-dependency/dependency.php',
     );
 
     public static $classMap = array (

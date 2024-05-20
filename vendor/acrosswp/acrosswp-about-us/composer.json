@@ -1,5 +1,5 @@
 {
-    "name": "acrosswp/acrosswp-about-us",
+    "name": "acrosswp/acrosswp-woocommerce-dependency",
     "type": "library",
     "license": "GPL-2.0-or-later",
     "description": "Composer to autoload the AcrossWP Admin Dashboard Main Menu",

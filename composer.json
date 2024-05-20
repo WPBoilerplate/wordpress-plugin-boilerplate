@@ -9,8 +9,7 @@
         "plugin"
     ],
     "require": {
-        "acrosswp/acrosswp-about-us": "dev-main",
-        "acrosswp/acrosswp-buddypress-or-buddyboss-dependency": "dev-main"
+        "acrosswp/acrosswp-about-us": "dev-main"
     },
     "minimum-stability": "dev",
     "support": {
