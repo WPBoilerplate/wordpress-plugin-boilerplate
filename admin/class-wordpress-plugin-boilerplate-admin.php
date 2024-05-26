@@ -95,7 +95,7 @@ class Wordpress_Plugin_Boilerplate_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'build/js/backend.css', $this->css_asset_file['dependencies'], $this->css_asset_file['version'], 'all' );
+		wp_enqueue_style( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'build/css/backend.css', $this->css_asset_file['dependencies'], $this->css_asset_file['version'], 'all' );
 
 	}
 
