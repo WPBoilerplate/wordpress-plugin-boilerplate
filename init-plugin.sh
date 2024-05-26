@@ -103,6 +103,7 @@ git mv includes/class-wordpress-plugin-boilerplate-loader.php includes/"class-$s
 
 git mv admin/class-wordpress-plugin-boilerplate-admin.php admin/"class-$slug-admin.php"
 git mv admin/partials/wordpress-plugin-boilerplate-admin-display.php admin/partials/"$slug-admin-display.php"
+git mv admin/update/wordpress-plugin-boilerplate-update.php admin/update/"$slug-update.php"
 
 git mv public/class-wordpress-plugin-boilerplate-public.php public/"class-$slug-public.php"
 git mv public/partials/wordpress-plugin-boilerplate-public-display.php public/partials/"$slug-public-display.php"

@@ -3,7 +3,7 @@
         'name' => 'acrosswp/wordpress-plugin-boilerplate',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f710713c1d0af67cf21f308cfdbd2f4317733be0',
+        'reference' => 'c9c042260d98a923a0987127e3ff52dcabd87416',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -24,7 +24,7 @@
         'acrosswp/wordpress-plugin-boilerplate' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f710713c1d0af67cf21f308cfdbd2f4317733be0',
+            'reference' => 'c9c042260d98a923a0987127e3ff52dcabd87416',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
