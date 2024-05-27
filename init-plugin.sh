@@ -55,20 +55,6 @@ read org
 org_lower="$( echo "$org" | tr '[:upper:]' '[:lower:]' )"
 
 echo
-echo -n "Do you want to make the initial commit? [Y/N]: "
-read commit
-
-if [[ "$commit" == Y ]] || [[ "$commit" == y ]]; then
-	echo
-	echo -n "Do you want to push the plugin to your GitHub repository? [Y/N]: "
-	read push
-fi
-
-echo
-echo -n "Do you want to install the dependencies in the new plugin? [Y/N]: "
-read deps
-
-echo
 
 cwd="$(pwd)"
 cd "$(dirname "$0")"
@@ -125,6 +111,7 @@ rm -rf .git
 rm -rf node_modules
 rm -f init-plugin.sh
 rm -f composer.lock
+rm -f vendor
 rm -f package-lock.json
 
 # Setup Git.
@@ -133,26 +120,11 @@ git add .
 git remote add origin "git@github.com:$org_lower/$repo.git"
 
 # Install dependencies.
-if [[ "$deps" == Y ]] || [[ "$deps" == y ]]; then
-	npm install
-fi
+echo 'Installing npm ...'
+# npm install
 
-# Commit and push change.
-if [[ "$commit" == Y ]] || [[ "$commit" == y ]]; then
-	git commit -m "Initial commit"
-
-	if [[ "$push" == Y ]] || [[ "$push" == y ]]; then
-    	git push -u origin master
-    else
-    	echo
-    	echo "Push changes to GitHub with the following command:"
-    	echo "cd $(pwd) && git push -u origin master"
-    fi
-else
-    echo
-    echo "Commit and push changes to GitHub with the following command:"
-    echo "cd $(pwd) && git commit -m \"Initial commit\" && git push -u origin master"
-fi
+echo 'Installing composer..'
+composer install
 
 echo
 echo "Plugin is located at:"
