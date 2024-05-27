@@ -109,10 +109,10 @@ git grep -lz "Wordpress_Plugin_Boilerplate" | xargs -0 sed -i '' -e "s/Wordpress
 # Clean slate.
 rm -rf .git
 rm -rf node_modules
-rm -f init-plugin.sh
-rm -f composer.lock
-rm -f vendor
-rm -f package-lock.json
+rm -rf init-plugin.sh
+rm -rf composer.lock
+rm -rf vendor
+rm -rf package-lock.json
 
 # Setup Git.
 git init
@@ -120,11 +120,12 @@ git add .
 git remote add origin "git@github.com:$org_lower/$repo.git"
 
 # Install dependencies.
-echo 'Installing npm ...'
-# npm install
 
 echo 'Installing composer..'
 composer install
+
+echo 'Installing npm ...'
+# npm install
 
 echo
 echo "Plugin is located at:"
