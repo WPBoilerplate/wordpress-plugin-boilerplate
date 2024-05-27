@@ -6,10 +6,6 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit3f8437b7f8a049623acc129bd94ed35c
 {
-    public static $files = array (
-        'b63f3776920c9d542d2eda719625843e' => __DIR__ . '/..' . '/acrosswp/acrosswp-about-us/acrosswp-menu.php',
-    );
-
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );

@@ -4,58 +4,12 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60e78c702de858d5e518f6d60d45a9c9",
-    "packages": [
-        {
-            "name": "acrosswp/acrosswp-about-us",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/acrosswp/acrosswp-about-us.git",
-                "reference": "faa010d693f1138c5ec7778c821601534087aadb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/acrosswp/acrosswp-about-us/zipball/faa010d693f1138c5ec7778c821601534087aadb",
-                "reference": "faa010d693f1138c5ec7778c821601534087aadb",
-                "shasum": ""
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "acrosswp-menu.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "acrosswp",
-                    "email": "contant@acrosswp.com"
-                }
-            ],
-            "description": "Composer to autoload the AcrossWP Admin Dashboard Main Menu",
-            "homepage": "https://acrosswp.com/",
-            "keywords": [
-                "plugin",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/acrosswp/acrosswp-about-us/issues",
-                "source": "https://github.com/acrosswp/acrosswp-about-us/tree/main"
-            },
-            "time": "2024-05-15T08:48:32+00:00"
-        }
-    ],
+    "content-hash": "2728e25803442d82eb1a43468144803f",
+    "packages": [],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "acrosswp/acrosswp-about-us": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

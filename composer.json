@@ -3,22 +3,19 @@
     "type": "library",
     "license": "GPL-2.0-or-later",
     "description": "Composer to autoload the WordPress Plugin Boilerplate",
-    "homepage": "https://acrosswp.com/",
+    "homepage": "https://wordpress-plugin-boilerplate.com/",
     "keywords": [
         "wordpress",
         "plugin"
     ],
-    "require": {
-        "acrosswp/acrosswp-about-us": "dev-main"
-    },
     "minimum-stability": "dev",
     "support": {
         "issues": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"
     },
     "authors": [
         {
-            "name": "acrosswp",
-            "email": "contant@acrosswp.com"
+            "name": "wordpress-plugin-boilerplate",
+            "email": "contant@wordpress-plugin-boilerplate.com"
         }
     ]
 }
