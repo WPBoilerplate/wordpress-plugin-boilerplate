@@ -8,17 +8,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://acrosswp.com
+ * @link              https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * @since             1.0.0
  * @package           Wordpress_Plugin_Boilerplate
  *
  * @wordpress-plugin
  * Plugin Name:       WordPress Plugin Boilerplate
- * Plugin URI:        https://acrosswp.com
+ * Plugin URI:        https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * Description:       WordPress Plugin Boilerplate by WPBoilerplate
  * Version:           1.0.0
  * Author:            WPBoilerplate
- * Author URI:        https://acrosswp.com
+ * Author URI:        https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       wordpress-plugin-boilerplate

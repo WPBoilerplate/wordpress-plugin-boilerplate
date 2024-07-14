@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || exit;
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       https://acrosswp.com
+ * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * @since      1.0.0
  *
  * @package    Wordpress_Plugin_Boilerplate
