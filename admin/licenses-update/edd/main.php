@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Add EDD licences into the AcrossWP EDD licences menu
+ * Add EDD licences into the WPBoilerplate EDD licences menu
  */
 function wordpress_plugin_boilerplate_edd_plugins_licenses( $licenses ) {
 

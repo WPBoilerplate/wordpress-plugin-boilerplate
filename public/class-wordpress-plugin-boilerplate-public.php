@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @package    Wordpress_Plugin_Boilerplate
  * @subpackage Wordpress_Plugin_Boilerplate/public
- * @author     AcrossWP <contact@acrosswp.com>
+ * @author     WPBoilerplate <contact@acrosswp.com>
  */
 class Wordpress_Plugin_Boilerplate_Public {
 

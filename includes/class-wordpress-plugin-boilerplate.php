@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
  * @since      1.0.0
  * @package    Wordpress_Plugin_Boilerplate
  * @subpackage Wordpress_Plugin_Boilerplate/includes
- * @author     AcrossWP <contact@acrosswp.com>
+ * @author     WPBoilerplate <contact@acrosswp.com>
  */
 final class Wordpress_Plugin_Boilerplate {
 	
@@ -194,8 +194,8 @@ final class Wordpress_Plugin_Boilerplate {
 		/**
 		 * Add the dependency for the call
 		 */
-		if ( class_exists( 'AcrossWP_BuddyPress_BuddyBoss_Platform_Dependency' ) ) {
-			new AcrossWP_BuddyPress_BuddyBoss_Platform_Dependency( $this->get_plugin_name(), WORDPRESS_PLUGIN_BOILERPLATE_FILES );
+		if ( class_exists( 'WPBoilerplate_BuddyPress_BuddyBoss_Platform_Dependency' ) ) {
+			new WPBoilerplate_BuddyPress_BuddyBoss_Platform_Dependency( $this->get_plugin_name(), WORDPRESS_PLUGIN_BOILERPLATE_FILES );
 		}
 
 		/**

@@ -15,9 +15,9 @@
  * @wordpress-plugin
  * Plugin Name:       WordPress Plugin Boilerplate
  * Plugin URI:        https://acrosswp.com
- * Description:       WordPress Plugin Boilerplate by AcrossWP
+ * Description:       WordPress Plugin Boilerplate by WPBoilerplate
  * Version:           1.0.0
- * Author:            AcrossWP
+ * Author:            WPBoilerplate
  * Author URI:        https://acrosswp.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt

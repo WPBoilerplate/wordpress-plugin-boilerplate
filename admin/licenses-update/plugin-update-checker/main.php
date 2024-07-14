@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Add Github Plugin update checker into the AcrossWP Github Plugin Update Checker
+ * Add Github Plugin update checker into the WPBoilerplate Github Plugin Update Checker
  */
 function wordpress_plugin_boilerplate_plugins_update_checker_github( $packages ) {
 

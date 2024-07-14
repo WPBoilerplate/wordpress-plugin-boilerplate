@@ -48,7 +48,7 @@ repo="$slug"
 
 echo
 echo "The Organization name will be converted to lowercase for use in the repository "
-echo "path (i.e. AcrossWP becomes acrosswp)."
+echo "path (i.e. WPBoilerplate becomes acrosswp)."
 echo -n "Enter your GitHub organization name, and press [ENTER]: "
 read org
 

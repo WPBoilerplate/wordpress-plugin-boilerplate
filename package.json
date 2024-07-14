@@ -1,14 +1,14 @@
 {
   "name": "wordpress-plugin-boilerplate",
   "title": "WordPress Plugin Boilerplate",
-  "description": "WordPress Plugin Boilerplate by AcrossWP.",
+  "description": "WordPress Plugin Boilerplate by WPBoilerplate.",
   "homepage": "https://github.com/woocommerce/woocommerce/wiki",
   "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/acrosswp/wordpress-plugin-boilerplate.git"
   },
-  "author": "AcrossWP",
+  "author": "WPBoilerplate",
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"
