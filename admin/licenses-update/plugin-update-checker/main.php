@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || exit;
 function wordpress_plugin_boilerplate_plugins_update_checker_github( $packages ) {
 
     $packages[1004] = array(
-        'repo' 		        => 'https://github.com/acrosswp/wordpress-plugin-boilerplate',
+        'repo' 		        => 'https://github.com/wpboilerplate/wordpress-plugin-boilerplate',
         'file_path' 		=> WORDPRESS_PLUGIN_BOILERPLATE_FILES,
         'plugin_name_slug'	=> WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME_SLUG,
         'release_branch' 	=> 'main'
@@ -16,4 +16,4 @@ function wordpress_plugin_boilerplate_plugins_update_checker_github( $packages )
 
     return $packages;
 }
-add_filter( 'acrosswp_plugins_update_checker_github', 'wordpress_plugin_boilerplate_plugins_update_checker_github', 100, 1 );
+add_filter( 'wpboilerplate_plugins_update_checker_github', 'wordpress_plugin_boilerplate_plugins_update_checker_github', 100, 1 );

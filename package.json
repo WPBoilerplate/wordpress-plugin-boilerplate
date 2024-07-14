@@ -6,12 +6,12 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/acrosswp/wordpress-plugin-boilerplate.git"
+    "url": "git+https://github.com/wpboilerplate/wordpress-plugin-boilerplate.git"
   },
   "author": "WPBoilerplate",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/acrosswp/wordpress-plugin-boilerplate/issues"
+    "url": "https://github.com/wpboilerplate/wordpress-plugin-boilerplate/issues"
   },
   "scripts": {
 		"start": "wp-scripts start",

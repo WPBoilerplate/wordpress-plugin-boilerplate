@@ -17,7 +17,7 @@
  * general skeleton and outline for how the file should work.
  *
  * For more information, see the following discussion:
- * https://github.com/acrosswp/wordpress-plugin-boilerplate
+ * https://github.com/wpboilerplate/wordpress-plugin-boilerplate
  *
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * @since      1.0.0

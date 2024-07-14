@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @package    Wordpress_Plugin_Boilerplate
  * @subpackage Wordpress_Plugin_Boilerplate/admin
- * @author     WPBoilerplate <contact@acrosswp.com>
+ * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
 class Wordpress_Plugin_Boilerplate_Admin {
 
@@ -143,7 +143,7 @@ class Wordpress_Plugin_Boilerplate_Admin {
 			$links,
 			array(
 				'settings'      => '<a href="' . esc_url( admin_url( 'admin.php?page=bp-settings' ) ) . '">' . esc_html__( 'Settings', 'wordpress-plugin-boilerplate' ) . '</a>',
-				'about'         => '<a href="' . esc_url( admin_url( 'admin.php?page=acrosswp' ) ) . '">' . esc_html__( 'About', 'wordpress-plugin-boilerplate' ) . '</a>',
+				'about'         => '<a href="' . esc_url( admin_url( 'admin.php?page=wpboilerplate' ) ) . '">' . esc_html__( 'About', 'wordpress-plugin-boilerplate' ) . '</a>',
 			)
 		);
 	}

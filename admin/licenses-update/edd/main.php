@@ -16,4 +16,4 @@ function wordpress_plugin_boilerplate_edd_plugins_licenses( $licenses ) {
 
     return $licenses;
 }
-add_filter( 'acrosswp_edd_plugins_licenses', 'wordpress_plugin_boilerplate_edd_plugins_licenses', 100, 1 );
+add_filter( 'wpboilerplate_edd_plugins_licenses', 'wordpress_plugin_boilerplate_edd_plugins_licenses', 100, 1 );
