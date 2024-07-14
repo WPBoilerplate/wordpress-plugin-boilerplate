@@ -15,7 +15,7 @@ Now are using the https://github.com/x3p0-dev/x3p0-ideas/tree/block-example exma
 1. Now run `composer require wpboilerplate/wpb-register-blocks`
 2. Now run `composer update`
 3. Run `npm install @wordpress/scripts --save-dev` inside plugin folder terminal
-4. Once everything install goto `src/blocks` folder and run `npx @wordpress/create-block@latest wordpress-plugin-boilerplate-block --variant=dynamic --no-plugin`
+4. Once everything install goto `src/` folder create directory `blocks` and run `npx @wordpress/create-block@latest wordpress-plugin-boilerplate-block --variant=dynamic --no-plugin`
 5. Once that is install run `npm run build`
 
 # Composer
