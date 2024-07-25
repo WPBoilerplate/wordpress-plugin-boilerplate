@@ -124,8 +124,8 @@ final class Wordpress_Plugin_Boilerplate {
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', plugin_dir_url( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME_SLUG', $this->plugin_name );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME', 'WordPress Plugin Boilerplate' );
-		
-		if( ! function_exists( 'get_plugin_data' ) ){
+
+		if ( ! function_exists( 'get_plugin_data' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
 		$plugin_data = get_plugin_data( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE );
@@ -161,7 +161,7 @@ final class Wordpress_Plugin_Boilerplate {
 		 * 
 		 * @since    1.0.0
 		 */
-		if( apply_filters( 'wordpress-plugin-boilerplate-load', true ) ) {
+		if ( apply_filters( 'wordpress-plugin-boilerplate-load', true ) ) {
 			$this->define_admin_hooks();
 			$this->define_public_hooks();
 		}
@@ -216,6 +216,11 @@ final class Wordpress_Plugin_Boilerplate {
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/update/wordpress-plugin-boilerplate-update.php';
 
 		/**
+		 * The class responsible for defining the plugin menu
+		 */
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/partials/wordpress-plugin-boilerplate-main-menu.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
@@ -257,9 +262,18 @@ final class Wordpress_Plugin_Boilerplate {
 		
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		
+		/**
+		 * For plugin update
+		 */
 		$plugin_update = new Wordpress_Plugin_Boilerplate_Update( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_init', $plugin_update, 'setup_updater' );
 
+		/**
+		 * Add the Plugin Main Menu
+		 */
+		$main_menu = new Wordpress_Plugin_Boilerplate_Main_Menu( $this->get_plugin_name(), $this->get_version() );
+		$this->loader->add_action( 'admin_menu', $main_menu, 'main_menu' );
+		$this->loader->add_action( 'plugin_action_links', $main_menu, 'plugin_action_links', 1000, 2 );
 	}
 
 	/**

@@ -18,7 +18,6 @@ defined( 'ABSPATH' ) || exit;
  *
  * @package    Wordpress_Plugin_Boilerplate
  * @subpackage Wordpress_Plugin_Boilerplate/Updater
- * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
 class Wordpress_Plugin_Boilerplate_Update {
 
@@ -82,7 +81,7 @@ class Wordpress_Plugin_Boilerplate_Update {
 	 * @since WordPress Plugin Boilerplate 1.0.0
 	 */
 	public function get_db_version_raw() {
-		return get_option( $this->plugin_name_db_version, '0.0.1' );
+		return get_option( $this->plugin_name_db_version, '1.0.0' );
 	}
 
 	/**
