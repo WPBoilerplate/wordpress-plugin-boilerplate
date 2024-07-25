@@ -121,30 +121,4 @@ class Wordpress_Plugin_Boilerplate_Admin {
 		wp_enqueue_script( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'build/js/backend.js', $this->js_asset_file['dependencies'], $this->js_asset_file['version'], false );
 
 	}
-
-	/**
-	 * Add Settings link to plugins area.
-	 *
-	 * @since    1.0.0
-	 *
-	 * @param array  $links Links array in which we would prepend our link.
-	 * @param string $file  Current plugin basename.
-	 * @return array Processed links.
-	 */
-	public function modify_plugin_action_links( $links, $file ) {
-
-		// Return normal links if not BuddyPress.
-		if ( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_BASENAME !== $file ) {
-			return $links;
-		}
-
-		// Add a few links to the existing links array.
-		return array_merge(
-			$links,
-			array(
-				'settings'      => '<a href="' . esc_url( admin_url( 'admin.php?page=bp-settings' ) ) . '">' . esc_html__( 'Settings', 'wordpress-plugin-boilerplate' ) . '</a>',
-			)
-		);
-	}
-
 }

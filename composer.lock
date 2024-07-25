@@ -101,12 +101,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WPBoilerplate/wpb-plugins-info.git",
-                "reference": "9595d31d8b225c512bf3d2bc7eada320c5581cc0"
+                "reference": "e416c5524cc8ef6e94717a3a31f8f276e6410a95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WPBoilerplate/wpb-plugins-info/zipball/9595d31d8b225c512bf3d2bc7eada320c5581cc0",
-                "reference": "9595d31d8b225c512bf3d2bc7eada320c5581cc0",
+                "url": "https://api.github.com/repos/WPBoilerplate/wpb-plugins-info/zipball/e416c5524cc8ef6e94717a3a31f8f276e6410a95",
+                "reference": "e416c5524cc8ef6e94717a3a31f8f276e6410a95",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "issues": "https://github.com/WPBoilerplate/wpb-plugins-info/issues",
                 "source": "https://github.com/WPBoilerplate/wpb-plugins-info/tree/main"
             },
-            "time": "2024-07-14T16:36:18+00:00"
+            "time": "2024-07-25T16:56:28+00:00"
         }
     ],
     "packages-dev": [],
