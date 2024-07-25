@@ -211,11 +211,6 @@ final class Wordpress_Plugin_Boilerplate {
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/class-wordpress-plugin-boilerplate-admin.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the admin area for update.
-		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/update/wordpress-plugin-boilerplate-update.php';
-
-		/**
 		 * The class responsible for defining the plugin menu
 		 */
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/partials/wordpress-plugin-boilerplate-main-menu.php';
