@@ -261,12 +261,6 @@ final class Wordpress_Plugin_Boilerplate {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		
-		/**
-		 * For plugin update
-		 */
-		$plugin_update = new Wordpress_Plugin_Boilerplate_Update( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_init', $plugin_update, 'setup_updater' );
 
 		/**
 		 * Add the Plugin Main Menu
