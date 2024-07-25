@@ -1,0 +1,25 @@
+{
+    "name": "wpboilerplate/wpb-about-us",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "description": "Composer to autoload the WPBoilerplate Admin Dashboard Main Menu",
+    "homepage": "https://github.com/WPBoilerplate/",
+    "keywords": [
+        "wordpress",
+        "plugin"
+    ],
+    "autoload": {
+        "files": ["menu.php"]
+    },
+    "require": {
+        "wpboilerplate/wpb-plugins-info": "dev-main"
+    },
+    "support": {
+        "issues": "https://github.com/WPBoilerplate/wpb-about-us/issues"
+    },
+    "authors": [
+        {
+            "name": "WPBoilerplate"
+        }
+    ]
+}
