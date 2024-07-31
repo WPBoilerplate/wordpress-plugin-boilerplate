@@ -59,6 +59,15 @@ final class Wordpress_Plugin_Boilerplate {
 	protected $plugin_name;
 
 	/**
+	 * The plugin dir path
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $plugin_path    The string for plugin dir path
+	 */
+	protected $plugin_path;
+
+	/**
 	 * The current version of the plugin.
 	 *
 	 * @since    1.0.0
@@ -133,6 +142,8 @@ final class Wordpress_Plugin_Boilerplate {
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION', $version );
 
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', $version );
+
+		$this->plugin_dir = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
 	}
 
 	/**
