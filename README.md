@@ -13,12 +13,20 @@ Now are using the https://github.com/x3p0-dev/x3p0-ideas/tree/block-example exma
 ### Create blocks
 
 1. Once everything install goto `src/` folder create directory `blocks` and inside that directory run `npx @wordpress/create-block@latest wordpress-plugin-boilerplate-block --variant=dynamic --no-plugin`
+
 2. Now run `composer require wpboilerplate/wpb-register-blocks`
-3. Now add `if ( class_exists( 'WPBoilerplate_Register_Blocks' ) ) {
-			new WPBoilerplate_Register_Blocks( $this->plugin_dir );
-		}` inside the define_public_hooks method of your plugin
-3. Now run `composer update`
-4. Once that is install run `npm run build`
+
+3. Now add 
+`if ( class_exists( 'WPBoilerplate_Register_Blocks' ) ) {
+	new WPBoilerplate_Register_Blocks( $this->plugin_dir );
+}`
+inside the define_public_hooks method of your plugin
+
+4. Now run `composer require wpboilerplate/wpb-register-blocks`
+
+5. Now run `composer update`
+
+6. Once that is installed run `npm run build`
 
 # Composer
 
