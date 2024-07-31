@@ -5,9 +5,7 @@
     "description": "Composer to autoload the condition checking for which this add-on is made",
     "homepage": "https://github.com/WPBoilerplate/",
     "minimum-stability": "dev",
-    "require": {
-        "wpboilerplate/wpb-about-us": "dev-main"
-    },
+    "require": {},
     "keywords": [
         "wordpress",
         "plugin"
