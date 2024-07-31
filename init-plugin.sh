@@ -88,8 +88,7 @@ git mv includes/class-wordpress-plugin-boilerplate.php includes/"class-$slug.php
 git mv includes/class-wordpress-plugin-boilerplate-loader.php includes/"class-$slug-loader.php"
 
 git mv admin/class-wordpress-plugin-boilerplate-admin.php admin/"class-$slug-admin.php"
-git mv admin/partials/wordpress-plugin-boilerplate-admin-display.php admin/partials/"$slug-admin-display.php"
-git mv admin/update/wordpress-plugin-boilerplate-update.php admin/update/"$slug-update.php"
+git mv admin/partials/wordpress-plugin-boilerplate-main-menu.php admin/partials/"$slug-main-menu.php"
 
 git mv public/class-wordpress-plugin-boilerplate-public.php public/"class-$slug-public.php"
 git mv public/partials/wordpress-plugin-boilerplate-public-display.php public/partials/"$slug-public-display.php"
@@ -100,7 +99,6 @@ git grep -lz "raftaar1191%2Fwordpress-plugin-boilerplate" | xargs -0 sed -i '' -
 git grep -lz "raftaar1191/wordpress-plugin-boilerplate" | xargs -0 sed -i '' -e "s|raftaar1191/wordpress-plugin-boilerplate|$org_lower/$repo|g"
 git grep -lz "wordpress-plugin-boilerplate" | xargs -0 sed -i '' -e "s/wordpress-plugin-boilerplate/$repo/g"
 git grep -lz "WordPress Plugin Boilerplate" | xargs -0 sed -i '' -e "s/WordPress Plugin Boilerplate/$name/g"
-# git grep -lz "since BuddyBoss" | xargs -0 sed -i '' -e "s/since BuddyBoss/since $class /g"
 git grep -lz "wordpress-plugin-boilerplate" | xargs -0 sed -i '' -e "s/wordpress-plugin-boilerplate/$slug/g"
 git grep -lz "wordpress_plugin_boilerplate" | xargs -0 sed -i '' -e "s/wordpress_plugin_boilerplate/$prefix/g"
 git grep -lz "WORDPRESS_PLUGIN_BOILERPLATE" | xargs -0 sed -i '' -e "s/WORDPRESS_PLUGIN_BOILERPLATE/$define/g"
@@ -125,7 +123,7 @@ echo 'Installing composer..'
 composer install
 
 echo 'Installing npm ...'
-# npm install
+npm install
 
 echo
 echo "Plugin is located at:"
