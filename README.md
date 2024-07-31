@@ -17,10 +17,15 @@ Now are using the https://github.com/x3p0-dev/x3p0-ideas/tree/block-example exma
 2. Now run `composer require wpboilerplate/wpb-register-blocks`
 
 3. Now add 
-`if ( class_exists( 'WPBoilerplate_Register_Blocks' ) ) {
+```
+/**
+ * Check if class exists or not
+ */
+if ( class_exists( 'WPBoilerplate_Register_Blocks' ) ) {
 	new WPBoilerplate_Register_Blocks( $this->plugin_dir );
-}`
-inside the define_public_hooks method of your plugin
+}
+```
+inside the `define_public_hooks` method of your plugin
 
 4. Now run `composer require wpboilerplate/wpb-register-blocks`
 
