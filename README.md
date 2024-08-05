@@ -12,7 +12,7 @@ Now are using the https://github.com/x3p0-dev/x3p0-ideas/tree/block-example exma
 
 ### Create blocks
 
-1. Once everything install goto `src/` folder create directory `blocks` and inside that directory run `npx @wordpress/create-block wordpress-plugin-boilerplate-block --no-plugin`
+1. Once everything install goto `src/` folder and run `npx @wordpress/create-block wordpress-plugin-boilerplate-block --no-plugin`
 
 2. Now run `composer require wpboilerplate/wpb-register-blocks`
 
