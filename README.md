@@ -25,13 +25,42 @@ if ( class_exists( 'WPBoilerplate_Register_Blocks' ) ) {
 	new WPBoilerplate_Register_Blocks( $this->plugin_dir );
 }
 ```
-inside the `define_public_hooks` method of your plugin
+inside the `load_composer_dependencies` method at the end
 
 4. Now run `composer require wpboilerplate/wpb-register-blocks`
 
 5. Now run `composer update`
 
 6. Once that is installed run `npm run build`
+
+### Update your code via Github
+
+1. run `composer require wpboilerplate/wpb-updater-checker-github`
+
+2. Now run `composer update`
+
+3. Now add 
+```
+/**
+ * Check if class exists or not
+ */
+/**
+ * For Plugin Update via Github
+ */
+if ( class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
+
+	$package = array(
+		'repo' 		        => 'https://github.com/WPBoilerplate/wordpress-plugin-boilerplate',
+		'file_path' 		=> WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE,
+		'plugin_name_slug'	=> WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME_SLUG,
+		'release_branch' 	=> 'main'
+	);
+
+	new WPBoilerplate_Updater_Checker_Github( $package );
+}
+```
+inside the `load_composer_dependencies` method at the end
+
 
 # Composer
 
