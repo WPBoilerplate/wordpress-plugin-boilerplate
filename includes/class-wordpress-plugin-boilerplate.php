@@ -97,6 +97,8 @@ final class Wordpress_Plugin_Boilerplate {
 			$this->version = '1.0.0';
 		}
 
+		$this->load_composer_dependencies();
+
 		$this->load_dependencies();
 
 		$this->set_locale();
@@ -177,6 +179,22 @@ final class Wordpress_Plugin_Boilerplate {
 			$this->define_public_hooks();
 		}
 
+	}
+
+	/**
+	 * Load the required composer dependencies for this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function load_composer_dependencies() {
+
+		/**
+		 * Add composer file
+		 */
+		if ( file_exists( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'vendor/autoload.php' ) ) {
+			require_once( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'vendor/autoload.php' );
+		}
 	}
 
 	/**
