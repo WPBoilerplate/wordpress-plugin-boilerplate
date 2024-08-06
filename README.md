@@ -33,6 +33,35 @@ inside the `define_public_hooks` method of your plugin
 
 6. Once that is installed run `npm run build`
 
+### Update your code via Github
+
+1. run `composer require wpboilerplate/wpb-updater-checker-github`
+
+2. Now run `composer update`
+
+3. Now add 
+```
+/**
+ * Check if class exists or not
+ */
+/**
+ * For Plugin Update via Github
+ */
+if ( class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
+
+	$package = array(
+		'repo' 		        => 'https://github.com/WPBoilerplate/wordpress-plugin-boilerplate',
+		'file_path' 		=> WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE,
+		'plugin_name_slug'	=> WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME_SLUG,
+		'release_branch' 	=> 'main'
+	);
+
+	new WPBoilerplate_Updater_Checker_Github( $package );
+}
+```
+inside the `define_admin_hooks` method of your plugin
+
+
 # Composer
 
 ### Adding dependency for Custom Plugins
