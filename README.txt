@@ -1,10 +1,10 @@
-=== Plugin Name ===
+=== WordPress Plugin Boilerplate ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
 Tags: comments, spam
 Requires at least: 4.9.1
 Tested up to: 6.2.2
-Requires PHP: 5.6.20
+Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
