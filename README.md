@@ -27,11 +27,9 @@ if ( class_exists( 'WPBoilerplate_Register_Blocks' ) ) {
 ```
 inside the `load_composer_dependencies` method at the end
 
-4. Now run `composer require wpboilerplate/wpb-register-blocks`
+4. Now run `composer update`
 
-5. Now run `composer update`
-
-6. Once that is installed run `npm run build`
+5. Once that is installed run `npm run build`
 
 ### Update your code via Github
 
