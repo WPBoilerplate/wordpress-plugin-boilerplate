@@ -23,16 +23,16 @@
 		"start": "wp-scripts start"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "lastest",
-		"copy-webpack-plugin": "lastest",
-		"glob": "lastest",
-		"mini-css-extract-plugin": "lastest",
-		"path": "lastest",
-		"webpack-fix-style-only-entries": "lastest",
-		"webpack-remove-empty-scripts": "lastest"
+		"@wordpress/scripts": "latest",
+		"copy-webpack-plugin": "latest",
+		"glob": "latest",
+		"mini-css-extract-plugin": "latest",
+		"path": "latest",
+		"webpack-fix-style-only-entries": "latest",
+		"webpack-remove-empty-scripts": "latest"
 	},
 	"dependencies": {
-		"@wordpress/icons": "lastest"
+		"@wordpress/icons": "latest"
 	},
   "keywords": [
     "wordpress-plugin-boilerplate"
