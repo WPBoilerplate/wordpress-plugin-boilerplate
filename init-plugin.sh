@@ -81,12 +81,6 @@ cd "$repo"
 
 git mv wordpress-plugin-boilerplate.php "$slug.php"
 
-git mv includes/class-wordpress-plugin-boilerplate-activator.php includes/"class-$slug-activator.php"
-git mv includes/class-wordpress-plugin-boilerplate-deactivator.php includes/"class-$slug-deactivator.php"
-git mv includes/class-wordpress-plugin-boilerplate-i18n.php includes/"class-$slug-i18n.php"
-git mv includes/class-wordpress-plugin-boilerplate.php includes/"class-$slug.php"
-git mv includes/class-wordpress-plugin-boilerplate-loader.php includes/"class-$slug-loader.php"
-
 git mv admin/class-wordpress-plugin-boilerplate-admin.php admin/"class-$slug-admin.php"
 git mv admin/partials/wordpress-plugin-boilerplate-main-menu.php admin/partials/"$slug-main-menu.php"
 

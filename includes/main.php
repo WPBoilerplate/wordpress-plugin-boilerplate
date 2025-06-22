@@ -228,29 +228,29 @@ final class Main {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/class-wordpress-plugin-boilerplate-loader.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/class-wordpress-plugin-boilerplate-i18n.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/class-wordpress-plugin-boilerplate-admin.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/admin.php';
 
 		/**
 		 * The class responsible for defining the plugin menu
 		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/partials/wordpress-plugin-boilerplate-main-menu.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/partials/menu.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'public/class-wordpress-plugin-boilerplate-public.php';
+		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'public/public.php';
 
 		$this->loader = Loader::instance();
 
