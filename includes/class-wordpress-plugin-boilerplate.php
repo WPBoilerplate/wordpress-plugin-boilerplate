@@ -1,4 +1,6 @@
 <?php
+namespace WordPress_Plugin_Boilerplate\Includes;
+
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
@@ -29,7 +31,7 @@ defined( 'ABSPATH' ) || exit;
  * @subpackage WordPress_Plugin_Boilerplate/includes
  * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
-final class WordPress_Plugin_Boilerplate {
+final class Main {
 	
 	/**
 	 * The single instance of the class.
@@ -202,9 +204,9 @@ final class WordPress_Plugin_Boilerplate {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - WordPress_Plugin_Boilerplate_Loader. Orchestrates the hooks of the plugin.
-	 * - WordPress_Plugin_Boilerplate_i18n. Defines internationalization functionality.
-	 * - WordPress_Plugin_Boilerplate_Admin. Defines all hooks for the admin area.
+	 * - WordPress_Plugin_Boilerplate\Admin\Loader. Orchestrates the hooks of the plugin.
+	 * - WordPress_Plugin_Boilerplate\Admin\I18n. Defines internationalization functionality.
+	 * - WordPress_Plugin_Boilerplate\Admin\Main. Defines all hooks for the admin area.
 	 * - WordPress_Plugin_Boilerplate_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
@@ -250,7 +252,7 @@ final class WordPress_Plugin_Boilerplate {
 		 */
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'public/class-wordpress-plugin-boilerplate-public.php';
 
-		$this->loader = WordPress_Plugin_Boilerplate_Loader::instance();
+		$this->loader = Loader::instance();
 
 	}
 
@@ -265,9 +267,9 @@ final class WordPress_Plugin_Boilerplate {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new WordPress_Plugin_Boilerplate_i18n();
+		$i18n = new I18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		$this->loader->add_action( 'plugins_loaded', $i18n, 'load_plugin_textdomain' );
 
 	}
 
@@ -280,7 +282,7 @@ final class WordPress_Plugin_Boilerplate {
 	 */
 	private function define_admin_hooks() {
 		
-		$plugin_admin = new WordPress_Plugin_Boilerplate_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new \WordPress_Plugin_Boilerplate\Admin\Main( $this->get_plugin_name(), $this->get_version() );
 		
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		
@@ -289,7 +291,7 @@ final class WordPress_Plugin_Boilerplate {
 		/**
 		 * Add the Plugin Main Menu
 		 */
-		$main_menu = new WordPress_Plugin_Boilerplate_Main_Menu( $this->get_plugin_name(), $this->get_version() );
+		$main_menu = new \WordPress_Plugin_Boilerplate\Admin\Partials\Menu( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_menu', $main_menu, 'main_menu' );
 		$this->loader->add_action( 'plugin_action_links', $main_menu, 'plugin_action_links', 1000, 2 );
 	}
@@ -303,7 +305,7 @@ final class WordPress_Plugin_Boilerplate {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new WordPress_Plugin_Boilerplate_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new \WordPress_Plugin_Boilerplate\Public\Main( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		

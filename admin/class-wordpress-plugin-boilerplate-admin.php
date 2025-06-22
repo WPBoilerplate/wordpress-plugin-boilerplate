@@ -1,6 +1,9 @@
 <?php
+namespace WordPress_Plugin_Boilerplate\Admin;
+
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
+
 
 /**
  * The admin-specific functionality of the plugin.
@@ -22,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
  * @subpackage WordPress_Plugin_Boilerplate/admin
  * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
-class WordPress_Plugin_Boilerplate_Admin {
+class Main {
 
 	/**
 	 * The ID of this plugin.

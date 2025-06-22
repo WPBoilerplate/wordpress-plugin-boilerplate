@@ -50,7 +50,7 @@ define( 'WORDPRESS_PLUGIN_BOILERPLATE_FILES', __FILE__ );
  */
 function wordpress_plugin_boilerplate_activate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wordpress-plugin-boilerplate-activator.php';
-	WordPress_Plugin_Boilerplate_Activator::activate();
+	Includes\Activator::activate();
 }
 
 /**
@@ -59,11 +59,11 @@ function wordpress_plugin_boilerplate_activate() {
  */
 function wordpress_plugin_boilerplate_deactivate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wordpress-plugin-boilerplate-deactivator.php';
-	WordPress_Plugin_Boilerplate_Deactivator::deactivate();
+	Includes\Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'wordpress_plugin_boilerplate_activate' );
-register_deactivation_hook( __FILE__, 'wordpress_plugin_boilerplate_deactivate' );
+register_activation_hook( __FILE__, 'WordPress_Plugin_Boilerplate\wordpress_plugin_boilerplate_activate' );
+register_deactivation_hook( __FILE__, 'WordPress_Plugin_Boilerplate\wordpress_plugin_boilerplate_deactivate' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -82,7 +82,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wordpress-plugin-boilerpla
  */
 function wordpress_plugin_boilerplate_run() {
 
-	$plugin = WordPress_Plugin_Boilerplate::instance();
+	$plugin = Includes\Main::instance();
 
 	/**
 	 * Run this plugin on the plugins_loaded functions

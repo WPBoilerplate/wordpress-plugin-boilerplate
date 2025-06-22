@@ -1,4 +1,6 @@
 <?php
+namespace WordPress_Plugin_Boilerplate\Includes;
+
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
@@ -23,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
  * @subpackage WordPress_Plugin_Boilerplate/includes
  * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
-class WordPress_Plugin_Boilerplate_Loader {
+class Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

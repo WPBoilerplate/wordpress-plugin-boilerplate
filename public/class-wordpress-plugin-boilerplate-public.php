@@ -1,4 +1,6 @@
 <?php
+namespace WordPress_Plugin_Boilerplate\Public;
+
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
@@ -22,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
  * @subpackage WordPress_Plugin_Boilerplate/public
  * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
-class WordPress_Plugin_Boilerplate_Public {
+class Main {
 
 	/**
 	 * The ID of this plugin.

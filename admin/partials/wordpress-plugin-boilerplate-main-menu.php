@@ -1,4 +1,6 @@
 <?php
+namespace WordPress_Plugin_Boilerplate\Admin\Partials;
+
 /**
  * WordPress_Plugin_Boilerplate_Main_Menu Main Menu Class.
  *
@@ -15,10 +17,10 @@ defined( 'ABSPATH' ) || exit;
  * This class defines all code necessary to run during the plugin's licences and update.
  *
  * @since      1.0.0
- * @package    WordPress_Plugin_Boilerplate_Main_Menu
- * @subpackage WordPress_Plugin_Boilerplate_Main_Menu/includes
+ * @package    WordPress_Plugin_Boilerplate\Admin\Partials\Menu
+ * @subpackage WordPress_Plugin_Boilerplate\Admin\Partials
  */
-class WordPress_Plugin_Boilerplate_Main_Menu {
+class Menu {
 
 	/**
 	 * The ID of this plugin.
