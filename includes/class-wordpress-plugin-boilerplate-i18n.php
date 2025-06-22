@@ -11,8 +11,8 @@ defined( 'ABSPATH' ) || exit;
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * @since      1.0.0
  *
- * @package    Wordpress_Plugin_Boilerplate
- * @subpackage Wordpress_Plugin_Boilerplate/includes
+ * @package    WordPress_Plugin_Boilerplate
+ * @subpackage WordPress_Plugin_Boilerplate/includes
  */
 
 /**
@@ -22,11 +22,11 @@ defined( 'ABSPATH' ) || exit;
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Wordpress_Plugin_Boilerplate
- * @subpackage Wordpress_Plugin_Boilerplate/includes
+ * @package    WordPress_Plugin_Boilerplate
+ * @subpackage WordPress_Plugin_Boilerplate/includes
  * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
-class Wordpress_Plugin_Boilerplate_i18n {
+class WordPress_Plugin_Boilerplate_i18n {
 
 
 	/**

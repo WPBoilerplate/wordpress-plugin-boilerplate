@@ -8,8 +8,8 @@ defined( 'ABSPATH' ) || exit;
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * @since      1.0.0
  *
- * @package    Wordpress_Plugin_Boilerplate
- * @subpackage Wordpress_Plugin_Boilerplate/public
+ * @package    WordPress_Plugin_Boilerplate
+ * @subpackage WordPress_Plugin_Boilerplate/public
  */
 
 /**
@@ -18,11 +18,11 @@ defined( 'ABSPATH' ) || exit;
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Wordpress_Plugin_Boilerplate
- * @subpackage Wordpress_Plugin_Boilerplate/public
+ * @package    WordPress_Plugin_Boilerplate
+ * @subpackage WordPress_Plugin_Boilerplate/public
  * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
-class Wordpress_Plugin_Boilerplate_Public {
+class WordPress_Plugin_Boilerplate_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -87,10 +87,10 @@ class Wordpress_Plugin_Boilerplate_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Wordpress_Plugin_Boilerplate_Loader as all of the hooks are defined
+		 * defined in WordPress_Plugin_Boilerplate_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Wordpress_Plugin_Boilerplate_Loader will then create the relationship
+		 * The WordPress_Plugin_Boilerplate_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -109,10 +109,10 @@ class Wordpress_Plugin_Boilerplate_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Wordpress_Plugin_Boilerplate_Loader as all of the hooks are defined
+		 * defined in WordPress_Plugin_Boilerplate_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Wordpress_Plugin_Boilerplate_Loader will then create the relationship
+		 * The WordPress_Plugin_Boilerplate_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */

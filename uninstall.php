@@ -22,7 +22,7 @@
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * @since      1.0.0
  *
- * @package    Wordpress_Plugin_Boilerplate
+ * @package    WordPress_Plugin_Boilerplate
  */
 
 // If uninstall not called from WordPress, then exit.

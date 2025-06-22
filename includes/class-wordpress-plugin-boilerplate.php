@@ -11,8 +11,8 @@ defined( 'ABSPATH' ) || exit;
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * @since      1.0.0
  *
- * @package    Wordpress_Plugin_Boilerplate
- * @subpackage Wordpress_Plugin_Boilerplate/includes
+ * @package    WordPress_Plugin_Boilerplate
+ * @subpackage WordPress_Plugin_Boilerplate/includes
  */
 
 /**
@@ -25,16 +25,16 @@ defined( 'ABSPATH' ) || exit;
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Wordpress_Plugin_Boilerplate
- * @subpackage Wordpress_Plugin_Boilerplate/includes
+ * @package    WordPress_Plugin_Boilerplate
+ * @subpackage WordPress_Plugin_Boilerplate/includes
  * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
-final class Wordpress_Plugin_Boilerplate {
+final class WordPress_Plugin_Boilerplate {
 	
 	/**
 	 * The single instance of the class.
 	 *
-	 * @var Wordpress_Plugin_Boilerplate
+	 * @var WordPress_Plugin_Boilerplate
 	 * @since 1.0.0
 	 */
 	protected static $_instance = null;
@@ -45,7 +45,7 @@ final class Wordpress_Plugin_Boilerplate {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Wordpress_Plugin_Boilerplate_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      WordPress_Plugin_Boilerplate_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -108,14 +108,14 @@ final class Wordpress_Plugin_Boilerplate {
 	}
 
 	/**
-	 * Main Wordpress_Plugin_Boilerplate Instance.
+	 * Main WordPress_Plugin_Boilerplate Instance.
 	 *
 	 * Ensures only one instance of WooCommerce is loaded or can be loaded.
 	 *
 	 * @since 1.0.0
 	 * @static
-	 * @see Wordpress_Plugin_Boilerplate()
-	 * @return Wordpress_Plugin_Boilerplate - Main instance.
+	 * @see WordPress_Plugin_Boilerplate()
+	 * @return WordPress_Plugin_Boilerplate - Main instance.
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -202,10 +202,10 @@ final class Wordpress_Plugin_Boilerplate {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Wordpress_Plugin_Boilerplate_Loader. Orchestrates the hooks of the plugin.
-	 * - Wordpress_Plugin_Boilerplate_i18n. Defines internationalization functionality.
-	 * - Wordpress_Plugin_Boilerplate_Admin. Defines all hooks for the admin area.
-	 * - Wordpress_Plugin_Boilerplate_Public. Defines all hooks for the public side of the site.
+	 * - WordPress_Plugin_Boilerplate_Loader. Orchestrates the hooks of the plugin.
+	 * - WordPress_Plugin_Boilerplate_i18n. Defines internationalization functionality.
+	 * - WordPress_Plugin_Boilerplate_Admin. Defines all hooks for the admin area.
+	 * - WordPress_Plugin_Boilerplate_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -250,14 +250,14 @@ final class Wordpress_Plugin_Boilerplate {
 		 */
 		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'public/class-wordpress-plugin-boilerplate-public.php';
 
-		$this->loader = Wordpress_Plugin_Boilerplate_Loader::instance();
+		$this->loader = WordPress_Plugin_Boilerplate_Loader::instance();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Wordpress_Plugin_Boilerplate_i18n class in order to set the domain and to register the hook
+	 * Uses the WordPress_Plugin_Boilerplate_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -265,7 +265,7 @@ final class Wordpress_Plugin_Boilerplate {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Wordpress_Plugin_Boilerplate_i18n();
+		$plugin_i18n = new WordPress_Plugin_Boilerplate_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -280,7 +280,7 @@ final class Wordpress_Plugin_Boilerplate {
 	 */
 	private function define_admin_hooks() {
 		
-		$plugin_admin = new Wordpress_Plugin_Boilerplate_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new WordPress_Plugin_Boilerplate_Admin( $this->get_plugin_name(), $this->get_version() );
 		
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		
@@ -289,7 +289,7 @@ final class Wordpress_Plugin_Boilerplate {
 		/**
 		 * Add the Plugin Main Menu
 		 */
-		$main_menu = new Wordpress_Plugin_Boilerplate_Main_Menu( $this->get_plugin_name(), $this->get_version() );
+		$main_menu = new WordPress_Plugin_Boilerplate_Main_Menu( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_menu', $main_menu, 'main_menu' );
 		$this->loader->add_action( 'plugin_action_links', $main_menu, 'plugin_action_links', 1000, 2 );
 	}
@@ -303,7 +303,7 @@ final class Wordpress_Plugin_Boilerplate {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Wordpress_Plugin_Boilerplate_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new WordPress_Plugin_Boilerplate_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		
@@ -335,7 +335,7 @@ final class Wordpress_Plugin_Boilerplate {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Wordpress_Plugin_Boilerplate_Loader    Orchestrates the hooks of the plugin.
+	 * @return    WordPress_Plugin_Boilerplate_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

@@ -10,8 +10,8 @@ defined( 'ABSPATH' ) || exit;
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * @since      1.0.0
  *
- * @package    Wordpress_Plugin_Boilerplate
- * @subpackage Wordpress_Plugin_Boilerplate/public/partials
+ * @package    WordPress_Plugin_Boilerplate
+ * @subpackage WordPress_Plugin_Boilerplate/public/partials
  */
 ?>
 

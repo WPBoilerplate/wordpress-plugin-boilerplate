@@ -1,8 +1,8 @@
 <?php
 /**
- * Wordpress_Plugin_Boilerplate_Main_Menu Main Menu Class.
+ * WordPress_Plugin_Boilerplate_Main_Menu Main Menu Class.
  *
- * @since Wordpress_Plugin_Boilerplate_Main_Menu 1.0.0
+ * @since WordPress_Plugin_Boilerplate_Main_Menu 1.0.0
  */
 
 // Exit if accessed directly.
@@ -15,10 +15,10 @@ defined( 'ABSPATH' ) || exit;
  * This class defines all code necessary to run during the plugin's licences and update.
  *
  * @since      1.0.0
- * @package    Wordpress_Plugin_Boilerplate_Main_Menu
- * @subpackage Wordpress_Plugin_Boilerplate_Main_Menu/includes
+ * @package    WordPress_Plugin_Boilerplate_Main_Menu
+ * @subpackage WordPress_Plugin_Boilerplate_Main_Menu/includes
  */
-class Wordpress_Plugin_Boilerplate_Main_Menu {
+class WordPress_Plugin_Boilerplate_Main_Menu {
 
 	/**
 	 * The ID of this plugin.

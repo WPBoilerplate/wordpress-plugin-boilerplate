@@ -102,7 +102,7 @@ git grep -lz "WordPress Plugin Boilerplate" | xargs -0 sed -i '' -e "s/WordPress
 git grep -lz "wordpress-plugin-boilerplate" | xargs -0 sed -i '' -e "s/wordpress-plugin-boilerplate/$slug/g"
 git grep -lz "wordpress_plugin_boilerplate" | xargs -0 sed -i '' -e "s/wordpress_plugin_boilerplate/$prefix/g"
 git grep -lz "WORDPRESS_PLUGIN_BOILERPLATE" | xargs -0 sed -i '' -e "s/WORDPRESS_PLUGIN_BOILERPLATE/$define/g"
-git grep -lz "Wordpress_Plugin_Boilerplate" | xargs -0 sed -i '' -e "s/Wordpress_Plugin_Boilerplate/$class/g"
+git grep -lz "WordPress_Plugin_Boilerplate" | xargs -0 sed -i '' -e "s/WordPress_Plugin_Boilerplate/$class/g"
 
 # Clean slate.
 rm -rf .git

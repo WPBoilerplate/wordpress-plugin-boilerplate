@@ -8,8 +8,8 @@ defined( 'ABSPATH' ) || exit;
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * @since      1.0.0
  *
- * @package    Wordpress_Plugin_Boilerplate
- * @subpackage Wordpress_Plugin_Boilerplate/includes
+ * @package    WordPress_Plugin_Boilerplate
+ * @subpackage WordPress_Plugin_Boilerplate/includes
  */
 
 /**
@@ -19,11 +19,11 @@ defined( 'ABSPATH' ) || exit;
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Wordpress_Plugin_Boilerplate
- * @subpackage Wordpress_Plugin_Boilerplate/includes
+ * @package    WordPress_Plugin_Boilerplate
+ * @subpackage WordPress_Plugin_Boilerplate/includes
  * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
-class Wordpress_Plugin_Boilerplate_Loader {
+class WordPress_Plugin_Boilerplate_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.
@@ -46,7 +46,7 @@ class Wordpress_Plugin_Boilerplate_Loader {
 	/**
 	 * The single instance of the class.
 	 *
-	 * @var Wordpress_Plugin_Boilerplate_Loader
+	 * @var WordPress_Plugin_Boilerplate_Loader
 	 * @since 1.0.0
 	 */
 	protected static $_instance = null;
@@ -64,14 +64,14 @@ class Wordpress_Plugin_Boilerplate_Loader {
 	}
 
 	/**
-	 * Main Wordpress_Plugin_Boilerplate_Loader Instance.
+	 * Main WordPress_Plugin_Boilerplate_Loader Instance.
 	 *
 	 * Ensures only one instance of WooCommerce is loaded or can be loaded.
 	 *
 	 * @since 1.0.0
 	 * @static
-	 * @see Wordpress_Plugin_Boilerplate_Loader()
-	 * @return Wordpress_Plugin_Boilerplate_Loader - Main instance.
+	 * @see WordPress_Plugin_Boilerplate_Loader()
+	 * @return WordPress_Plugin_Boilerplate_Loader - Main instance.
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
