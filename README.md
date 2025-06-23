@@ -88,3 +88,16 @@ inside the `load_composer_dependencies` method at the end
 
 5. Adding View Analytics dependency
    `composer require wpboilerplate/wpb-view-analytics-dependency`
+
+
+# Credits
+
+1. https://github.com/xwp/wp-foo-bar
+
+2. https://github.com/acrosswp/
+
+3. https://github.com/10up/action-wordpress-plugin-build-zip
+
+4. https://github.com/10up/action-wordpress-plugin-deploy
+
+5. https://docs.google.com/document/d/1GMKxjxdFqwCg3ESC337eNvA6FmaokW9Zlkjm-mhSroU/edit?tab=t.0#heading=h.d22cu7925a4z

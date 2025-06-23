@@ -81,12 +81,6 @@ cd "$repo"
 
 git mv wordpress-plugin-boilerplate.php "$slug.php"
 
-git mv admin/class-wordpress-plugin-boilerplate-admin.php admin/"class-$slug-admin.php"
-git mv admin/partials/wordpress-plugin-boilerplate-main-menu.php admin/partials/"$slug-main-menu.php"
-
-git mv public/class-wordpress-plugin-boilerplate-public.php public/"class-$slug-public.php"
-git mv public/partials/wordpress-plugin-boilerplate-public-display.php public/partials/"$slug-public-display.php"
-
 git mv languages/wordpress-plugin-boilerplate.pot languages/"$slug.pot"
 
 git grep -lz "raftaar1191%2Fwordpress-plugin-boilerplate" | xargs -0 sed -i '' -e "s|raftaar1191%2Fwordpress-plugin-boilerplate|$org_lower%2F$repo|g"

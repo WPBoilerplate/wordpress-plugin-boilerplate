@@ -1,8 +1,8 @@
 <?php
 /**
- * Instantiates the Foo Bar plugin
+ * Instantiates the WordPress Plugin Boilerplate plugin
  *
- * @package FooBar
+ * @package WordPress_Plugin_Boilerplate
  */
 
 namespace WordPress_Plugin_Boilerplate;
@@ -71,6 +71,8 @@ register_deactivation_hook( __FILE__, 'WordPress_Plugin_Boilerplate\wordpress_pl
  */
 require plugin_dir_path( __FILE__ ) . 'includes/main.php';
 
+use WordPress_Plugin_Boilerplate\Includes\Main;
+
 /**
  * Begins execution of the plugin.
  *
@@ -82,7 +84,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/main.php';
  */
 function wordpress_plugin_boilerplate_run() {
 
-	$plugin = Includes\Main::instance();
+	$plugin = Main::instance();
 
 	/**
 	 * Run this plugin on the plugins_loaded functions
