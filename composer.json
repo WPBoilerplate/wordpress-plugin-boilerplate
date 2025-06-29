@@ -17,5 +17,12 @@
         {
             "name": "WPBoilerplate"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+        "WordPress_Plugin_Boilerplate\\Includes\\": "includes/",
+        "WordPress_Plugin_Boilerplate\\Admin\\": "admin/",
+        "WordPress_Plugin_Boilerplate\\Public\\": "public/"
+        }
+    }
 }

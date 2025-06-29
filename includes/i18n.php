@@ -7,45 +7,19 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Define the internationalization functionality
  *
- * Loads and defines the internationalization files for this plugin
- * so that it is ready for translation.
- *
- * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
- * @since      1.0.0
- *
  * @package    WordPress_Plugin_Boilerplate
  * @subpackage WordPress_Plugin_Boilerplate/includes
- */
-
-/**
- * Define the internationalization functionality.
- *
- * Loads and defines the internationalization files for this plugin
- * so that it is ready for translation.
- *
- * @since      1.0.0
- * @package    WordPress_Plugin_Boilerplate
- * @subpackage WordPress_Plugin_Boilerplate/includes
- * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
 class I18n {
 
-
 	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since    1.0.0
+	 * Actually load the plugin textdomain on `init`
 	 */
-	public function load_plugin_textdomain() {
-
+	public function do_load_textdomain() {
 		load_plugin_textdomain(
 			'wordpress-plugin-boilerplate',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
-
 	}
-
-
-
 }

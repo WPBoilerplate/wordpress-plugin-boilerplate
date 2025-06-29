@@ -6,6 +6,30 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitfe2dc019b1959222992fa9d36594585e
 {
+    public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'WordPress_Plugin_Boilerplate\\Public\\' => 36,
+            'WordPress_Plugin_Boilerplate\\Includes\\' => 38,
+            'WordPress_Plugin_Boilerplate\\Admin\\' => 35,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'WordPress_Plugin_Boilerplate\\Public\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/public',
+        ),
+        'WordPress_Plugin_Boilerplate\\Includes\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/includes',
+        ),
+        'WordPress_Plugin_Boilerplate\\Admin\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/admin',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -13,6 +37,8 @@ class ComposerStaticInitfe2dc019b1959222992fa9d36594585e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitfe2dc019b1959222992fa9d36594585e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitfe2dc019b1959222992fa9d36594585e::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitfe2dc019b1959222992fa9d36594585e::$classMap;
 
         }, null, ClassLoader::class);

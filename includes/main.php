@@ -79,6 +79,13 @@ final class Main {
 	protected $version;
 
 	/**
+	 * Plugin directory path.
+	 *
+	 * @var string
+	 */
+	protected $plugin_dir;
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -217,41 +224,6 @@ final class Main {
 	 */
 	private function load_dependencies() {
 
-		/**
-		 * Add composer file
-		 */
-		if ( file_exists( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'vendor/autoload.php' ) ) {
-			require_once( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'vendor/autoload.php' );
-		}
-
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'includes/i18n.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/admin.php';
-
-		/**
-		 * The class responsible for defining the plugin menu
-		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'admin/partials/menu.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'public/public.php';
-
 		$this->loader = Loader::instance();
 
 	}
@@ -266,12 +238,12 @@ final class Main {
 	 * @access   private
 	 */
 	private function set_locale() {
-
 		$i18n = new I18n();
 
-		$this->loader->add_action( 'plugins_loaded', $i18n, 'load_plugin_textdomain' );
-
+		// Now attach it to `init`, not `plugins_loaded`
+		$this->loader->add_action( 'init', $i18n, 'do_load_textdomain' );
 	}
+
 
 	/**
 	 * Register all of the hooks related to the admin area functionality

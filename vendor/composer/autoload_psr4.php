@@ -6,4 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'WordPress_Plugin_Boilerplate\\Public\\' => array($baseDir . '/public'),
+    'WordPress_Plugin_Boilerplate\\Includes\\' => array($baseDir . '/includes'),
+    'WordPress_Plugin_Boilerplate\\Admin\\' => array($baseDir . '/admin'),
 );
