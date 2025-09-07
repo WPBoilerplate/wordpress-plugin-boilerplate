@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
  * @author     WPBoilerplate <contact@wpboilerplate.com>
  */
 final class Main {
-	
+
 	/**
 	 * The single instance of the class.
 	 *
@@ -106,6 +106,8 @@ final class Main {
 			$this->version = '1.0.0';
 		}
 
+		$this->register_autoloader();
+
 		$this->load_composer_dependencies();
 
 		$this->load_dependencies();
@@ -113,7 +115,6 @@ final class Main {
 		$this->set_locale();
 
 		$this->load_hooks();
-
 	}
 
 	/**
@@ -138,23 +139,29 @@ final class Main {
 	 */
 	private function define_constants() {
 
-		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE', WORDPRESS_PLUGIN_BOILERPLATE_FILES );
-		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_BASENAME', plugin_basename( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
-		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH', plugin_dir_path( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
-		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', plugin_dir_url( WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE', \WORDPRESS_PLUGIN_BOILERPLATE_FILES );
+
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_BASENAME', plugin_basename( \WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH', plugin_dir_path( \WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', plugin_dir_url( \WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME_SLUG', $this->plugin_name );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME', 'WordPress Plugin Boilerplate' );
 
 		if ( ! function_exists( 'get_plugin_data' ) ) {
-			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
-		$plugin_data = get_plugin_data( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE );
-		$version = $plugin_data['Version'];
+		$plugin_file = defined( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE' )
+			? \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE
+			: \WORDPRESS_PLUGIN_BOILERPLATE_FILES;
+		$plugin_data = get_plugin_data( $plugin_file );
+		$version     = $plugin_data['Version'];
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION', $version );
 
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', $version );
 
-		$this->plugin_dir = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
+		$this->plugin_dir = defined( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH' )
+			? \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH
+			: plugin_dir_path( \WORDPRESS_PLUGIN_BOILERPLATE_FILES );
 	}
 
 	/**
@@ -165,6 +172,76 @@ final class Main {
 	private function define( $name, $value ) {
 		if ( ! defined( $name ) ) {
 			define( $name, $value );
+		}
+	}
+
+	/**
+	 * Register the plugin's PSR-4 autoloader.
+	 *
+	 * This autoloader will automatically load classes from the plugin's namespace
+	 * when they are instantiated.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function register_autoloader() {
+		spl_autoload_register( array( $this, 'autoload_class' ) );
+	}
+
+	/**
+	 * Autoload class files based on PSR-4 naming convention.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @param    string $class_name The name of the class to load.
+	 */
+	private function autoload_class( $class_name ) {
+		// Base namespace for this plugin
+		$base_namespace = 'WordPress_Plugin_Boilerplate\\';
+
+		// Check if this class belongs to our plugin namespace
+		if ( strpos( $class_name, $base_namespace ) !== 0 ) {
+			return;
+		}
+
+		// Remove the base namespace from the class name
+		$relative_class = substr( $class_name, strlen( $base_namespace ) );
+
+		// Define namespace to directory mapping
+		$namespace_map = array(
+			'Includes\\' => 'includes/',
+			'Admin\\'    => 'admin/',
+			'Public\\'   => 'public/',
+		);
+
+		// Get the plugin path (use constant from global namespace)
+		$plugin_path = defined( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH' )
+			? \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH
+			: plugin_dir_path( \WORDPRESS_PLUGIN_BOILERPLATE_FILES );
+
+		// Find the appropriate directory for this namespace
+		$file_path = '';
+		foreach ( $namespace_map as $namespace => $directory ) {
+			if ( strpos( $relative_class, $namespace ) === 0 ) {
+				// Remove the namespace prefix and convert to file path
+				$class_file = substr( $relative_class, strlen( $namespace ) );
+				$class_file = str_replace( '\\', '/', $class_file );
+
+				// Build the full file path
+				$file_path = $plugin_path . $directory . $class_file . '.php';
+				break;
+			}
+		}
+
+		// If no namespace mapping found, try the default includes directory
+		if ( empty( $file_path ) ) {
+			$class_file = str_replace( '\\', '/', $relative_class );
+			$file_path  = $plugin_path . 'includes/' . $class_file . '.php';
+		}
+
+		// Load the file if it exists
+		if ( file_exists( $file_path ) ) {
+			require_once $file_path;
 		}
 	}
 
@@ -180,14 +257,13 @@ final class Main {
 
 		/**
 		 * Check if plugin can be loaded safely or not
-		 * 
+		 *
 		 * @since    1.0.0
 		 */
 		if ( apply_filters( 'wordpress-plugin-boilerplate-load', true ) ) {
 			$this->define_admin_hooks();
 			$this->define_public_hooks();
 		}
-
 	}
 
 	/**
@@ -201,8 +277,12 @@ final class Main {
 		/**
 		 * Add composer file
 		 */
-		if ( file_exists( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'vendor/autoload.php' ) ) {
-			require_once( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'vendor/autoload.php' );
+		$plugin_path = defined( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH' )
+			? \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH
+			: plugin_dir_path( \WORDPRESS_PLUGIN_BOILERPLATE_FILES );
+
+		if ( file_exists( $plugin_path . 'vendor/autoload.php' ) ) {
+			require_once $plugin_path . 'vendor/autoload.php';
 		}
 	}
 
@@ -225,7 +305,6 @@ final class Main {
 	private function load_dependencies() {
 
 		$this->loader = Loader::instance();
-
 	}
 
 	/**
@@ -253,16 +332,25 @@ final class Main {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
-		
+
 		$plugin_admin = new \WordPress_Plugin_Boilerplate\Admin\Main( $this->get_plugin_name(), $this->get_version() );
-		
+
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		
+
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 		/**
-		 * Add the Plugin Main Menu
+		 * Add the Plugin Main Menu - delay until after init to avoid translation warnings
 		 */
+		$this->loader->add_action( 'init', $this, 'register_admin_menu' );
+	}
+
+	/**
+	 * Register admin menu after init to avoid translation loading warnings.
+	 *
+	 * @since    1.0.0
+	 */
+	public function register_admin_menu() {
 		$main_menu = new \WordPress_Plugin_Boilerplate\Admin\Partials\Menu( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_menu', $main_menu, 'main_menu' );
 		$this->loader->add_action( 'plugin_action_links', $main_menu, 'plugin_action_links', 1000, 2 );
@@ -280,9 +368,8 @@ final class Main {
 		$plugin_public = new \WordPress_Plugin_Boilerplate\Public\Main( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 	}
 
 	/**
@@ -324,5 +411,4 @@ final class Main {
 	public function get_version() {
 		return $this->version;
 	}
-
 }
