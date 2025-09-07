@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || exit;
  * The public-facing functionality of the plugin.
  *
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
- * @since      1.0.0
+ * @since      0.0.1
  *
  * @package    WordPress_Plugin_Boilerplate
  * @subpackage WordPress_Plugin_Boilerplate/public
@@ -29,7 +29,7 @@ class Main {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -38,7 +38,7 @@ class Main {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -47,7 +47,7 @@ class Main {
 	/**
 	 * The js_asset_file of the frontend
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -56,7 +56,7 @@ class Main {
 	/**
 	 * The css_asset_file of the frontend
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -65,23 +65,23 @@ class Main {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
-		$this->js_asset_file	= include( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'build/js/frontend.asset.php' );
-		$this->css_asset_file	= include( WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'build/css/frontend.asset.php' );
+		$this->js_asset_file  = include \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'build/js/frontend.asset.php';
+		$this->css_asset_file = include \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH . 'build/css/frontend.asset.php';
 	}
 
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function enqueue_styles() {
 
@@ -96,14 +96,13 @@ class Main {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_style( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'build/css/frontend.css', $this->css_asset_file['dependencies'], $this->css_asset_file['version'], 'all' );
-
+		wp_enqueue_style( $this->plugin_name, \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'build/css/frontend.css', $this->css_asset_file['dependencies'], $this->css_asset_file['version'], 'all' );
 	}
 
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function enqueue_scripts() {
 
@@ -119,8 +118,6 @@ class Main {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'build/js/frontend.js', $this->js_asset_file['dependencies'], $this->js_asset_file['version'], false );
-
+		wp_enqueue_script( $this->plugin_name, \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL . 'build/js/frontend.js', $this->js_asset_file['dependencies'], $this->js_asset_file['version'], false );
 	}
-
 }

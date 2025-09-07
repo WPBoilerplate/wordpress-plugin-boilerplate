@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
  * public-facing side of the site and the admin area.
  *
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
- * @since      1.0.0
+ * @since      0.0.1
  *
  * @package    WordPress_Plugin_Boilerplate
  * @subpackage WordPress_Plugin_Boilerplate/includes
@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      0.0.1
  * @package    WordPress_Plugin_Boilerplate
  * @subpackage WordPress_Plugin_Boilerplate/includes
  * @author     WPBoilerplate <contact@wpboilerplate.com>
@@ -37,15 +37,24 @@ final class Main {
 	 * The single instance of the class.
 	 *
 	 * @var WordPress_Plugin_Boilerplate
-	 * @since 1.0.0
+	 * @since 0.0.1
 	 */
 	protected static $_instance = null;
+
+	/**
+	 * The autoloader instance.
+	 *
+	 * @since    0.0.1
+	 * @access   protected
+	 * @var      Plugin_Autoloader    $autoloader    The plugin autoloader instance.
+	 */
+	protected $autoloader;
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      WordPress_Plugin_Boilerplate_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
@@ -54,7 +63,7 @@ final class Main {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
@@ -63,7 +72,7 @@ final class Main {
 	/**
 	 * The plugin dir path
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      string    $plugin_path    The string for plugin dir path
 	 */
@@ -72,7 +81,7 @@ final class Main {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -92,7 +101,7 @@ final class Main {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function __construct() {
 
@@ -103,8 +112,13 @@ final class Main {
 		if ( defined( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION' ) ) {
 			$this->version = WORDPRESS_PLUGIN_BOILERPLATE_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '0.0.1';
 		}
+
+		// Load the autoloader class manually before registering it
+		$plugin_path = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
+
+		require_once $plugin_path . 'includes/Plugin_Autoloader.php';
 
 		$this->register_autoloader();
 
@@ -122,13 +136,13 @@ final class Main {
 	 *
 	 * Ensures only one instance of WooCommerce is loaded or can be loaded.
 	 *
-	 * @since 1.0.0
+	 * @since 0.0.1
 	 * @static
 	 * @see WordPress_Plugin_Boilerplate()
 	 * @return WordPress_Plugin_Boilerplate - Main instance.
 	 */
 	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
+		if ( null === self::$_instance ) {
 			self::$_instance = new self();
 		}
 		return self::$_instance;
@@ -139,11 +153,9 @@ final class Main {
 	 */
 	private function define_constants() {
 
-		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE', \WORDPRESS_PLUGIN_BOILERPLATE_FILES );
-
-		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_BASENAME', plugin_basename( \WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
-		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH', plugin_dir_path( \WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
-		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', plugin_dir_url( \WORDPRESS_PLUGIN_BOILERPLATE_FILES ) );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_BASENAME', plugin_basename( \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE ) );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH', plugin_dir_path( \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE ) );
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', plugin_dir_url( \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE ) );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME_SLUG', $this->plugin_name );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME', 'WordPress Plugin Boilerplate' );
 
@@ -152,16 +164,14 @@ final class Main {
 		}
 		$plugin_file = defined( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE' )
 			? \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE
-			: \WORDPRESS_PLUGIN_BOILERPLATE_FILES;
+			: \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE;
 		$plugin_data = get_plugin_data( $plugin_file );
 		$version     = $plugin_data['Version'];
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION', $version );
 
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', $version );
 
-		$this->plugin_dir = defined( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH' )
-			? \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH
-			: plugin_dir_path( \WORDPRESS_PLUGIN_BOILERPLATE_FILES );
+		$this->plugin_dir = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
 	}
 
 	/**
@@ -176,73 +186,23 @@ final class Main {
 	}
 
 	/**
-	 * Register the plugin's PSR-4 autoloader.
+	 * Register the plugin's autoloader.
 	 *
 	 * This autoloader will automatically load classes from the plugin's namespace
 	 * when they are instantiated.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	private function register_autoloader() {
-		spl_autoload_register( array( $this, 'autoload_class' ) );
-	}
+		// Get the plugin path
+		$plugin_path = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
 
-	/**
-	 * Autoload class files based on PSR-4 naming convention.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @param    string $class_name The name of the class to load.
-	 */
-	private function autoload_class( $class_name ) {
-		// Base namespace for this plugin
-		$base_namespace = 'WordPress_Plugin_Boilerplate\\';
+		// Create autoloader instance
+		$this->autoloader = new Plugin_Autoloader( 'WordPress_Plugin_Boilerplate', $plugin_path );
 
-		// Check if this class belongs to our plugin namespace
-		if ( strpos( $class_name, $base_namespace ) !== 0 ) {
-			return;
-		}
-
-		// Remove the base namespace from the class name
-		$relative_class = substr( $class_name, strlen( $base_namespace ) );
-
-		// Define namespace to directory mapping
-		$namespace_map = array(
-			'Includes\\' => 'includes/',
-			'Admin\\'    => 'admin/',
-			'Public\\'   => 'public/',
-		);
-
-		// Get the plugin path (use constant from global namespace)
-		$plugin_path = defined( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH' )
-			? \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH
-			: plugin_dir_path( \WORDPRESS_PLUGIN_BOILERPLATE_FILES );
-
-		// Find the appropriate directory for this namespace
-		$file_path = '';
-		foreach ( $namespace_map as $namespace => $directory ) {
-			if ( strpos( $relative_class, $namespace ) === 0 ) {
-				// Remove the namespace prefix and convert to file path
-				$class_file = substr( $relative_class, strlen( $namespace ) );
-				$class_file = str_replace( '\\', '/', $class_file );
-
-				// Build the full file path
-				$file_path = $plugin_path . $directory . $class_file . '.php';
-				break;
-			}
-		}
-
-		// If no namespace mapping found, try the default includes directory
-		if ( empty( $file_path ) ) {
-			$class_file = str_replace( '\\', '/', $relative_class );
-			$file_path  = $plugin_path . 'includes/' . $class_file . '.php';
-		}
-
-		// Load the file if it exists
-		if ( file_exists( $file_path ) ) {
-			require_once $file_path;
-		}
+		// Register the autoloader
+		spl_autoload_register( array( $this->autoloader, 'autoload' ) );
 	}
 
 	/**
@@ -250,7 +210,7 @@ final class Main {
 	 *
 	 * Uses the plugins_loaded to load all the hooks and filters
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	public function load_hooks() {
@@ -258,7 +218,7 @@ final class Main {
 		/**
 		 * Check if plugin can be loaded safely or not
 		 *
-		 * @since    1.0.0
+		 * @since    0.0.1
 		 */
 		if ( apply_filters( 'wordpress-plugin-boilerplate-load', true ) ) {
 			$this->define_admin_hooks();
@@ -269,7 +229,7 @@ final class Main {
 	/**
 	 * Load the required composer dependencies for this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	private function load_composer_dependencies() {
@@ -277,9 +237,7 @@ final class Main {
 		/**
 		 * Add composer file
 		 */
-		$plugin_path = defined( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH' )
-			? \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH
-			: plugin_dir_path( \WORDPRESS_PLUGIN_BOILERPLATE_FILES );
+		$plugin_path = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
 
 		if ( file_exists( $plugin_path . 'vendor/autoload.php' ) ) {
 			require_once $plugin_path . 'vendor/autoload.php';
@@ -299,7 +257,7 @@ final class Main {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -313,7 +271,7 @@ final class Main {
 	 * Uses the WordPress_Plugin_Boilerplate_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -328,7 +286,7 @@ final class Main {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -348,7 +306,7 @@ final class Main {
 	/**
 	 * Register admin menu after init to avoid translation loading warnings.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function register_admin_menu() {
 		$main_menu = new \WordPress_Plugin_Boilerplate\Admin\Partials\Menu( $this->get_plugin_name(), $this->get_version() );
@@ -360,7 +318,7 @@ final class Main {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -375,7 +333,7 @@ final class Main {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function run() {
 		$this->loader->run();
@@ -385,7 +343,7 @@ final class Main {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
+	 * @since     0.0.1
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
@@ -395,7 +353,7 @@ final class Main {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     0.0.1
 	 * @return    WordPress_Plugin_Boilerplate_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -403,9 +361,19 @@ final class Main {
 	}
 
 	/**
+	 * The reference to the autoloader instance.
+	 *
+	 * @since     0.0.1
+	 * @return    Plugin_Autoloader    The plugin autoloader instance.
+	 */
+	public function get_autoloader() {
+		return $this->autoloader;
+	}
+
+	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     0.0.1
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {

@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || exit;
  * Fired during plugin deactivation
  *
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
- * @since      1.0.0
+ * @since      0.0.1
  *
  * @package    WordPress_Plugin_Boilerplate
  * @subpackage WordPress_Plugin_Boilerplate/includes
@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      1.0.0
+ * @since      0.0.1
  * @package    WordPress_Plugin_Boilerplate
  * @subpackage WordPress_Plugin_Boilerplate/includes
  * @author     WPBoilerplate <contact@wpboilerplate.com>
@@ -31,10 +31,8 @@ class Deactivator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public static function deactivate() {
-
 	}
-
 }

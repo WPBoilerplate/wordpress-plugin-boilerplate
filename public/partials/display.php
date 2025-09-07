@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || exit;
  * This file is used to markup the public-facing aspects of the plugin.
  *
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
- * @since      1.0.0
+ * @since      0.0.1
  *
  * @package    WordPress_Plugin_Boilerplate
  * @subpackage WordPress_Plugin_Boilerplate/public/partials

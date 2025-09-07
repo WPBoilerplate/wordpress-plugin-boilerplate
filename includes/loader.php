@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || exit;
  * Register all actions and filters for the plugin
  *
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
- * @since      1.0.0
+ * @since      0.0.1
  *
  * @package    WordPress_Plugin_Boilerplate
  * @subpackage WordPress_Plugin_Boilerplate/includes
@@ -30,7 +30,7 @@ class Loader {
 	/**
 	 * The array of actions registered with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      array    $actions    The actions registered with WordPress to fire when the plugin loads.
 	 */
@@ -39,7 +39,7 @@ class Loader {
 	/**
 	 * The array of filters registered with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      array    $filters    The filters registered with WordPress to fire when the plugin loads.
 	 */
@@ -49,20 +49,19 @@ class Loader {
 	 * The single instance of the class.
 	 *
 	 * @var WordPress_Plugin_Boilerplate_Loader
-	 * @since 1.0.0
+	 * @since 0.0.1
 	 */
 	protected static $_instance = null;
 
 	/**
 	 * Initialize the collections used to maintain the actions and filters.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function __construct() {
 
 		$this->actions = array();
 		$this->filters = array();
-
 	}
 
 	/**
@@ -70,13 +69,13 @@ class Loader {
 	 *
 	 * Ensures only one instance of WooCommerce is loaded or can be loaded.
 	 *
-	 * @since 1.0.0
+	 * @since 0.0.1
 	 * @static
 	 * @see WordPress_Plugin_Boilerplate_Loader()
 	 * @return WordPress_Plugin_Boilerplate_Loader - Main instance.
 	 */
 	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
+		if ( null === self::$_instance ) {
 			self::$_instance = new self();
 		}
 		return self::$_instance;
@@ -85,7 +84,7 @@ class Loader {
 	/**
 	 * Add a new action to the collection to be registered with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @param    string               $hook             The name of the WordPress action that is being registered.
 	 * @param    object               $component        A reference to the instance of the object on which the action is defined.
 	 * @param    string               $callback         The name of the function definition on the $component.
@@ -99,7 +98,7 @@ class Loader {
 	/**
 	 * Add a new filter to the collection to be registered with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @param    string               $hook             The name of the WordPress filter that is being registered.
 	 * @param    object               $component        A reference to the instance of the object on which the filter is defined.
 	 * @param    string               $callback         The name of the function definition on the $component.
@@ -114,7 +113,7 @@ class Loader {
 	 * A utility function that is used to register the actions and hooks into a single
 	 * collection.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 * @param    array                $hooks            The collection of hooks that is being registered (that is, actions or filters).
 	 * @param    string               $hook             The name of the WordPress filter that is being registered.
@@ -131,17 +130,16 @@ class Loader {
 			'component'     => $component,
 			'callback'      => $callback,
 			'priority'      => $priority,
-			'accepted_args' => $accepted_args
+			'accepted_args' => $accepted_args,
 		);
 
 		return $hooks;
-
 	}
 
 	/**
 	 * Register the filters and actions with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public function run() {
 
@@ -152,7 +150,5 @@ class Loader {
 		foreach ( $this->actions as $hook ) {
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
-
 	}
-
 }

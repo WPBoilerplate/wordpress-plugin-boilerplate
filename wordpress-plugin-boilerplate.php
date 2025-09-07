@@ -16,14 +16,14 @@ namespace WordPress_Plugin_Boilerplate;
  * that starts the plugin.
  *
  * @link              https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
- * @since             1.0.0
+ * @since             0.0.1
  * @package           WordPress_Plugin_Boilerplate
  *
  * @wordpress-plugin
  * Plugin Name:       WordPress Plugin Boilerplate
  * Plugin URI:        https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * Description:       WordPress Plugin Boilerplate by WPBoilerplate
- * Version:           1.0.0
+ * Version:           0.0.1
  * Author:            WPBoilerplate
  * Author URI:        https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * License:           GPL-2.0+
@@ -39,10 +39,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
+ * Start at version 0.0.1 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WORDPRESS_PLUGIN_BOILERPLATE_FILES', __FILE__ );
+define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE', __FILE__ );
 
 /**
  * The code that runs during plugin activation.
@@ -80,7 +80,7 @@ use WordPress_Plugin_Boilerplate\Includes\Main;
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    0.0.1
  */
 function wordpress_plugin_boilerplate_run() {
 
@@ -90,6 +90,5 @@ function wordpress_plugin_boilerplate_run() {
 	 * Run this plugin on the plugins_loaded functions
 	 */
 	add_action( 'plugins_loaded', array( $plugin, 'run' ), 0 );
-
 }
 wordpress_plugin_boilerplate_run();

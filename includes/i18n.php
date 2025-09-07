@@ -19,7 +19,7 @@ class I18n {
 		load_plugin_textdomain(
 			'wordpress-plugin-boilerplate',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			plugin_basename( dirname( \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE ) ) . '/languages/'
 		);
 	}
 }

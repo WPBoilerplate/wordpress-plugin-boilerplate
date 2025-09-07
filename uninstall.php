@@ -20,7 +20,7 @@
  * https://github.com/wpboilerplate/wordpress-plugin-boilerplate
  *
  * @link       https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
- * @since      1.0.0
+ * @since      0.0.1
  *
  * @package    WordPress_Plugin_Boilerplate
  */
