@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WordPress_Plugin_Boilerplate\Includes\Plugin_Autoloader
+ * Class WordPress_Plugin_Boilerplate\Includes\Autoloader
  *
  * @since 0.0.1
  * @package WordPress_Plugin_Boilerplate
@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 0.0.1
  */
-class Plugin_Autoloader {
+class Autoloader {
 
 	/**
 	 * Plugin root namespace.

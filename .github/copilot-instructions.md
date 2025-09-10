@@ -7,7 +7,7 @@ This is a **modern WordPress plugin boilerplate** using PSR-4 namespacing (`Word
 ### Core Components
 
 - **`includes/main.php`**: Singleton main class that orchestrates the entire plugin lifecycle
-- **`includes/Plugin_Autoloader.php`**: Custom PSR-4 autoloader (replaces composer autoloader for plugin classes)
+- **`includes/Autoloader.php`**: Custom PSR-4 autoloader (replaces composer autoloader for plugin classes)
 - **`includes/loader.php`**: Centralized hook registration system - all WordPress hooks go through this
 - **`admin/` & `public/`**: Separate namespaces for admin-only and public-facing functionality
 
@@ -69,7 +69,7 @@ public/Main.php         # Public-facing functionality
 includes/               # Core plugin classes
 ├── main.php           # Main orchestrator
 ├── loader.php         # Hook management
-├── Plugin_Autoloader.php  # Custom autoloader
+├── Autoloader.php  # Custom autoloader
 ├── activator.php      # Plugin activation
 └── deactivator.php    # Plugin deactivation
 ```
@@ -77,7 +77,7 @@ includes/               # Core plugin classes
 ## Composer Integration
 
 The plugin uses **dual autoloading**:
-1. **Custom autoloader** for plugin classes (`Plugin_Autoloader.php`)
+1. **Custom autoloader** for plugin classes (`Autoloader.php`)
 2. **Composer autoloader** for third-party dependencies
 
 ### Adding Dependencies

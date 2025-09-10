@@ -46,7 +46,7 @@ final class Main {
 	 *
 	 * @since    0.0.1
 	 * @access   protected
-	 * @var      Plugin_Autoloader    $autoloader    The plugin autoloader instance.
+	 * @var      Autoloader    $autoloader    The plugin autoloader instance.
 	 */
 	protected $autoloader;
 
@@ -118,7 +118,7 @@ final class Main {
 		// Load the autoloader class manually before registering it
 		$plugin_path = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
 
-		require_once $plugin_path . 'includes/Plugin_Autoloader.php';
+		require_once $plugin_path . 'includes/Autoloader.php';
 
 		$this->register_autoloader();
 
@@ -199,7 +199,7 @@ final class Main {
 		$plugin_path = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
 
 		// Create autoloader instance
-		$this->autoloader = new Plugin_Autoloader( 'WordPress_Plugin_Boilerplate', $plugin_path );
+		$this->autoloader = new Autoloader( 'WordPress_Plugin_Boilerplate', $plugin_path );
 
 		// Register the autoloader
 		spl_autoload_register( array( $this->autoloader, 'autoload' ) );
@@ -355,7 +355,7 @@ final class Main {
 	 * The reference to the autoloader instance.
 	 *
 	 * @since     0.0.1
-	 * @return    Plugin_Autoloader    The plugin autoloader instance.
+	 * @return    Autoloader    The plugin autoloader instance.
 	 */
 	public function get_autoloader() {
 		return $this->autoloader;
