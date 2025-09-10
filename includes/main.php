@@ -298,17 +298,8 @@ final class Main {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 		/**
-		 * Add the Plugin Main Menu - delay until after init to avoid translation warnings
+		 * Add the Plugin Main Menu
 		 */
-		$this->loader->add_action( 'init', $this, 'register_admin_menu' );
-	}
-
-	/**
-	 * Register admin menu after init to avoid translation loading warnings.
-	 *
-	 * @since    0.0.1
-	 */
-	public function register_admin_menu() {
 		$main_menu = new \WordPress_Plugin_Boilerplate\Admin\Partials\Menu( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'admin_menu', $main_menu, 'main_menu' );
 		$this->loader->add_action( 'plugin_action_links', $main_menu, 'plugin_action_links', 1000, 2 );
