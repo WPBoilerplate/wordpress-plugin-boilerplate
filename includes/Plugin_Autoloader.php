@@ -8,8 +8,6 @@
 
 namespace WordPress_Plugin_Boilerplate\Includes;
 
-use InvalidArgumentException;
-
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
