@@ -14,22 +14,70 @@ Now are using the https://github.com/x3p0-dev/x3p0-ideas/tree/block-example exma
 
 1. Once everything install goto `src/` folder and run `npx @wordpress/create-block wordpress-plugin-boilerplate-block --no-plugin`
 
-2. Now run `composer require wpboilerplate/wpb-register-blocks`
+2. Add the `wpb-register-blocks` dependency to your plugin:
+   ```bash
+   composer require wpboilerplate/wpb-register-blocks
+   ```
 
-3. Now add 
-```
+3. Open `includes/main.php` and locate the `load_composer_dependencies()` method (around line 234)
+
+4. Add the following code at the end of the `load_composer_dependencies()` method, after the `require_once` line:
+
+```php
 /**
  * Check if class exists or not
  */
-if ( class_exists( 'WPBoilerplate_Register_Blocks' ) ) {
-	new WPBoilerplate_Register_Blocks( $this->plugin_dir );
+if ( class_exists( 'WPBoilerplate\\RegisterBlocks\\RegisterBlocks' ) ) {
+	new \WPBoilerplate\RegisterBlocks\RegisterBlocks( $this->plugin_dir );
 }
 ```
-inside the `load_composer_dependencies` method at the end
 
-4. Now run `composer update`
+**Complete `load_composer_dependencies()` method should look like this:**
+```php
+private function load_composer_dependencies() {
+	/**
+	 * Add composer file
+	 */
+	$plugin_path = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
 
-5. Once that is installed run `npm run build`
+	if ( file_exists( $plugin_path . 'vendor/autoload.php' ) ) {
+		require_once $plugin_path . 'vendor/autoload.php';
+	}
+
+	/**
+	 * Check if class exists or not
+	 */
+	if ( class_exists( 'WPBoilerplate\\RegisterBlocks\\RegisterBlocks' ) ) {
+		new \WPBoilerplate\RegisterBlocks\RegisterBlocks( $this->plugin_dir );
+	}
+}
+```
+
+5. Run composer update to install the dependency:
+   ```bash
+   composer update
+   ```
+
+6. Build your blocks:
+   ```bash
+   npm run build
+   ```
+
+#### How it works
+
+The `wpb-register-blocks` package uses PSR-4 autoloading and will automatically:
+- Scan your plugin's `build/blocks/` directory
+- Register all block types found in subdirectories
+- Hook into WordPress `init` action to register blocks
+
+#### PSR-4 Autoloading Structure
+
+- **Package**: `wpboilerplate/wpb-register-blocks`
+- **Namespace**: `WPBoilerplate\RegisterBlocks\`
+- **Main Class**: `WPBoilerplate\RegisterBlocks\RegisterBlocks`
+- **Auto-loads**: Via Composer's PSR-4 autoloading system
+
+This provides better organization, follows modern PHP standards, and integrates seamlessly with Composer's autoloading system.
 
 ### Update your code via Github
 
@@ -37,7 +85,7 @@ inside the `load_composer_dependencies` method at the end
 
 2. Now run `composer update`
 
-3. Now add 
+3. Now add
 ```
 /**
  * Check if class exists or not

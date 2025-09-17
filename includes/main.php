@@ -242,6 +242,13 @@ final class Main {
 		if ( file_exists( $plugin_path . 'vendor/autoload.php' ) ) {
 			require_once $plugin_path . 'vendor/autoload.php';
 		}
+
+		/**
+		 * Check if class exists or not
+		 */
+		if ( class_exists( 'WPBoilerplate\\RegisterBlocks\\RegisterBlocks' ) ) {
+			new \WPBoilerplate\RegisterBlocks\RegisterBlocks( $this->plugin_dir );
+		}
 	}
 
 	/**
