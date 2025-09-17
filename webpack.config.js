@@ -1,6 +1,14 @@
 // WordPress webpack config
 const defaultConfig = require('@wordpress/scripts/config/webpack.config');
-const { getWebpackEntryPoints } = require('@wordpress/scripts/utils/config');
+
+// Try to import getWebpackEntryPoints, fallback to empty object if not available
+let getWebpackEntryPoints;
+try {
+	({ getWebpackEntryPoints } = require('@wordpress/scripts/utils/config'));
+} catch (error) {
+	// Fallback for older versions of @wordpress/scripts
+	getWebpackEntryPoints = () => ({});
+}
 
 // Plugins
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');

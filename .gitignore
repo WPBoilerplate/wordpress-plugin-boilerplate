@@ -5,14 +5,9 @@ project.properties
 .buildpath
 .project
 .settings*
-.idea
-.vscode
-*.sublime-project
-*.sublime-workspace
 .sublimelinterrc
 
 # Grunt
-/node_modules/
 none
 
 # Sass
@@ -25,17 +20,21 @@ none
 /assets/js/admin/*.min.js
 /assets/js/frontend/*.min.js
 
-# OS X metadata
+# macOS/IDE
 .DS_Store
-
-# Windows junk
 Thumbs.db
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+
+# Log files
+*.log
+/logs
+/tests/logs
 
 # Temporary files
 /tmp
-
-# Logs
-/logs
 
 # Composer
 contributors.md
@@ -43,9 +42,32 @@ contributors.md
 # Packages
 /packages/*
 !/packages/README.md
+/vendor/
+/node_modules/
+
+# Environment
+.env
+
+# Cache
+.phpunit.result.cache
+
+# Test output
+/tests/_output/*
+!/tests/_output/.gitkeep
+
+# Configs
+/phpcs.xml
+/phpunit.xml
+/phpstan.neon
+
+# WP ENV
+/.wp-env.override.json
 
 # Screenshots
 /screenshots/
 
 # Language files
 i18n/languages/woocommerce.pot
+
+# Tests & Coverage
+/coverage/
