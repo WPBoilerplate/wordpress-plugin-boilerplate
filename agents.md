@@ -159,6 +159,21 @@ npm run makepot
 6. **wpboilerplate/acrossswp-acf-pro-dependency** - Advanced Custom Fields Pro dependency
 7. **wpboilerplate/wpb-view-analytics-dependency** - View analytics tracking
 
+#### Interactive Package Selection:
+The `init-plugin.sh` script provides an interactive interface for selecting WPBoilerplate packages during setup:
+- Displays package descriptions and purposes
+- Allows multiple package selection via comma-separated input
+- Automatically adds packages to `composer.json`
+- **Auto-generates integration code** in `includes/main.php`
+- Handles proper class instantiation and dependency checks
+
+**CRITICAL**: When modifying or enhancing `init-plugin.sh`, always maintain:
+1. Package description accuracy and clarity
+2. Proper composer integration workflow
+3. Auto-generated integration code patterns
+4. Error handling for invalid selections
+5. Clear user feedback and status messages
+
 ### PSR-4 Autoloading Configuration
 ```json
 {

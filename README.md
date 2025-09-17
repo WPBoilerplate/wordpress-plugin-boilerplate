@@ -43,7 +43,17 @@ A comprehensive, modern WordPress plugin boilerplate that follows WordPress codi
 3. **Follow the interactive prompts**:
    - Enter your plugin name (e.g., "My Awesome Plugin")
    - Enter your GitHub organization name (e.g., "MyCompany")
-   - The script will automatically create a new plugin with your details
+   - **Optional**: Select WPBoilerplate packages for WordPress integrations:
+     - `wpb-register-blocks` - Auto-register Gutenberg blocks
+     - `wpb-updater-checker-github` - GitHub-based auto-updates
+     - `wpb-buddypress-or-buddyboss-dependency` - BuddyPress/BuddyBoss compatibility
+     - `wpb-woocommerce-dependency` - WooCommerce integration support
+     - And more specialized packages for common WordPress needs
+   - The script will automatically:
+     - Create a new plugin with your details
+     - Install selected packages via Composer
+     - Add integration code to `includes/main.php`
+     - Set up the complete development environment
 
 ### Method 2: Manual Setup
 
@@ -100,6 +110,52 @@ npm run packages-update
 - **Hot Reload**: Live reloading during development with `npm run start`
 - **Source Maps**: Available in development mode for debugging
 - **Asset Optimization**: Image compression and optimization
+
+## 📦 WPBoilerplate Ecosystem
+
+The boilerplate integrates with a comprehensive ecosystem of WordPress-specific Composer packages to accelerate development:
+
+### Core Integration Packages
+
+| Package | Purpose | Auto-Integration |
+|---------|---------|------------------|
+| `wpboilerplate/wpb-register-blocks` | Auto-register Gutenberg blocks from `build/blocks/` | ✅ |
+| `wpboilerplate/wpb-updater-checker-github` | GitHub-based plugin auto-updates | ✅ |
+
+### Dependency Management Packages
+
+| Package | Purpose | Auto-Integration |
+|---------|---------|------------------|
+| `wpboilerplate/wpb-buddypress-or-buddyboss-dependency` | BuddyPress/BuddyBoss compatibility checker | ✅ |
+| `wpboilerplate/wpb-buddyboss-dependency` | BuddyBoss Platform dependency | ✅ |
+| `wpboilerplate/wpb-woocommerce-dependency` | WooCommerce integration support | ✅ |
+| `wpboilerplate/acrossswp-acf-pro-dependency` | Advanced Custom Fields Pro dependency | ✅ |
+
+### Analytics & Tracking
+
+| Package | Purpose | Auto-Integration |
+|---------|---------|------------------|
+| `wpboilerplate/wpb-view-analytics-dependency` | View analytics and tracking | ✅ |
+
+### Installation via Script
+
+When using `./init-plugin.sh`, you can interactively select packages during setup. The script will:
+- Add packages to `composer.json`
+- Install via `composer install`
+- **Automatically generate integration code** in `includes/main.php`
+- Configure proper class instantiation and dependency checks
+
+### Manual Installation
+
+You can also add packages manually after setup:
+
+```bash
+# Install a specific package
+composer require wpboilerplate/wpb-register-blocks
+
+# Add integration code to includes/main.php
+# (See the package documentation for specific integration patterns)
+```
 
 ## 🧱 Block Development
 
