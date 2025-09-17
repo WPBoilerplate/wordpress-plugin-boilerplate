@@ -501,10 +501,137 @@ The boilerplate includes dedicated packages for popular plugin integrations:
 - Update version in package.json
 - Create git tags for releases
 
+### README.md Maintenance Protocol
+
+**CRITICAL**: Always update the `README.md` file when making changes to the project. This is essential for documentation accuracy and developer experience.
+
+#### When to Update README.md:
+
+1. **Adding New Composer Packages**:
+   ```bash
+   # After running composer require
+   composer require new/package
+
+   # IMMEDIATELY update README.md with:
+   # - Package name and purpose
+   # - Installation command
+   # - Integration code example
+   # - Usage instructions
+   ```
+
+2. **npm Package Updates**:
+   ```bash
+   # After adding new npm dependencies
+   npm install new-package
+
+   # Update README.md sections:
+   # - Build system dependencies
+   # - Available npm commands
+   # - Development workflow changes
+   ```
+
+3. **Project Structure Changes**:
+   - New directories or file organization
+   - Updated file paths or locations
+   - Modified build output locations
+
+4. **Feature Additions**:
+   - New functionality or capabilities
+   - API endpoints or hooks
+   - Configuration options
+
+#### README.md Update Checklist:
+
+**For Composer Packages:**
+```markdown
+## 📦 Composer Packages
+
+### [Package Category] (if new category)
+
+```bash
+# [Package description]
+composer require vendor/package-name
+```
+
+#### Integration Example:
+```php
+// Add to load_composer_dependencies() method
+if ( class_exists( 'Vendor\\Package\\ClassName' ) ) {
+    new Vendor\Package\ClassName( $this->plugin_dir );
+}
+```
+
+#### Usage:
+- Explain what the package does
+- How it integrates with the plugin
+- Configuration options if any
+```
+
+**For npm Packages:**
+```markdown
+## 🛠️ Build System
+
+### Updated Dependencies
+```json
+{
+  "devDependencies": {
+    "new-package": "^1.0.0"
+  }
+}
+```
+
+### New Commands (if applicable)
+```bash
+# New command description
+npm run new-command
+```
+```
+
+#### Standard README.md Sections to Maintain:
+
+1. **Features List** - Keep current with new capabilities
+2. **Requirements** - Update version requirements
+3. **Installation Instructions** - Reflect current setup process
+4. **Build Commands** - Keep npm scripts current
+5. **Package Lists** - Maintain accurate dependency lists
+6. **Code Examples** - Update integration examples
+7. **Project Structure** - Reflect current directory organization
+8. **Usage Examples** - Keep code samples current
+
+#### Documentation Standards:
+
+1. **Code Examples**: Always include working, tested code
+2. **Version Numbers**: Keep package versions current
+3. **Links**: Ensure all repository links are valid
+4. **Structure**: Maintain consistent formatting
+5. **Clarity**: Write for developers of all skill levels
+
+#### Automated Documentation Workflow:
+
+```bash
+# Suggested workflow after changes
+1. Make code changes
+2. Update README.md immediately
+3. Test all code examples in README.md
+4. Commit both code and documentation changes
+5. Create descriptive commit messages mentioning docs updates
+```
+
+#### README.md Quality Checks:
+
+- [ ] All composer packages are documented
+- [ ] All npm commands are listed and explained
+- [ ] Code examples are tested and working
+- [ ] Version numbers are current
+- [ ] Links to repositories are valid
+- [ ] Installation instructions are complete
+- [ ] Examples match current file structure
+
 ### Backward Compatibility
 - Maintain compatibility with supported WordPress versions
 - Provide migration functions for database changes
 - Deprecate features gradually with proper notices
+- Update documentation to reflect compatibility changes
 
 ## Common Development Patterns
 
@@ -548,4 +675,104 @@ public function settings_init() {
 }
 ```
 
-This comprehensive guide provides LLMs with detailed information about the WordPress Plugin Boilerplate structure, development workflows, and best practices for creating professional WordPress plugins.
+## Documentation Maintenance Protocol for AI Agents
+
+### MANDATORY: README.md Synchronization
+
+**CRITICAL RULE**: Every time you add a package, modify configuration, or change project structure, you MUST update the README.md file immediately. This is not optional.
+
+#### Trigger Events for README.md Updates:
+
+1. **Composer Package Addition**:
+   ```bash
+   composer require vendor/package-name
+   ```
+   **Action Required**: Add package to README.md with installation command, integration code, and usage examples.
+
+2. **npm Package Changes**:
+   ```bash
+   npm install package-name
+   ```
+   **Action Required**: Update build system documentation and available commands.
+
+3. **File Structure Modifications**:
+   - New directories created
+   - Files moved or renamed
+   - Build output changes
+   **Action Required**: Update project structure diagram in README.md
+
+4. **Configuration Changes**:
+   - webpack.config.js modifications
+   - composer.json updates
+   - package.json script changes
+   **Action Required**: Update relevant configuration sections
+
+#### README.md Update Template:
+
+**For New Composer Packages:**
+```markdown
+#### [Package Name] - [Brief Description]
+```bash
+composer require vendor/package-name
+```
+
+**Integration** (add to `load_composer_dependencies()` method):
+```php
+if ( class_exists( 'Vendor\\Package\\MainClass' ) ) {
+    new Vendor\Package\MainClass( $this->plugin_dir );
+}
+```
+
+**Purpose**: Explain what this package does and why it's included.
+```
+
+**For npm Dependencies:**
+```markdown
+#### [Package Name]
+```bash
+npm install package-name
+```
+
+**Usage**: Explain how this affects the build process or development workflow.
+```
+
+#### Quality Assurance Checklist:
+
+- [ ] All new packages documented with installation commands
+- [ ] Integration code examples provided and tested
+- [ ] Project structure diagram reflects current state
+- [ ] All links are functional and up-to-date
+- [ ] Code examples use current file paths and class names
+- [ ] Version requirements are accurate
+- [ ] Build commands list is complete and current
+
+#### Documentation Workflow:
+
+1. **Before Making Changes**: Note current README.md state
+2. **During Development**: Track what needs documentation updates
+3. **After Changes**: Immediately update README.md
+4. **Verification**: Test all documented commands and code examples
+5. **Commit**: Include README.md changes in the same commit as code changes
+
+#### Common Documentation Patterns:
+
+**Package Documentation Pattern:**
+1. Brief description of package purpose
+2. Installation command
+3. Integration code (where to add in the codebase)
+4. Configuration options (if any)
+5. Usage examples or notes
+
+**Build System Updates:**
+1. New npm commands with descriptions
+2. Updated dependencies list
+3. Modified workflow instructions
+4. Changed file output locations
+
+**Architecture Changes:**
+1. Updated directory structure
+2. New file locations
+3. Modified class namespaces
+4. Changed integration patterns
+
+This comprehensive guide provides LLMs with detailed information about the WordPress Plugin Boilerplate structure, development workflows, best practices for creating professional WordPress plugins, and mandatory documentation maintenance protocols.
