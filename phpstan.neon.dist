@@ -7,7 +7,6 @@ parameters:
         - wordpress-plugin-boilerplate.php
 
     excludePaths:
-        - tests/
         - vendor/
         - node_modules/
 

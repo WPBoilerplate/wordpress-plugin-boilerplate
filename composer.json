@@ -8,16 +8,6 @@
     "require": {
         "php": ">=7.4"
     },
-    "require-dev": {
-        "phpunit/phpunit": "^9.0",
-        "squizlabs/php_codesniffer": "^3.7",
-        "wp-coding-standards/wpcs": "^3.0",
-        "phpstan/phpstan": "^1.10",
-        "phpstan/extension-installer": "^1.3",
-        "szepeviktor/phpstan-wordpress": "^1.3",
-        "phpcompatibility/php-compatibility": "^9.3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^1.0"
-    },
     "keywords": [
         "wordpress",
         "plugin"
@@ -35,47 +25,6 @@
         "WordPress_Plugin_Boilerplate\\Includes\\": "includes/",
         "WordPress_Plugin_Boilerplate\\Admin\\": "admin/",
         "WordPress_Plugin_Boilerplate\\Public\\": "public/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "WordPress_Plugin_Boilerplate\\Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "lint": [
-            "phpcs --standard=WordPress --extensions=php --ignore=vendor/ ."
-        ],
-        "format": [
-            "phpcbf --standard=WordPress --extensions=php --ignore=vendor/ ."
-        ],
-        "lint:stan": [
-            "phpstan analyse --memory-limit=512M"
-        ],
-        "test": [
-            "@putenv WP_TESTS_DIR=./tmp/wordpress-tests-lib",
-            "@putenv WP_CORE_DIR=./tmp/wordpress/",
-            "phpunit"
-        ],
-        "test:coverage": [
-            "@putenv WP_TESTS_DIR=./tmp/wordpress-tests-lib",
-            "@putenv WP_CORE_DIR=./tmp/wordpress/",
-            "phpunit --coverage-html tests/coverage"
-        ],
-        "post-install-cmd": [
-            "@setup-wp-tests"
-        ],
-        "post-update-cmd": [
-            "@setup-wp-tests"
-        ],
-        "setup-wp-tests": [
-            "bash bin/install-wp-tests.sh wordpress_test root '' localhost latest"
-        ]
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "phpstan/extension-installer": true
         }
     }
 }

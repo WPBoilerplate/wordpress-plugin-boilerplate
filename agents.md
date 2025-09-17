@@ -581,23 +581,6 @@ if ( ! current_user_can( 'manage_options' ) ) {
 - Implement proper caching for expensive queries
 - Use transients for temporary data storage
 
-## Testing Framework Integration
-
-### Recommended Testing Stack
-```json
-{
-  "devDependencies": {
-    "@wordpress/jest-preset-default": "^latest",
-    "phpunit/phpunit": "^9.0"
-  }
-}
-```
-
-### Test Structure:
-- **PHP Tests**: `tests/php/` directory
-- **JavaScript Tests**: `tests/js/` directory
-- **E2E Tests**: `tests/e2e/` directory
-
 ## Internationalization (i18n)
 
 ### Translation Setup
@@ -634,9 +617,7 @@ The boilerplate includes GitHub Actions for automated deployment:
 ### Development Environment
 ```bash
 # Local development with WordPress
-wp-env start
-
-# Or use Docker
+# Use Docker
 docker-compose up -d
 
 # Or use Local by Flywheel, XAMPP, etc.

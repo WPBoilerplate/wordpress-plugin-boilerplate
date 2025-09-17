@@ -31,18 +31,8 @@ none
 # Windows junk
 Thumbs.db
 
-# Behat/CLI Tests
-tests/cli/installer
-tests/cli/composer.phar
-tests/cli/composer.lock
-tests/cli/composer.json
-tests/cli/vendor
-
-# Unit tests
+# Temporary files
 /tmp
-/tests/bin/tmp
-/tests/e2e-tests/config/local-*.json
-/tests/e2e-tests/config/local.json
 
 # Logs
 /logs
@@ -54,7 +44,7 @@ contributors.md
 /packages/*
 !/packages/README.md
 
-# Screenshots for e2e tests failures
+# Screenshots
 /screenshots/
 
 # Language files
