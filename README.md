@@ -22,8 +22,30 @@ A comprehensive, modern WordPress plugin boilerplate that follows WordPress codi
 
 - **WordPress**: 4.9.1 or higher
 - **PHP**: 7.4 or higher (8.0+ recommended)
+  - ⚠️ **Critical**: PHP 7.4 is the **minimum required version** enforced by `composer.json`
+  - 🚀 **Recommended**: PHP 8.0+ for better performance and modern language features
+  - 🔒 **Enforcement**: Composer will prevent installation on older PHP versions
 - **Node.js**: 14.0 or higher
 - **Composer**: 2.0 or higher
+
+### 🔍 PHP Version Verification
+
+Before installation, verify your PHP version meets the requirements:
+
+```bash
+# Check PHP version
+php -v
+
+# Should show PHP 7.4.0 or higher
+# Example: PHP 8.0.30 (cli) (built: Aug  5 2023 10:50:05)
+```
+
+**Why PHP 7.4+?**
+- ✅ **Modern Features**: Arrow functions, typed properties, null coalescing assignment
+- ✅ **Performance**: Significant performance improvements over PHP 7.3 and earlier
+- ✅ **Security**: Better security features and ongoing support
+- ✅ **WordPress Compatibility**: Full compatibility with modern WordPress features
+- ✅ **Ecosystem**: Required by modern WordPress development tools and packages
 
 ## 🛠️ Quick Start
 
@@ -211,7 +233,165 @@ build/blocks/
     └── ...
 ```
 
+## 🎯 Advanced Block Development: Multiple Input Files
+
+### Using x3p0-ideas Block Example
+
+We now use the comprehensive [x3p0-ideas block example](https://github.com/x3p0-dev/x3p0-ideas/tree/block-example) as our reference for advanced block development patterns. This example demonstrates best practices for:
+
+#### **Multiple Input File Architecture**
+```
+src/blocks/
+├── example-block/
+│   ├── block.json          # Block metadata and configuration
+│   ├── index.js           # Main block registration
+│   ├── edit.js            # Editor component (separate file)
+│   ├── save.js            # Save component (separate file)
+│   ├── view.js            # Frontend interactivity (separate file)
+│   ├── style.scss         # Frontend styles
+│   ├── editor.scss        # Editor-specific styles
+│   └── variations.js      # Block variations (separate file)
+```
+
+#### **Key Benefits of Multiple Input Files:**
+
+1. **🔧 Modular Architecture**:
+   - Separate concerns for edit, save, and view functionality
+   - Easier maintenance and code organization
+   - Better team collaboration with clear file responsibilities
+
+2. **⚡ Optimized Loading**:
+   - Frontend scripts only loaded when needed
+   - Smaller bundle sizes through code splitting
+   - Better performance with conditional loading
+
+3. **🎨 Advanced Styling**:
+   - Separate SCSS files for editor and frontend
+   - CSS custom properties for dynamic styling
+   - Theme integration capabilities
+
+4. **🛠️ Enhanced Functionality**:
+   - Block variations in dedicated files
+   - Custom block controls and settings
+   - Advanced interactivity patterns
+
+#### **Implementation with @wordpress/scripts**
+
+The build system automatically handles multiple input files:
+
+```javascript
+// webpack.config.js automatically processes:
+const entries = {
+    // Main block files
+    'blocks/example-block/index': './src/blocks/example-block/index.js',
+    'blocks/example-block/view': './src/blocks/example-block/view.js',
+
+    // Style files
+    'blocks/example-block/style': './src/blocks/example-block/style.scss',
+    'blocks/example-block/editor': './src/blocks/example-block/editor.scss',
+};
+```
+
+#### **x3p0-ideas Integration Patterns**
+
+Based on the [x3p0-ideas block example](https://github.com/x3p0-dev/x3p0-ideas/tree/block-example), implement these patterns:
+
+1. **Block Registration with Multiple Assets**:
+   ```json
+   {
+     "name": "my-plugin/example-block",
+     "editorScript": "file:./index.js",
+     "viewScript": "file:./view.js",
+     "style": "file:./style.css",
+     "editorStyle": "file:./editor.css"
+   }
+   ```
+
+2. **Modular Component Structure**:
+   ```javascript
+   // index.js - Main registration
+   import { registerBlockType } from '@wordpress/blocks';
+   import Edit from './edit';
+   import Save from './save';
+   import metadata from './block.json';
+
+   registerBlockType( metadata.name, {
+       ...metadata,
+       edit: Edit,
+       save: Save,
+   } );
+   ```
+
+3. **Separate Edit Component**:
+   ```javascript
+   // edit.js - Editor interface
+   import { useBlockProps } from '@wordpress/block-editor';
+   import { PanelBody, TextControl } from '@wordpress/components';
+
+   export default function Edit( { attributes, setAttributes } ) {
+       // Complex editor logic here
+   }
+   ```
+
+4. **Frontend Interactivity**:
+   ```javascript
+   // view.js - Frontend behavior
+   import domReady from '@wordpress/dom-ready';
+
+   domReady( () => {
+       // Frontend JavaScript for block interactions
+   } );
+   ```
+
+#### **Setup Instructions for x3p0-ideas Pattern**
+
+1. **Clone the example structure**:
+   ```bash
+   # Reference the x3p0-ideas block structure
+   mkdir -p src/blocks/your-block
+   # Copy patterns from https://github.com/x3p0-dev/x3p0-ideas/tree/block-example
+   ```
+
+2. **Configure multiple entry points**:
+   ```bash
+   # The build system automatically detects:
+   npm run build
+   # Creates: build/blocks/your-block/{index.js, view.js, style.css, editor.css}
+   ```
+
+3. **Automatic registration**:
+   ```php
+   // wpb-register-blocks automatically handles multiple assets
+   // No additional configuration needed!
+   ```
+
+### **Advanced Features from x3p0-ideas**
+
+- **🎛️ Dynamic Block Variations**: Runtime block variations based on content
+- **🎨 CSS Custom Properties**: Dynamic styling with CSS variables
+- **⚡ Conditional Asset Loading**: Scripts/styles loaded only when blocks are present
+- **🔧 Custom Inspector Controls**: Advanced sidebar panels and settings
+- **📱 Responsive Design Patterns**: Mobile-first block development
+- **♿ Accessibility Best Practices**: WCAG compliant block interfaces
+
 ## 📦 Composer Packages
+
+### 🔒 PHP Version Requirement
+
+**IMPORTANT**: All WPBoilerplate packages require **PHP 7.4+**. This is enforced in `composer.json`:
+
+```json
+{
+    "require": {
+        "php": ">=7.4"
+    }
+}
+```
+
+**Installation Protection**:
+- ❌ Composer will **refuse to install** on PHP < 7.4
+- ✅ Ensures compatibility across all environments
+- 🛡️ Prevents runtime errors from version incompatibilities
 
 ### WPBoilerplate Package Ecosystem
 
