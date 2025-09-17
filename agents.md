@@ -225,31 +225,33 @@ The `init-plugin.sh` script provides an interactive interface for selecting WPBo
 ## Block Development Integration
 
 ### Creating Gutenberg Blocks
-1. **Initialize Block Creation**:
-   ```bash
-   cd src/
-   npx @wordpress/create-block my-plugin-name-block --no-plugin
-   ```
+1. **Create a block folder inside the `src/blocks` directory and scaffold a block**:
+    ```bash
+    mkdir -p src/blocks
+    cd src/blocks
+    npx @wordpress/create-block my-plugin-name-block --no-plugin
+    ```
+    This will scaffold a new block inside `src/blocks/my-plugin-name-block`.
 
 2. **Add Block Registration Package**:
-   ```bash
-   composer require wpboilerplate/wpb-register-blocks
-   ```
+    ```bash
+    composer require wpboilerplate/wpb-register-blocks
+    ```
 
 3. **Integration Code** (automatically added in `includes/main.php`):
-   ```php
-   /**
-    * Auto-register blocks from build/blocks directory
-    */
-   if ( class_exists( 'WPBoilerplate\\RegisterBlocks\\RegisterBlocks' ) ) {
-       new \WPBoilerplate\RegisterBlocks\RegisterBlocks( $this->plugin_dir );
-   }
-   ```
+    ```php
+    /**
+     * Auto-register blocks from build/blocks directory
+     */
+    if ( class_exists( 'WPBoilerplate\\RegisterBlocks\\RegisterBlocks' ) ) {
+         new \WPBoilerplate\RegisterBlocks\RegisterBlocks( $this->plugin_dir );
+    }
+    ```
 
 4. **Build Blocks**:
-   ```bash
-   npm run build
-   ```
+    ```bash
+    npm run build
+    ```
 
 ### Block Structure:
 - Blocks are automatically detected in `build/blocks/` directory

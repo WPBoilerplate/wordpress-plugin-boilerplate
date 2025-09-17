@@ -301,11 +301,13 @@ The boilerplate includes seamless integration for creating and managing Gutenber
 
 ### Creating Blocks
 
-1. **Navigate to source directory and create a block**:
+1. **Create a block folder inside the `src/blocks` directory and scaffold a block**:
    ```bash
-   cd src/
+   mkdir -p src/blocks
+   cd src/blocks
    npx @wordpress/create-block my-plugin-name-block --no-plugin
    ```
+   This will scaffold a new block inside `src/blocks/my-plugin-name-block`.
 
 2. **Add the block registration package**:
    ```bash
@@ -319,7 +321,7 @@ The boilerplate includes seamless integration for creating and managing Gutenber
  * Auto-register blocks from build/blocks directory
  */
 if ( class_exists( 'WPBoilerplate\\RegisterBlocks\\RegisterBlocks' ) ) {
-    new \WPBoilerplate\RegisterBlocks\RegisterBlocks( $this->plugin_dir );
+    new \\WPBoilerplate\RegisterBlocks\RegisterBlocks( $this->plugin_dir );
 }
 ```
 
