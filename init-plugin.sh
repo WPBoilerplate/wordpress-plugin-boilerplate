@@ -138,6 +138,38 @@ fi
 
 echo
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🧪 PHPUnit Testing Infrastructure Setup"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo
+echo "Would you like to include comprehensive PHPUnit testing infrastructure?"
+echo "This includes unit tests, WordPress testing framework, coding standards,"
+echo "static analysis, and development environment configuration."
+echo
+echo "💡 Testing infrastructure includes:"
+echo "  • PHPUnit with WordPress integration"
+echo "  • PHP CodeSniffer with WordPress Coding Standards"
+echo "  • PHPStan static analysis"
+echo "  • wp-env development environment"
+echo "  • Pre-written test cases for plugin classes"
+echo
+while true; do
+    echo -n "Include PHPUnit testing infrastructure? [Y/n]: "
+    read include_testing
+    case $include_testing in
+        [Yy]* | "" )
+            include_phpunit_tests=true
+            echo "✅ PHPUnit testing infrastructure will be included"
+            break;;
+        [Nn]* )
+            include_phpunit_tests=false
+            echo "❌ Skipping PHPUnit testing infrastructure"
+            break;;
+        * ) echo "Please answer yes (y) or no (n).";;
+    esac
+done
+
+echo
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "🔧 Creating Plugin Files..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
@@ -184,6 +216,69 @@ rm -rf init-plugin.sh
 rm -rf composer.lock
 rm -rf vendor
 rm -rf package-lock.json
+
+# Remove testing infrastructure if not selected
+if [ "$include_phpunit_tests" = false ]; then
+    echo "🗑️  Removing PHPUnit testing infrastructure..."
+
+    # Remove test directories and files
+    rm -rf tests/
+    rm -rf bin/
+
+    # Remove testing configuration files
+    rm -f phpunit.xml.dist
+    rm -f phpstan.neon.dist
+    rm -f phpcs.xml.dist
+    rm -f .wp-env.json
+    rm -f TESTING.md
+
+    # Remove testing dependencies from composer.json
+    if command -v composer &> /dev/null; then
+        echo "  Removing testing dependencies from composer.json..."
+        composer remove --dev phpunit/phpunit --no-update 2>/dev/null || true
+        composer remove --dev squizlabs/php_codesniffer --no-update 2>/dev/null || true
+        composer remove --dev wp-coding-standards/wpcs --no-update 2>/dev/null || true
+        composer remove --dev phpstan/phpstan --no-update 2>/dev/null || true
+        composer remove --dev phpstan/extension-installer --no-update 2>/dev/null || true
+        composer remove --dev szepeviktor/phpstan-wordpress --no-update 2>/dev/null || true
+        composer remove --dev phpcompatibility/php-compatibility --no-update 2>/dev/null || true
+        composer remove --dev dealerdirect/phpcodesniffer-composer-installer --no-update 2>/dev/null || true
+    fi
+
+    # Remove testing scripts from package.json
+    if command -v node &> /dev/null && [ -f package.json ]; then
+        echo "  Removing testing scripts from package.json..."
+        # Create a temporary file to store the cleaned package.json
+        node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+
+            // Remove testing scripts
+            if (pkg.scripts) {
+                delete pkg.scripts['test:php'];
+                delete pkg.scripts['lint:php'];
+                delete pkg.scripts['lint:php:fix'];
+                delete pkg.scripts['analyze:php'];
+                delete pkg.scripts['compat:php'];
+                delete pkg.scripts['env:start'];
+                delete pkg.scripts['env:stop'];
+                delete pkg.scripts['env:restart'];
+                delete pkg.scripts['env:clean'];
+                delete pkg.scripts['env:reset'];
+                delete pkg.scripts['setup-wp-tests'];
+            }
+
+            // Remove testing devDependencies
+            if (pkg.devDependencies) {
+                delete pkg.devDependencies['@wordpress/env'];
+            }
+
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+        " 2>/dev/null || echo "  ⚠️  Could not automatically clean package.json"
+    fi
+
+    echo "  ✅ Testing infrastructure removed"
+fi
 
 # Add WPBoilerplate packages to composer.json if selected
 if [ "$add_wpboilerplate_deps" = true ] && [ ${#selected_packages[@]} -gt 0 ]; then
@@ -279,11 +374,31 @@ if [ "$add_wpboilerplate_deps" = true ] && [ ${#selected_packages[@]} -gt 0 ]; t
     done
     echo
 fi
+if [ "$include_phpunit_tests" = true ]; then
+    echo "🧪 Testing Infrastructure Included:"
+    echo "  ✅ PHPUnit with WordPress integration"
+    echo "  ✅ PHP CodeSniffer with WordPress Coding Standards"
+    echo "  ✅ PHPStan static analysis"
+    echo "  ✅ wp-env development environment"
+    echo "  ✅ Pre-written unit tests for plugin classes"
+    echo
+fi
 echo "🚀 Next Steps:"
 echo "  1. cd $(basename $(pwd))"
-echo "  2. npm run start     # Start development mode"
-echo "  3. npm run build     # Build for production"
+if [ "$include_phpunit_tests" = true ]; then
+    echo "  2. npm run test:php  # Run unit tests"
+    echo "  3. npm run lint:php  # Check coding standards"
+    echo "  4. npm run env:start # Start WordPress environment"
+    echo "  5. npm run start     # Start development mode"
+    echo "  6. npm run build     # Build for production"
+else
+    echo "  2. npm run start     # Start development mode"
+    echo "  3. npm run build     # Build for production"
+fi
 echo
 echo "📚 Documentation:"
 echo "  • README.md - Complete setup guide"
+if [ "$include_phpunit_tests" = true ]; then
+    echo "  • TESTING.md - Testing infrastructure guide"
+fi
 echo "  • agents.md - AI development instructions"

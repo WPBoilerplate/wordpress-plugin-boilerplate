@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<phpunit
+    bootstrap="tests/bootstrap-simple.php"
+    backupGlobals="false"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    processIsolation="false"
+    stopOnFailure="false"
+    testSuiteLoaderFile="tests/phpunit-composer-install.php"
+>
+    <testsuites>
+        <testsuite name="wordpress-plugin-boilerplate">
+            <directory>tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">includes/</directory>
+            <directory suffix=".php">admin/</directory>
+            <directory suffix=".php">public/</directory>
+            <exclude>
+                <directory suffix=".php">tests/</directory>
+                <directory suffix=".php">vendor/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="tests/coverage" lowUpperBound="35" highLowerBound="70"/>
+        <log type="coverage-clover" target="tests/coverage.xml"/>
+    </logging>
+</phpunit>

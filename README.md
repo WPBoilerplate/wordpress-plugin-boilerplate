@@ -71,10 +71,17 @@ php -v
      - `wpb-buddypress-or-buddyboss-dependency` - BuddyPress/BuddyBoss compatibility
      - `wpb-woocommerce-dependency` - WooCommerce integration support
      - And more specialized packages for common WordPress needs
+   - **Optional**: Include comprehensive PHPUnit testing infrastructure:
+     - PHPUnit with WordPress integration and pre-written test cases
+     - PHP CodeSniffer with WordPress Coding Standards (WPCS 3.0)
+     - PHPStan static analysis with WordPress extensions
+     - wp-env development environment configuration
+     - Complete testing workflow with NPM scripts
    - The script will automatically:
      - Create a new plugin with your details
      - Install selected packages via Composer
      - Add integration code to `includes/main.php`
+     - Configure testing infrastructure (if selected)
      - Set up the complete development environment
 
 ### Method 2: Manual Setup
@@ -124,6 +131,115 @@ npm run makepot
 # Development dependencies check
 npm run packages-update
 ```
+
+### Testing & Quality Assurance
+
+The boilerplate includes comprehensive testing infrastructure following WordPress and abilities-api patterns:
+
+#### PHP Testing Commands
+
+```bash
+# Run PHP CodeSniffer (WordPress Coding Standards)
+npm run lint:php
+
+# Auto-fix PHP coding standards issues
+npm run lint:php:fix
+
+# Run PHPStan static analysis
+npm run lint:php:stan
+
+# Run PHPUnit tests
+npm run test:php
+
+# Run PHPUnit tests with coverage report
+npm run test:php:coverage
+```
+
+#### Local Development Environment (wp-env)
+
+```bash
+# Start WordPress development environment
+npm run env:start
+
+# Stop the environment
+npm run env:stop
+
+# Restart the environment
+npm run env:restart
+
+# Clean all containers and volumes
+npm run env:clean
+
+# Reset environment (destroy and recreate)
+npm run env:reset
+
+# Direct wp-env access
+npm run env -- --help
+```
+
+#### JavaScript Testing
+
+```bash
+# Run Jest unit tests
+npm run test:unit
+
+# Run end-to-end tests
+npm run test:e2e
+```
+
+#### Testing Stack
+
+- **PHPUnit**: WordPress unit tests with test database
+- **PHP CodeSniffer**: WordPress Coding Standards enforcement
+- **PHPStan**: Static analysis for type safety and bug detection
+- **wp-env**: Dockerized WordPress development environment
+- **Jest**: JavaScript unit testing framework
+- **Playwright**: End-to-end testing (via @wordpress/scripts)
+
+#### Test Structure
+
+```
+tests/
+├── bootstrap.php              # PHPUnit bootstrap
+├── test-sample.php           # Example test case
+├── wordpress-constants.php   # PHPStan WordPress constants
+└── mu-plugins/              # Must-use plugins for testing
+    └── load-plugin.php      # Auto-activate plugin in tests
+
+bin/
+└── install-wp-tests.sh      # WordPress test suite installer
+
+phpunit.xml.dist             # PHPUnit configuration
+phpstan.neon.dist           # PHPStan configuration
+phpcs.xml.dist              # PHP CodeSniffer rules
+.wp-env.json                # wp-env environment config
+```
+
+#### Running Your First Tests
+
+1. **Set up the test environment**:
+   ```bash
+   # Install dependencies
+   composer install
+   npm install
+
+   # Start wp-env environment
+   npm run env:start
+   ```
+
+2. **Run tests**:
+   ```bash
+   # Run all PHP tests
+   npm run test:php
+
+   # Check code quality
+   npm run lint:php
+   npm run lint:php:stan
+   ```
+
+3. **Access the development site**:
+   - Frontend: http://localhost:8888
+   - Admin: http://localhost:8888/wp-admin (admin/password)
 
 ### Asset Pipeline
 
@@ -620,35 +736,53 @@ The boilerplate includes automated workflows for:
 
 ## 🧪 Testing Framework
 
-### PHP Testing (PHPUnit)
+When you initialize your plugin with `init-plugin.sh`, you'll have the option to include comprehensive testing infrastructure:
+
+### Included Testing Tools (Optional)
+
+- **PHPUnit 9.6+**: WordPress-optimized unit testing
+- **PHP CodeSniffer 3.7+**: WordPress Coding Standards (WPCS 3.0)
+- **PHPStan 1.10+**: Static analysis with WordPress extensions
+- **wp-env**: Docker-based WordPress development environment
+
+### PHP Testing (PHPUnit) - When Selected
 ```bash
-# Install PHPUnit
-composer require --dev phpunit/phpunit
-
-# Run PHP tests
-./vendor/bin/phpunit
-```
-
-### JavaScript Testing (Jest)
-```bash
-# Install Jest preset
-npm install --save-dev @wordpress/jest-preset-default
-
-# Run JavaScript tests
+# Run all tests
 npm run test
+
+# Run specific test types
+npm run test:unit        # Unit tests only
+npm run test:integration # Integration tests
+npm run test:coverage    # With coverage report
+
+# WordPress environment testing
+npm run env:start        # Start test environment
+npm run env:clean        # Clean test environment
+npm run env:stop         # Stop test environment
 ```
 
-### Test Structure
+### Code Quality - When Selected
+```bash
+# Check coding standards
+npm run lint:php
+
+# Fix coding standards
+npm run lint:php:fix
+
+# Static analysis
+npm run analyze
+```
+
+### Test Structure (When Testing Infrastructure is Selected)
 ```
 tests/
-├── php/
-│   ├── test-main.php
-│   └── test-blocks.php
-├── js/
-│   ├── main.test.js
-│   └── blocks.test.js
-└── e2e/
-    └── plugin.test.js
+├── bootstrap-simple.php      # Simple bootstrap for unit tests
+├── bootstrap.php            # Full WordPress bootstrap
+├── Unit/
+│   ├── MainTest.php         # Core plugin functionality tests
+│   └── ActivatorTest.php    # Activation/deactivation tests
+├── Integration/             # WordPress integration tests
+└── _support/               # Test helpers and fixtures
 ```
 
 ## 🔧 Advanced Development
