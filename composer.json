@@ -1,30 +1,30 @@
 {
-    "name": "wpboilerplate/wordpress-plugin-boilerplate",
-    "type": "wordpress-plugin",
-    "license": "GPL-2.0-or-later",
-    "description": "Composer to autoload the condition checking for which this add-on is made",
-    "homepage": "https://github.com/WPBoilerplate/",
-    "minimum-stability": "dev",
-    "require": {
-        "php": ">=7.4"
-    },
-    "keywords": [
-        "wordpress",
-        "plugin"
-    ],
-    "support": {
-        "issues": "https://github.com/wpboilerplate/wordpress-plugin-boilerplate/issues"
-    },
-    "authors": [
-        {
-            "name": "WPBoilerplate"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-        "WordPress_Plugin_Boilerplate\\Includes\\": "includes/",
-        "WordPress_Plugin_Boilerplate\\Admin\\": "admin/",
-        "WordPress_Plugin_Boilerplate\\Public\\": "public/"
-        }
-    }
+	"name": "wpboilerplate/wordpress-plugin-boilerplate",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"description": "Composer to autoload the condition checking for which this add-on is made",
+	"homepage": "https://github.com/WPBoilerplate/",
+	"minimum-stability": "dev",
+	"require": {
+		"php": ">=7.4"
+	},
+	"keywords": [
+		"wordpress",
+		"plugin"
+	],
+	"support": {
+		"issues": "https://github.com/wpboilerplate/wordpress-plugin-boilerplate/issues"
+	},
+	"authors": [
+		{
+			"name": "WPBoilerplate"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"WordPress_Plugin_Boilerplate\\Includes\\": "includes/",
+			"WordPress_Plugin_Boilerplate\\Admin\\": "admin/",
+			"WordPress_Plugin_Boilerplate\\Public\\": "public/"
+		}
+	}
 }
