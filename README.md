@@ -8,7 +8,12 @@ A comprehensive, modern WordPress plugin boilerplate that follows WordPress codi
 
 ## 🚀 Features
 
-- **Modern PHP Development**: PSR-4 autoloading, namespace organization
+- **Modern PHP Development*├── 📁 vendor/                    # Composer dependencies
+├── 📄 composer.json              # Composer configuration (includes Mozart)
+├── 📄 package.json              # npm configuration
+├── 📄 webpack.config.js         # Build configuration
+├── 📄 init-plugin.sh           # Initialization script
+└── 📄 your-plugin.php          # Main plugin file-4 autoloading, namespace organization
 - **WordPress Standards**: Follows WordPress Coding Standards (WPCS)
 - **Build System**: @wordpress/scripts with Webpack, Babel, and SCSS support
 - **Block Development**: Integrated Gutenberg block creation and registration
@@ -142,6 +147,7 @@ The boilerplate integrates with a comprehensive ecosystem of WordPress-specific 
 |---------|---------|------------------|
 | `wpboilerplate/wpb-register-blocks` | Auto-register Gutenberg blocks from `build/blocks/` | ✅ |
 | `wpboilerplate/wpb-updater-checker-github` | GitHub-based plugin auto-updates | ✅ |
+| `coenjacobs/mozart` | PHP dependency scoping and prefixing to prevent conflicts | Manual |
 
 ### Dependency Management Packages
 
@@ -407,6 +413,38 @@ composer require wpboilerplate/wpb-register-blocks
 # GitHub-based plugin updates
 composer require wpboilerplate/wpb-updater-checker-github
 ```
+
+#### Dependency Management & Build Tools
+
+```bash
+# Mozart - PHP dependency scoping and namespacing (already included)
+# composer require coenjacobs/mozart:^0.7  # Already included in base composer.json
+```
+
+**Mozart Integration**: Mozart helps prevent plugin conflicts by automatically scoping and prefixing third-party PHP dependencies. This is essential when multiple plugins use the same dependencies.
+
+✅ **Pre-installed**: Mozart is already included in the base `composer.json` as a core development tool.
+
+**Configuration Example**:
+```json
+{
+  "extra": {
+    "mozart": {
+      "dep_namespace": "WordPress_Plugin_Boilerplate\\Vendor\\",
+      "dep_directory": "/src/dependencies/",
+      "packages": [
+        "vendor/package-name"
+      ]
+    }
+  }
+}
+```
+
+**Usage**:
+- Mozart is already installed - just add configuration to `composer.json`
+- Configure which packages to scope in the `mozart.packages` array
+- Run `vendor/bin/mozart compose` to scope dependencies
+- All specified packages will be prefixed to avoid conflicts
 
 #### Plugin Dependencies
 

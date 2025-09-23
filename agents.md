@@ -194,6 +194,9 @@ npm run makepot
 6. **wpboilerplate/acrossswp-acf-pro-dependency** - Advanced Custom Fields Pro dependency
 7. **wpboilerplate/wpb-view-analytics-dependency** - View analytics tracking
 
+#### Core Development Tools:
+8. **coenjacobs/mozart** - PHP dependency scoping and namespacing to prevent plugin conflicts
+
 #### Interactive Package Selection:
 The `init-plugin.sh` script provides an interactive interface for selecting WPBoilerplate packages during setup:
 - Displays package descriptions and purposes
@@ -208,6 +211,58 @@ The `init-plugin.sh` script provides an interactive interface for selecting WPBo
 3. Auto-generated integration code patterns
 4. Error handling for invalid selections
 5. Clear user feedback and status messages
+
+**NOTE**: Mozart is already included in the base `composer.json` as a core development tool and doesn't need to be added to the interactive package selection process.
+
+### Mozart Package Scoping Integration
+
+#### Purpose & Benefits
+Mozart is a Composer plugin that helps prevent conflicts between WordPress plugins by:
+- **Dependency Scoping**: Automatically prefixes third-party library namespaces
+- **Conflict Prevention**: Prevents version conflicts when multiple plugins use the same libraries
+- **Isolation**: Ensures each plugin uses its own isolated version of dependencies
+- **Professional Development**: Essential for production plugins with external dependencies
+
+#### Configuration in composer.json
+```json
+{
+  "extra": {
+    "mozart": {
+      "dep_namespace": "WordPress_Plugin_Boilerplate\\Vendor\\",
+      "dep_directory": "/src/dependencies/",
+      "classmap_directory": "/classes/dependencies/",
+      "classmap_prefix": "WPBP_",
+      "packages": [
+        "vendor/package-name"
+      ]
+    }
+  }
+}
+```
+
+#### Usage Workflow
+```bash
+# 1. Mozart is already installed in composer.json
+# composer require coenjacobs/mozart:^0.7  # Already included
+
+# 2. Configure Mozart in composer.json (see above)
+
+# 3. Install your dependencies
+composer require vendor/library-name
+
+# 4. Run Mozart to scope dependencies
+vendor/bin/mozart compose
+
+# 5. Use scoped dependencies in code
+use WordPress_Plugin_Boilerplate\Vendor\LibraryName\ClassName;
+```
+
+#### Integration Best Practices
+- **Always scope external libraries**: Prevents conflicts with other plugins
+- **Update mozart configuration**: When adding new dependencies
+- **Version control scoped files**: Include generated files in Git
+- **Test thoroughly**: Ensure scoped dependencies work correctly
+- **Documentation**: Document scoped namespace usage for team members
 
 ### PSR-4 Autoloading Configuration
 ```json
