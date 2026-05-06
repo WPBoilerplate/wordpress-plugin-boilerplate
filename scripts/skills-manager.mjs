@@ -334,9 +334,9 @@ async function main() {
 		console.log();
 
 		const result = spawnSync(
-			'bash',
+			'node',
 			[
-				path.join( __dirname, 'install-agent-skills.sh' ),
+				path.join( __dirname, 'install-agent-skills.mjs' ),
 				...skillNames,
 			],
 			{

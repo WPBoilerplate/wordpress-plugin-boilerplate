@@ -28,7 +28,7 @@
 		"env:clean": "wp-env clean all",
 		"env:reset": "wp-env destroy && wp-env start",
 		"skills": "node scripts/skills-manager.mjs",
-		"skills:install": "bash scripts/install-agent-skills.sh"
+		"skills:install": "node scripts/install-agent-skills.mjs"
 	},
 	"devDependencies": {
 		"@wordpress/env": "latest",
