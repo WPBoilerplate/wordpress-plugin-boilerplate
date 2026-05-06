@@ -49,7 +49,7 @@ define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE', __FILE__ );
  * This action is documented in includes/activator.php
  */
 function wordpress_plugin_boilerplate_activate() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/Activator.php';
 	Includes\Activator::activate();
 }
 
@@ -58,7 +58,7 @@ function wordpress_plugin_boilerplate_activate() {
  * This action is documented in includes/deactivator.php
  */
 function wordpress_plugin_boilerplate_deactivate() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/Deactivator.php';
 	Includes\Deactivator::deactivate();
 }
 
@@ -69,7 +69,7 @@ register_deactivation_hook( __FILE__, 'WordPress_Plugin_Boilerplate\wordpress_pl
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/main.php';
+require plugin_dir_path( __FILE__ ) . 'includes/Main.php';
 
 use WordPress_Plugin_Boilerplate\Includes\Main;
 
