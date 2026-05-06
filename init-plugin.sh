@@ -361,6 +361,20 @@ npm install
 
 echo
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🎓 Agent Skills Setup"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "Would you like to install AI agent skills now? (fetches latest from GitHub)"
+read -p "Install skills? [Y/n]: " install_skills_answer
+install_skills_answer="${install_skills_answer:-Y}"
+
+if [[ "$install_skills_answer" =~ ^[Yy]$ ]]; then
+    node scripts/skills-manager.mjs
+else
+    echo "⏭️  Skipped. Run 'npm run skills' anytime to install skills."
+fi
+
+echo
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "🎉 Plugin Setup Complete!"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo
