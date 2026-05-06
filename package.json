@@ -36,7 +36,7 @@
 		"@wordpress/scripts": "latest",
 		"@wordpress/stylelint-config": "^23.23.0",
 		"copy-webpack-plugin": "latest",
-		"glob": "latest",
+		"glob": "^11.1.0",
 		"mini-css-extract-plugin": "latest",
 		"path": "latest",
 		"webpack-fix-style-only-entries": "latest",
