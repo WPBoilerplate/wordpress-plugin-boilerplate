@@ -26,7 +26,8 @@
 		"env:stop": "wp-env stop",
 		"env:restart": "wp-env stop && wp-env start",
 		"env:clean": "wp-env clean all",
-		"env:reset": "wp-env destroy && wp-env start"
+		"env:reset": "wp-env destroy && wp-env start",
+		"skills:install": "bash scripts/install-agent-skills.sh"
 	},
 	"devDependencies": {
 		"@wordpress/env": "latest",
@@ -35,7 +36,7 @@
 		"@wordpress/scripts": "latest",
 		"@wordpress/stylelint-config": "latest",
 		"copy-webpack-plugin": "latest",
-		"glob": "latest",
+		"glob": "^11.1.0",
 		"mini-css-extract-plugin": "latest",
 		"path": "latest",
 		"webpack-remove-empty-scripts": "latest"

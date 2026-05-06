@@ -63,6 +63,9 @@ contributors.md
 # WP ENV
 /.wp-env.override.json
 
+# Agent Skills (auto-generated – run `npm run skills:install` to refresh)
+/.github/skills/
+
 # Screenshots
 /screenshots/
 
