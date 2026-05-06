@@ -293,22 +293,26 @@ done
 
 # Install skillpack-based skills (one clone/build per unique repo)
 if [ ${#SKILLPACK_SKILLS[@]} -gt 0 ]; then
-    # Group by repo
-    declare -A SKILLPACK_BY_REPO
+    # Collect unique repos (bash 3 compatible — no associative arrays)
+    SKILLPACK_REPOS=()
     for entry in "${SKILLPACK_SKILLS[@]}"; do
         IFS='|' read -ra INFO <<< "$entry"
-        skill_name="${INFO[1]}"
         repo="${INFO[4]}"
-        SKILLPACK_BY_REPO["$repo"]+="$skill_name "
+        already=false
+        for r in "${SKILLPACK_REPOS[@]:-}"; do [ "$r" = "$repo" ] && already=true && break; done
+        $already || SKILLPACK_REPOS+=("$repo")
     done
 
-    for repo in "${!SKILLPACK_BY_REPO[@]}"; do
-        skills_str="${SKILLPACK_BY_REPO[$repo]}"
-        skills_arr=($skills_str)
-        echo "🔧 Using skillpack installer for: ${skills_arr[*]}"
+    for repo in "${SKILLPACK_REPOS[@]}"; do
+        skills_for_repo=()
+        for entry in "${SKILLPACK_SKILLS[@]}"; do
+            IFS='|' read -ra INFO <<< "$entry"
+            [ "${INFO[4]}" = "$repo" ] && skills_for_repo+=("${INFO[1]}")
+        done
+        echo "🔧 Using skillpack installer for: ${skills_for_repo[*]}"
         echo "   (from github: $repo)"
         echo
-        SKILLS_DEST="$REPO_ROOT" bash "$SCRIPT_DIR/install-agent-skills.sh" "${skills_arr[@]}"
+        SKILLS_DEST="$REPO_ROOT" bash "$SCRIPT_DIR/install-agent-skills.sh" "${skills_for_repo[@]}"
     done
 fi
 
