@@ -1,0 +1,10 @@
+{
+	"sources": [
+		{
+			"name": "WordPress Agent Skills",
+			"repo": "WordPress/agent-skills",
+			"skillsPath": "skills",
+			"installer": "skillpack"
+		}
+	]
+}
