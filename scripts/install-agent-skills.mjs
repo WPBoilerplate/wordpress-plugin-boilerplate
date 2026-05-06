@@ -52,35 +52,47 @@ run( 'git', [
 // ─── Build skills with skillpack ──────────────────────────────────────────────
 
 console.log( '==> Building skillpack for VS Code / GitHub Copilot...' );
-run( 'node', [
-	path.join( WORK_DIR, 'shared', 'scripts', 'skillpack-build.mjs' ),
-	`--out=${ path.join( WORK_DIR, 'dist' ) }`,
-	'--clean',
-	'--targets=vscode',
-] );
+run(
+	'node',
+	[
+		path.join( WORK_DIR, 'shared', 'scripts', 'skillpack-build.mjs' ),
+		`--out=${ path.join( WORK_DIR, 'dist' ) }`,
+		'--clean',
+		'--targets=vscode',
+	],
+	{ cwd: WORK_DIR }
+);
 
 // ─── Install skills ───────────────────────────────────────────────────────────
 
 if ( SELECTED_SKILLS.length === 0 ) {
 	console.log( `==> Installing all skills into ${ DEST }/.github/skills/ ...` );
-	run( 'node', [
-		path.join( WORK_DIR, 'shared', 'scripts', 'skillpack-install.mjs' ),
-		`--from=${ path.join( WORK_DIR, 'dist' ) }`,
-		`--dest=${ DEST }`,
-		'--targets=vscode',
-	] );
+	run(
+		'node',
+		[
+			path.join( WORK_DIR, 'shared', 'scripts', 'skillpack-install.mjs' ),
+			`--from=${ path.join( WORK_DIR, 'dist' ) }`,
+			`--dest=${ DEST }`,
+			'--targets=vscode',
+		],
+		{ cwd: WORK_DIR }
+	);
 } else {
 	console.log(
 		`==> Installing selected skills into ${ DEST }/.github/skills/ ...`
 	);
 	const TEMP_DEST = path.join( WORK_DIR, 'temp-dest' );
 
-	run( 'node', [
-		path.join( WORK_DIR, 'shared', 'scripts', 'skillpack-install.mjs' ),
-		`--from=${ path.join( WORK_DIR, 'dist' ) }`,
-		`--dest=${ TEMP_DEST }`,
-		'--targets=vscode',
-	] );
+	run(
+		'node',
+		[
+			path.join( WORK_DIR, 'shared', 'scripts', 'skillpack-install.mjs' ),
+			`--from=${ path.join( WORK_DIR, 'dist' ) }`,
+			`--dest=${ TEMP_DEST }`,
+			'--targets=vscode',
+		],
+		{ cwd: WORK_DIR }
+	);
 
 	const finalSkillsDir = path.join( DEST, '.github', 'skills' );
 	fs.mkdirSync( finalSkillsDir, { recursive: true } );
