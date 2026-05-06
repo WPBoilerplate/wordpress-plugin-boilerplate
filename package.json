@@ -27,10 +27,11 @@
 		"env:restart": "wp-env stop && wp-env start",
 		"env:clean": "wp-env clean all",
 		"env:reset": "wp-env destroy && wp-env start",
-		"skills": "node scripts/skills-manager.mjs",
-		"skills:install": "node scripts/install-agent-skills.mjs"
+		"skills": "wpb-skills",
+		"skills:install": "wpb-skills-install"
 	},
 	"devDependencies": {
+		"wpboilerplate-skills-manager": "latest",
 		"@wordpress/env": "latest",
 		"@wordpress/eslint-plugin": "latest",
 		"@wordpress/prettier-config": "latest",
