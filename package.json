@@ -30,15 +30,14 @@
 	},
 	"devDependencies": {
 		"@wordpress/env": "latest",
-		"@wordpress/eslint-plugin": "^22.17.0",
-		"@wordpress/prettier-config": "^4.31.0",
+		"@wordpress/eslint-plugin": "latest",
+		"@wordpress/prettier-config": "latest",
 		"@wordpress/scripts": "latest",
-		"@wordpress/stylelint-config": "^23.23.0",
+		"@wordpress/stylelint-config": "latest",
 		"copy-webpack-plugin": "latest",
 		"glob": "latest",
 		"mini-css-extract-plugin": "latest",
 		"path": "latest",
-		"webpack-fix-style-only-entries": "latest",
 		"webpack-remove-empty-scripts": "latest"
 	},
 	"dependencies": {
