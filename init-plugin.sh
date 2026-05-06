@@ -135,7 +135,6 @@ if [ "$add_wpboilerplate_deps" = true ]; then
         echo "  - $package"
     done
 fi
-
 echo
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "🧪 PHPUnit Testing Infrastructure Setup"
@@ -296,6 +295,7 @@ if [ "$add_wpboilerplate_deps" = true ] && [ ${#selected_packages[@]} -gt 0 ]; t
 
     echo "✅ Packages added to composer.json"
 fi
+
 
 # Setup Git.
 echo

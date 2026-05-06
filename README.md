@@ -184,6 +184,138 @@ composer require wpboilerplate/wpb-register-blocks
 # (See the package documentation for specific integration patterns)
 ```
 
+## 🎓 WordPress Agent Skills
+
+The boilerplate supports [WordPress Agent Skills](https://github.com/WordPress/agent-skills) — portable instruction bundles that teach AI coding assistants (GitHub Copilot, Claude, Cursor, etc.) how to build WordPress the right way.
+
+Skills are installed to `.github/skills/` where GitHub Copilot and VS Code automatically discover them.
+
+### Commands
+
+| Command | What it does |
+|---------|-------------|
+| `npm run skills` | Interactive manager — lists installed & available skills, lets you add more |
+| `npm run skills:install` | Installs / updates **all** skills from every configured source (non-interactive) |
+
+### Running the interactive manager
+
+```bash
+npm run skills
+```
+
+Each time you run it, the script fetches a fresh skill list from GitHub and shows you what's installed and what isn't:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎓 WordPress Agent Skills Manager
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📦 Source: WordPress Agent Skills (github: WordPress/agent-skills)
+   Fetching available skills...
+
+   ✅ Installed (2):
+      ✅ wp-block-development
+      ✅ wp-plugin-development
+
+   ❌ Not installed (10):
+      [ 1] blueprint
+      [ 2] customize-cloud-agent
+      [ 3] wp-block-themes
+      ...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 Skills available to install:
+
+  [ 1] blueprint                          (WordPress Agent Skills)
+  [ 2] customize-cloud-agent              (WordPress Agent Skills)
+  [ 3] wp-block-themes                    (WordPress Agent Skills)
+  ...
+
+Enter numbers separated by spaces, 'all' to install everything, or press Enter to exit.
+Your selection: 1 3
+```
+
+**Selection options:**
+- `1 3 5` — install specific skills by number
+- `all` — install every available skill
+- Press **Enter** — exit without installing anything
+
+### Installing all skills at once
+
+```bash
+npm run skills:install
+```
+
+Clones the full `WordPress/agent-skills` repository, runs the official skillpack build, and installs everything to `.github/skills/`. Useful for a fresh setup or pulling the latest updates.
+
+### Configuring skill sources
+
+Skill sources are defined in **`skills.config.json`** at the repo root. By default it points to the official WordPress agent-skills repository. Add as many extra sources as you need:
+
+```json
+{
+  "sources": [
+    {
+      "name": "WordPress Agent Skills",
+      "repo": "WordPress/agent-skills",
+      "skillsPath": "skills",
+      "installer": "skillpack"
+    },
+    {
+      "name": "My Team Skills",
+      "repo": "myorg/my-agent-skills",
+      "skillsPath": "skills",
+      "installer": "copy"
+    }
+  ]
+}
+```
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `name` | ✅ | Display name shown in the interactive menu |
+| `repo` | ✅ | GitHub repository in `owner/repo` format |
+| `skillsPath` | ✅ | Path inside the repo where skill subdirectories live |
+| `installer` | ✅ | `"skillpack"` — uses the official build tooling bundled with the repo (only for repos that include `shared/scripts/skillpack-*.mjs`); `"copy"` — downloads skill files directly via the GitHub API, works with any repo |
+
+**When to use each installer:**
+
+- Use **`"skillpack"`** for `WordPress/agent-skills` and any fork of it that bundles the skillpack build scripts. This produces the optimal VS Code–compatible format.
+- Use **`"copy"`** for your own skill repos or any third-party repo that just has a `skills/` directory with `SKILL.md` files. No build tooling required.
+
+### Skill directory structure (for custom sources)
+
+If you're creating your own skill repository, each skill should be a subdirectory under `skillsPath`:
+
+```
+skills/
+├── my-skill-name/
+│   ├── SKILL.md          # Required — instructions for the AI
+│   ├── references/       # Optional — detailed reference docs
+│   └── scripts/          # Optional — helper scripts
+└── another-skill/
+    └── SKILL.md
+```
+
+### Available default skills
+
+Skills are fetched live; the list below reflects the current [WordPress/agent-skills](https://github.com/WordPress/agent-skills) repository:
+
+| Skill | What it teaches |
+|-------|----------------|
+| `wp-plugin-development` | Plugin architecture, hooks, settings API, security |
+| `wp-block-development` | Gutenberg blocks: `block.json`, attributes, rendering, deprecations |
+| `wp-block-themes` | Block themes: `theme.json`, templates, patterns, style variations |
+| `wp-rest-api` | REST API routes, schema, auth, and response shaping |
+| `wp-interactivity-api` | Frontend interactivity with `data-wp-*` directives and stores |
+| `wp-performance` | Profiling, caching, database optimization |
+| `wp-phpstan` | PHPStan static analysis for WordPress projects |
+| `wp-playground` | WordPress Playground for instant local environments |
+| `wp-wpcli-and-ops` | WP-CLI commands, automation, multisite |
+| `blueprint` | WordPress Playground Blueprints |
+| `wordpress-router` | Classifies WordPress repos and routes to correct workflow |
+| `wp-project-triage` | Detects project type, tooling, and versions automatically |
+
 ## 🧱 Block Development
 
 The boilerplate includes seamless integration for creating and managing Gutenberg blocks.

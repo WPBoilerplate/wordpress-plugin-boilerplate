@@ -27,6 +27,7 @@
 		"env:restart": "wp-env stop && wp-env start",
 		"env:clean": "wp-env clean all",
 		"env:reset": "wp-env destroy && wp-env start",
+		"skills": "bash scripts/skills-manager.sh",
 		"skills:install": "bash scripts/install-agent-skills.sh"
 	},
 	"devDependencies": {
