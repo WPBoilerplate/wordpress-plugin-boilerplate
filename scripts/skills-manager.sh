@@ -57,7 +57,7 @@ mkdir -p "$SKILLS_DIR"
 
 ALL_SKILLS=()  # Format: "display_index|skill_name|source_index|installer|repo|skillsPath"
 
-_fetch_script=$(mktemp /tmp/wpb_skills_fetch_XXXXXX.js)
+_fetch_script=$(mktemp /tmp/wpb_skills_fetch_XXXXXX)
 cat > "$_fetch_script" << 'FETCH_EOF'
 const https = require('https');
 const [,, repo, skillsPath] = process.argv;
@@ -94,7 +94,7 @@ async function main() {
 main().catch(e => { process.stderr.write(e.message + '\n'); process.exit(1); });
 FETCH_EOF
 
-_copy_script=$(mktemp /tmp/wpb_skills_copy_XXXXXX.js)
+_copy_script=$(mktemp /tmp/wpb_skills_copy_XXXXXX)
 cat > "$_copy_script" << 'COPY_EOF'
 const https = require('https');
 const fs = require('fs');
