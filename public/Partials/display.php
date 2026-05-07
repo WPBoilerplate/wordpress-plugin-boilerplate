@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
  * @since      0.0.1
  *
  * @package    WordPress_Plugin_Boilerplate
- * @subpackage WordPress_Plugin_Boilerplate/public/partials
+ * @subpackage WordPress_Plugin_Boilerplate/public/Partials
  */
 ?>
 

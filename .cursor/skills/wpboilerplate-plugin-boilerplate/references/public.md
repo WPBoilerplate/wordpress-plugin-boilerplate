@@ -3,7 +3,7 @@
 ## Namespace & directory
 
 All frontend code belongs under `public/` with namespace `WordPress_Plugin_Boilerplate\Public`.
-Frontend template partials go in `public/partials/`.
+Frontend template partials go in `public/Partials/`.
 
 ## Existing class
 
@@ -47,7 +47,7 @@ Source files: `src/js/frontend.js` (stub) and `src/scss/frontend.scss`.
 
 ## Frontend templates
 
-Place PHP template partials in `public/partials/`. Load them with `include` or `get_template_part()`
+Place PHP template partials in `public/Partials/`. Load them with `include` or `get_template_part()`
 equivalent patterns inside your feature class methods.
 
 - Upstream reference: `https://github.com/WPBoilerplate/wordpress-plugin-boilerplate/blob/main/public/Main.php`
