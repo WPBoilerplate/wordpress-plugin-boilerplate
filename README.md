@@ -900,4 +900,4 @@ This project is licensed under the GPL v2 or later - see the [LICENSE.txt](LICEN
 
 **Made with ❤️ by the [WPBoilerplate Team](https://github.com/WPBoilerplate)**
 
-For detailed AI agent instructions, see [agents.md](agents.md)
+For detailed AI agent instructions, see [AGENTS.md](.ai/AGENTS.md)

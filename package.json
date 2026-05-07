@@ -27,7 +27,8 @@
 		"env:restart": "wp-env stop && wp-env start",
 		"env:clean": "wp-env clean all",
 		"env:reset": "wp-env destroy && wp-env start",
-		"skills": "node scripts/skills-manager.mjs"
+		"skillpack": "node scripts/skills-manager.mjs",
+		"skillpack:push": "node scripts/skillpack-push.mjs"
 	},
 	"devDependencies": {
 		"@wordpress/env": "latest",

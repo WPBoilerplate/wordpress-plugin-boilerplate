@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 /**
- * WordPress Plugin Boilerplate — Agent Skills Manager
+ * WordPress Plugin Boilerplate — Skillpack Manager
  *
- * Fetches the latest skills from GitHub on every run and installs them
- * via the official skillpack build/install system.
+ * Fetches upstream skills from GitHub and installs them into .ai/skills/,
+ * the single canonical skillpack location for this project.
+ *
+ * Run `npm run skillpack:push` afterwards to distribute to tool-specific dirs.
  *
  * Sources
  *   • WPBoilerplate/agent-skills  (WPBoilerplate-specific skills)
@@ -17,6 +19,7 @@ import readline from 'node:readline';
 import { spawnSync } from 'node:child_process';
 
 const PLUGIN_ROOT = process.cwd();
+const SKILLPACK_DIR = path.join( PLUGIN_ROOT, '.ai', 'skills' );
 
 const SOURCES = [
 	{ repo: 'WPBoilerplate/agent-skills', label: 'WPBoilerplate' },
@@ -62,6 +65,19 @@ function readDesc( repoDir, skill ) {
 	return '';
 }
 
+function copyDir( src, dest ) {
+	fs.mkdirSync( dest, { recursive: true } );
+	for ( const entry of fs.readdirSync( src, { withFileTypes: true } ) ) {
+		const srcPath  = path.join( src, entry.name );
+		const destPath = path.join( dest, entry.name );
+		if ( entry.isDirectory() ) {
+			copyDir( srcPath, destPath );
+		} else {
+			fs.copyFileSync( srcPath, destPath );
+		}
+	}
+}
+
 function ask( question ) {
 	return new Promise( resolve => {
 		const rl = readline.createInterface( { input: process.stdin, output: process.stdout } );
@@ -72,7 +88,7 @@ function ask( question ) {
 // ── main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
-	banner( '🎓  WordPress Agent Skills Manager' );
+	banner( '🎓  WordPress Skillpack Manager' );
 
 	const WORK_DIR = fs.mkdtempSync( path.join( os.tmpdir(), 'wpb-skills-' ) );
 
@@ -139,52 +155,23 @@ async function main() {
 			process.exit( 0 );
 		}
 
-		banner( '📥  Installing selected skills...' );
+		banner( '📥  Installing to skillpack (.ai/skills/)...' );
 
-		// 4. Group by source repo, then run skillpack build → install
-		const byRepo = new Map();
-		for ( const s of selected ) {
-			if ( ! byRepo.has( s.repoDir ) ) {
-				byRepo.set( s.repoDir, { label: s.label, skills: [] } );
+		// 4. Copy each selected skill into .ai/skills/
+		for ( const { name, label, repoDir } of selected ) {
+			const src  = path.join( repoDir, 'skills', name );
+			const dest = path.join( SKILLPACK_DIR, name );
+
+			console.log( `   [${ label }] ${ name } → .ai/skills/${ name }` );
+
+			if ( fs.existsSync( dest ) ) {
+				fs.rmSync( dest, { recursive: true, force: true } );
 			}
-			byRepo.get( s.repoDir ).skills.push( s.name );
+			copyDir( src, dest );
 		}
 
-		for ( const [ repoDir, { label, skills } ] of byRepo ) {
-			console.log( `\n🔧  Building from ${ label }: ${ skills.join( ', ' ) }` );
-
-			// Build
-			const build = spawnSync( 'node', [
-				'shared/scripts/skillpack-build.mjs',
-				`--skills=${ skills.join( ',' ) }`,
-				'--targets=vscode,codex,claude,cursor',
-				'--clean',
-			], { cwd: repoDir, stdio: 'inherit' } );
-
-			if ( build.status !== 0 ) {
-				console.error( `❌  Skillpack build failed for ${ label }` );
-				continue;
-			}
-
-			// Install
-			const install = spawnSync( 'node', [
-				'shared/scripts/skillpack-install.mjs',
-				`--dest=${ PLUGIN_ROOT }`,
-				'--targets=vscode,codex,claude,cursor',
-				`--skills=${ skills.join( ',' ) }`,
-			], { cwd: repoDir, stdio: 'inherit' } );
-
-			if ( install.status !== 0 ) {
-				console.error( `❌  Skillpack install failed for ${ label }` );
-				continue;
-			}
-		}
-
-		console.log( '\n✅  Skills installed to:' );
-		console.log( '   •  .github/skills/  (GitHub Copilot / VS Code)' );
-		console.log( '   •  .codex/skills/   (GitHub Copilot coding agent)' );
-		console.log( '   •  .claude/skills/  (Claude)' );
-		console.log( '   •  .cursor/skills/  (Cursor)\n' );
+		console.log( `\n✅  ${ selected.length } skill(s) installed to .ai/skills/` );
+		console.log( '   Run  npm run skillpack:push  to distribute to tool directories.\n' );
 
 	} finally {
 		fs.rmSync( WORK_DIR, { recursive: true, force: true } );
