@@ -27,5 +27,15 @@
 			"WordPress_Plugin_Boilerplate\\Admin\\": "admin/",
 			"WordPress_Plugin_Boilerplate\\Public\\": "public/"
 		}
+	},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "*",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.2",
+		"phpunit/phpunit": "^13.2@dev"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }

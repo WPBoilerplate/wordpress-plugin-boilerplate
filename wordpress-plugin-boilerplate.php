@@ -24,6 +24,8 @@ namespace WordPress_Plugin_Boilerplate;
  * Plugin URI:        https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * Description:       WordPress Plugin Boilerplate by WPBoilerplate
  * Version:           0.0.1
+ * Requires at least: 6.9
+ * Requires PHP:	  8.0
  * Author:            WPBoilerplate
  * Author URI:        https://github.com/WPBoilerplate/wordpress-plugin-boilerplate
  * License:           GPL-2.0+
