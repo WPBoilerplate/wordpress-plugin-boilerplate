@@ -869,6 +869,72 @@ Explore the complete ecosystem:
 - 👥 **BuddyPress Integration**: [WPBoilerplate/wpb-buddypress-or-buddyboss-dependency](https://github.com/WPBoilerplate/wpb-buddypress-or-buddyboss-dependency)
 - 🛒 **WooCommerce Integration**: [WPBoilerplate/wpb-woocommerce-dependency](https://github.com/WPBoilerplate/wpb-woocommerce-dependency)
 
+## ✅ Standards & AI Agent Configuration
+
+This boilerplate ships with two companion files that define quality standards and teach AI coding assistants how to build WordPress plugins professionally.
+
+### AGENTS.md — What Standards to Follow
+
+`AGENTS.md` is an agency-customizable configuration file that defines the rules every developer (human or AI) must follow in this project.
+
+| Requirement | Status |
+|---|---|
+| PHP 7.4 minimum | ✅ |
+| WordPress 6.9 minimum | ✅ |
+| Agency naming prefix | ✅ |
+| Coding standards (WPCS-strict, PHPStan level 8) | ✅ |
+| Security (nonces, capabilities, sanitization, escaping, SQL safety, file uploads) | ✅ |
+| AI Engineering Rules | ✅ |
+| 12-step workflow process | ✅ |
+| WordPress Rules | ✅ |
+| WooCommerce Rules | ✅ |
+| Testing Rules | ✅ |
+| Submodule Rules | ✅ |
+| Before Commit Checklist | ✅ |
+
+**How to customize for your agency**: Edit `AGENTS.md` to set your own PHP/WordPress minimum versions, naming prefix, PHPStan level, security rules, and workflow steps. AI agents (Claude, Cursor, Copilot, etc.) read this file automatically and enforce your standards on every code generation request.
+
+### SKILL.md — How to Implement Those Standards
+
+The `wp-plugin-development` agent skill (installed via `npm run skills`) provides a complete step-by-step procedure for AI agents to build plugins that conform to `AGENTS.md`.
+
+| Skill Section | Status |
+|---|---|
+| Clear when-to-use section | ✅ |
+| Required inputs | ✅ |
+| Complete 12-step procedure | ✅ |
+| Pre-ship checklist | ✅ |
+| Verification steps | ✅ |
+| Failure modes & debugging | ✅ |
+| Escalation paths | ✅ |
+| References to architecture & best practices | ✅ |
+
+### Alignment Between Files
+
+```
+AGENTS.md                    SKILL.md (wp-plugin-development)
+─────────────────────        ──────────────────────────────────
+Defines WHAT standards  →    Shows HOW to implement them
+Agency-customizable     →    Step-by-step procedure for AI agents
+Rules & constraints     →    Workflow & verification steps
+```
+
+Both files reference each other with a clean separation of concerns: `AGENTS.md` owns the rules, `SKILL.md` owns the execution.
+
+### What This Enables
+
+| Stakeholder | Benefit |
+|---|---|
+| **Agencies** | Customize `AGENTS.md` once — all AI tools inherit your standards |
+| **Developers** | Follow `SKILL.md` for a proven, repeatable build process |
+| **AI agents** | Claude, Cursor, Copilot read both files to enforce quality automatically |
+| **CI/CD** | Validate against `AGENTS.md` rules in every pipeline run |
+| **New team members** | Clear documentation from day one |
+
+> Run `npm run skills` to install or update the `wp-plugin-development` skill and all other WordPress agent skills.
+
+---
+
 ## 🤝 Contributing
 
 1. **Fork the repository**
