@@ -43,6 +43,17 @@ phpstan_level: 8
 eslint_enabled: true
 ```
 
+## Package Strategy
+
+```yaml
+prefer_wordpress_packages: true
+validation_script: "npm run validate-packages"
+package_hierarchy:
+  tier_1: "@wordpress/* packages (official, always first)"
+  tier_2: "npm packages (lodash, date-fns, etc.)"
+  tier_3: "external frameworks (avoid duplicating React, Vue, etc.)"
+```
+
 ## Before Commit Checklist
 
 - [ ] PHPCS pass
@@ -52,6 +63,7 @@ eslint_enabled: true
 - [ ] Capabilities checked
 - [ ] Input sanitized, output escaped
 - [ ] No deprecated functions
+- [ ] Package validation pass (npm run validate-packages)
 
 ---
 

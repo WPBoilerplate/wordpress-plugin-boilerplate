@@ -24,6 +24,8 @@ A comprehensive, modern WordPress plugin boilerplate that follows WordPress codi
 
 ## 📋 Requirements
 
+> Check current WordPress version adoption and usage statistics: [wordpress.org/about/stats](https://wordpress.org/about/stats/)
+
 - **WordPress**: 4.9.1 or higher
 - **PHP**: 7.4 or higher (8.0+ recommended)
   - ⚠️ **Critical**: PHP 7.4 is the **minimum required version** enforced by `composer.json`
