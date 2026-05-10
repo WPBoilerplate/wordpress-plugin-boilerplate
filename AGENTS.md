@@ -1,3 +1,60 @@
+---
+name: "WordPress Plugin Development"
+description: "Agency standards for professional WordPress plugin development"
+version: "1.0.0"
+---
+
+# Agency Standards
+
+## Environment
+
+```yaml
+php_min_version: "7.4"
+wordpress_min_version: "6.9"
+node_version: "18.0"
+npm_version: "9.0"
+composer_version: "2.0"
+```
+
+## Plugin Configuration
+
+```yaml
+naming_prefix: "agency_"
+coding_standard: "wpcs-strict"
+multisite_support: true
+```
+
+## Security Requirements
+
+```yaml
+enforce_nonces: true
+enforce_capabilities: true
+sanitize_input: true
+escape_output: true
+sql_prepared_statements: true
+file_upload_validation: true
+```
+
+## Code Quality
+
+```yaml
+phpcs_enabled: true
+phpstan_level: 8
+eslint_enabled: true
+```
+
+## Before Commit Checklist
+
+- [ ] PHPCS pass
+- [ ] PHPStan pass
+- [ ] All functions prefixed with "agency_"
+- [ ] Nonces on all forms/AJAX
+- [ ] Capabilities checked
+- [ ] Input sanitized, output escaped
+- [ ] No deprecated functions
+
+---
+
 # AI Engineering Rules
 
 ## Core Rules
@@ -58,11 +115,13 @@ Feature is NOT complete without:
 - Security review
 - Unit tests
 
+---
+
 # Submodule Rules
 
 Never modify files inside:
 
-.ai/tools/
+`.agents/tools/`
 
 unless explicitly requested.
 
