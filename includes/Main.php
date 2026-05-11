@@ -239,8 +239,8 @@ final class Main {
 		 */
 		$plugin_path = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
 
-		if ( file_exists( $plugin_path . 'vendor/autoload.php' ) ) {
-			require_once $plugin_path . 'vendor/autoload.php';
+		if ( file_exists( $plugin_path . 'vendor/autoload_packages.php' ) ) {
+			require_once $plugin_path . 'vendor/autoload_packages.php';
 		}
 
 		/**

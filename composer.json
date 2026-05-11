@@ -7,7 +7,8 @@
 	"minimum-stability": "dev",
 	"require": {
 		"php": ">=7.4",
-		"coenjacobs/mozart": "^0.7"
+		"coenjacobs/mozart": "^0.7",
+		"automattic/jetpack-autoloader": "^3.0"
 	},
 	"keywords": [
 		"wordpress",
@@ -35,7 +36,8 @@
 	},
 	"config": {
 		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"automattic/jetpack-autoloader": true
 		}
 	}
 }

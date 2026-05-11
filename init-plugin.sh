@@ -89,6 +89,7 @@ wpb_packages=(
     "wpboilerplate/wpb-woocommerce-dependency|WooCommerce integration|For WooCommerce compatibility"
     "wpboilerplate/acrossswp-acf-pro-dependency|Advanced Custom Fields Pro|For ACF Pro integration"
     "wpboilerplate/wpb-view-analytics-dependency|View analytics tracking|For usage analytics"
+    "wpboilerplate/wpb-access-control|Role & capability-based access control|For managing user permissions"
 )
 
 selected_packages=()
@@ -98,7 +99,7 @@ if [ "$add_wpboilerplate_deps" = true ]; then
     echo "📦 Available WPBoilerplate Packages:"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-    for i in {0..6}; do
+    for i in {0..7}; do
         IFS='|' read -ra PACKAGE_INFO <<< "${wpb_packages[$i]}"
         printf "  [%d] %-45s - %s\n" "$((i+1))" "${PACKAGE_INFO[0]}" "${PACKAGE_INFO[1]}"
         printf "      %s\n" "${PACKAGE_INFO[2]}"
@@ -111,14 +112,14 @@ if [ "$add_wpboilerplate_deps" = true ]; then
     read package_selection
 
     if [ "$package_selection" = "all" ]; then
-        for i in {0..6}; do
+        for i in {0..7}; do
             IFS='|' read -ra PACKAGE_INFO <<< "${wpb_packages[$i]}"
             selected_packages+=("${PACKAGE_INFO[0]}")
         done
         echo "✅ Selected all packages"
     else
         for num in $package_selection; do
-            if [[ $num =~ ^[1-7]$ ]]; then
+            if [[ $num =~ ^[1-8]$ ]]; then
                 array_index=$((num-1))
                 IFS='|' read -ra PACKAGE_INFO <<< "${wpb_packages[$array_index]}"
                 selected_packages+=("${PACKAGE_INFO[0]}")
@@ -207,6 +208,7 @@ git grep -lz "wordpress-plugin-boilerplate" | xargs -0 sed -i '' -e "s/wordpress
 git grep -lz "wordpress_plugin_boilerplate" | xargs -0 sed -i '' -e "s/wordpress_plugin_boilerplate/$prefix/g"
 git grep -lz "WORDPRESS_PLUGIN_BOILERPLATE" | xargs -0 sed -i '' -e "s/WORDPRESS_PLUGIN_BOILERPLATE/$define/g"
 git grep -lz "WordPress_Plugin_Boilerplate" | xargs -0 sed -i '' -e "s/WordPress_Plugin_Boilerplate/$class/g"
+git grep -lz "vendor/autoload\.php" | xargs -0 sed -i '' -e "s|vendor/autoload\.php|vendor/autoload_packages.php|g"
 
 # Clean slate.
 rm -rf .git
@@ -307,8 +309,9 @@ git remote add origin "git@github.com:$org_lower/$repo.git"
 # Install dependencies.
 echo
 echo "📥 Installing dependencies..."
-echo 'Installing composer dependencies..'
+echo 'Installing composer dependencies (includes Jetpack autoloader)..'
 composer install
+echo 'Autoloader: vendor/autoload_packages.php (Jetpack package-aware autoloader)'
 
 # Add integration code for selected packages
 if [ "$add_wpboilerplate_deps" = true ] && [ ${#selected_packages[@]} -gt 0 ]; then
@@ -340,6 +343,9 @@ if [ "$add_wpboilerplate_deps" = true ] && [ ${#selected_packages[@]} -gt 0 ]; t
                 ;;
             "wpboilerplate/wpb-view-analytics-dependency")
                 integration_code+="\n\t\t/**\n\t\t * View analytics tracking\n\t\t */\n\t\tif ( class_exists( 'WPBoilerplate_View_Analytics_Dependency' ) ) {\n\t\t\tnew WPBoilerplate_View_Analytics_Dependency( \$this->get_plugin_name(), ${define}_PLUGIN_FILE );\n\t\t}\n"
+                ;;
+            "wpboilerplate/wpb-access-control")
+                integration_code+="\n\t\t/**\n\t\t * Role & capability-based access control\n\t\t */\n\t\tif ( class_exists( 'WPBoilerplate\\\\AccessControl\\\\AccessControl' ) ) {\n\t\t\tnew \\WPBoilerplate\\AccessControl\\AccessControl( \$this->get_plugin_name() );\n\t\t}\n"
                 ;;
         esac
     done
