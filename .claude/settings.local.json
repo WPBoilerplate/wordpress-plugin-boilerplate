@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(uv tool *)",
+      "Bash(specify --help)",
+      "Bash(specify integration *)",
+      "Bash(specify workflow *)"
+    ]
+  }
+}

@@ -871,6 +871,187 @@ Explore the complete ecosystem:
 - 👥 **BuddyPress Integration**: [WPBoilerplate/wpb-buddypress-or-buddyboss-dependency](https://github.com/WPBoilerplate/wpb-buddypress-or-buddyboss-dependency)
 - 🛒 **WooCommerce Integration**: [WPBoilerplate/wpb-woocommerce-dependency](https://github.com/WPBoilerplate/wpb-woocommerce-dependency)
 
+## 🧠 Specify — Spec-Driven Development & Project Memory
+
+[Specify (spec-kit)](https://github.com/github/spec-kit) is a CLI tool that brings **spec-driven development** to AI coding agents. It manages your project memory, generates feature specs, plans, and tasks, and runs full development workflows across any AI agent (Claude, Copilot, Cursor, Codex, Gemini, and more).
+
+### Installation (one time, global)
+
+```bash
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@v0.8.7
+```
+
+Verify the install:
+
+```bash
+specify --version
+```
+
+### What Specify Adds to This Boilerplate
+
+After `specify init`, the following structure is added automatically:
+
+```
+.specify/
+├── memory/                  # Project memory (see below)
+│   ├── CONSTITUTION.md      # Quick-reference for all team standards
+│   ├── DECISIONS.md         # Architectural decisions + rationale
+│   ├── GOTCHAS.md           # Lessons learned, mistakes to avoid
+│   └── README.md            # How to use the memory system
+├── templates/               # Spec, plan, tasks, checklist templates
+├── extensions/              # Git automation commands
+├── integrations/            # AI agent integration configs
+├── scripts/                 # Setup and automation scripts
+└── workflows/               # Full SDD automation workflows
+
+.agents/skills/              # Agent skills installed per integration
+```
+
+### Project Memory System
+
+The `.specify/memory/` folder is the **institutional knowledge base** for the plugin. AI agents read these files automatically before writing code.
+
+| File | Purpose | When to Update |
+|---|---|---|
+| `CONSTITUTION.md` | Quick-reference for all standards (mirrors AGENTS.md) | When standards change |
+| `DECISIONS.md` | Why we made major architectural choices | After any significant decision |
+| `GOTCHAS.md` | Problems we hit and how to fix them | After discovering an issue |
+| `README.md` | How to use the memory system | Rarely |
+
+**How memory flows to AI agents:**
+
+```
+AGENTS.md  ──→  CONSTITUTION.md  ──→  AI agent reads before coding
+                DECISIONS.md     ──→  AI avoids repeating past debates
+                GOTCHAS.md       ──→  AI avoids known pitfalls
+```
+
+**Updating memory:**
+
+```bash
+# After changing a standard in AGENTS.md, sync the quick-reference:
+# Edit .specify/memory/CONSTITUTION.md to match
+
+# After making a major architecture decision:
+# Add an entry to .specify/memory/DECISIONS.md
+
+# After hitting a bug or unexpected behaviour:
+# Add an entry to .specify/memory/GOTCHAS.md
+```
+
+> AGENTS.md is always the **single source of truth**. Memory files reference it — never replace it.
+
+### Commands
+
+#### Core Commands
+
+```bash
+# Show all available commands
+specify --help
+
+# Check that all required tools are installed
+specify check
+
+# Show version and system info
+specify version
+```
+
+#### Integration Management
+
+```bash
+# List all available AI agent integrations + install status
+specify integration list
+
+# Install an integration (e.g. Claude Code)
+specify integration install claude
+
+# Set the default integration
+specify integration use claude
+
+# Switch from one integration to another
+specify integration switch claude
+
+# Upgrade an integration to the latest version
+specify integration upgrade claude
+```
+
+#### Workflow Commands
+
+```bash
+# List installed workflows
+specify workflow list
+
+# Run the full Spec-Driven Development cycle
+# (specify → plan → tasks → implement with review gates)
+specify workflow run speckit
+
+# Check status of a running workflow
+specify workflow status
+
+# Resume a paused or failed workflow
+specify workflow resume
+```
+
+#### Extension Commands
+
+```bash
+# Manage spec-kit extensions (e.g. git automation)
+specify extension list
+specify extension install git
+```
+
+#### Self Management
+
+```bash
+# Check for CLI updates (read-only)
+specify self check
+```
+
+### Full SDD Workflow
+
+The `speckit` workflow runs the complete spec-driven cycle with human review gates at each step:
+
+```
+specify workflow run speckit
+        │
+        ▼
+  1. specify     ← AI generates a feature spec from your description
+        │
+  [Review gate] ← You approve or reject the spec
+        │
+        ▼
+  2. plan        ← AI creates an implementation plan
+        │
+  [Review gate] ← You approve or reject the plan
+        │
+        ▼
+  3. tasks       ← AI breaks the plan into discrete tasks
+        │
+        ▼
+  4. implement   ← AI implements each task
+```
+
+### Supported AI Agent Integrations
+
+| Integration | Type | Multi-install |
+|---|---|---|
+| `claude` | Claude Code (CLI) | Yes |
+| `copilot` | GitHub Copilot (IDE) | No |
+| `cursor-agent` | Cursor (IDE) | Yes |
+| `codex` | Codex CLI | Yes |
+| `gemini` | Gemini CLI | Yes |
+| `windsurf` | Windsurf (IDE) | Yes |
+
+Install multiple integrations side-by-side if your team uses different tools:
+
+```bash
+specify integration install claude
+specify integration install cursor-agent
+specify integration use claude   # set default
+```
+
+---
+
 ## ✅ Standards & AI Agent Configuration
 
 This boilerplate ships with two companion files that define quality standards and teach AI coding assistants how to build WordPress plugins professionally.
