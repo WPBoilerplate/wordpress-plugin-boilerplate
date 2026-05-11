@@ -1,6 +1,6 @@
 ---
-name: "WordPress Plugin Development"
-description: "Agency standards for professional WordPress plugin development"
+name: "WordPress Plugin Boilerplate"
+description: "Agency standards for professional WordPress Plugin Boilerplate"
 version: "1.0.0"
 ---
 
