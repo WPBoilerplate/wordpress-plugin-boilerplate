@@ -19,7 +19,7 @@ composer_version: "2.0"
 ## Plugin Configuration
 
 ```yaml
-naming_prefix: "agency_"
+naming_prefix: "wordpress_plugin_boilerplate_"
 coding_standard: "wpcs-strict"
 multisite_support: true
 ```
@@ -58,7 +58,7 @@ package_hierarchy:
 
 - [ ] PHPCS pass
 - [ ] PHPStan pass
-- [ ] All functions prefixed with "agency_"
+- [ ] All functions prefixed with "wordpress_plugin_boilerplate_"
 - [ ] Nonces on all forms/AJAX
 - [ ] Capabilities checked
 - [ ] Input sanitized, output escaped
