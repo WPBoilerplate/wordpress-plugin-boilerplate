@@ -1,797 +1,552 @@
-# WordPress Plugin Boilerplate
+# Spec-Driven Development with Spec Kit
 
-A comprehensive, modern WordPress plugin boilerplate that follows WordPress coding standards and incorporates the latest development tools and best practices.
+This section explains how to set up and use Spec Kit for specification-driven development and project memory management in your plugin.
 
-[![WordPress](https://img.shields.io/badge/WordPress-6.9%2B-blue.svg)](https://wordpress.org)
-[![PHP](https://img.shields.io/badge/PHP-7.4%2B-purple.svg)](https://php.net)
-[![License](https://img.shields.io/badge/License-GPL%20v2%2B-red.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
+## 📋 What is Spec Kit?
 
-## 🚀 Features
+Spec Kit is a toolkit that helps you build WordPress plugins using **Specification-Driven Development (SDD)**. Instead of writing code and documentation later, you write clear specifications first, and then use AI agents (like Claude Code) to implement from those specifications.
 
-- **Modern PHP Development**: PHP 7.4+ autoloading, namespace organization
-- **WordPress Standards**: Follows WordPress Coding Standards (WPCS)
-- **Build System**: @wordpress/scripts with Webpack, Babel, and SCSS support
-- **Local Environment**: @wordpress/env for instant local WordPress environments
-- **Block Development**: Integrated Gutenberg block creation and registration
-- **Automated Deployment**: GitHub Actions for WordPress.org deployment
-- **Internationalization**: Built-in i18n support
-- **Composer Integration**: Dependency management with custom WPBoilerplate packages
-- **Security**: Built-in security best practices and sanitization
+**Key Benefits:**
+- 📝 Clear specifications before coding
+- 🤖 AI-assisted implementation
+- 💾 Project memory and institutional knowledge
+- 👥 Better team collaboration
+- 🎯 Reduced scope creep
+- 📚 Living documentation
 
-## 📋 Requirements
+## 🚀 Quick Start
 
-> Check current WordPress version adoption and usage statistics: [wordpress.org/about/stats](https://wordpress.org/about/stats/)
+### Prerequisites
 
-- **WordPress**: 6.9 or higher
-- **PHP**: 7.4 or higher (8.0+ recommended)
-  - ⚠️ **Critical**: PHP 7.4 is the **minimum required version** enforced by `composer.json`
-  - 🚀 **Recommended**: PHP 8.0+ for better performance and modern language features
-  - 🔒 **Enforcement**: Composer will prevent installation on older PHP versions
-- **Node.js**: 18.0 or higher
-- **Composer**: 2.0 or higher
+- **uv** package manager (or pipx)
+- **Claude Code** (or other AI coding agent)
+- Python 3.7+
 
-### 🔍 PHP Version Verification
+### Installation
+
+#### 1. Install Spec Kit CLI
 
 ```bash
-php -v
-# Should show PHP 7.4.0 or higher
+# Using uv (recommended)
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@v0.8.7
+
+# Or using pipx
+pip install pipx
+pipx install specify-cli --from git+https://github.com/github/spec-kit.git@v0.8.7
 ```
 
-**Why PHP 7.4+?**
-- ✅ Arrow functions, typed properties, null coalescing assignment
-- ✅ Significant performance improvements over PHP 7.3
-- ✅ Required by modern WordPress development tools and packages
+#### 2. Initialize Spec Kit in Your Plugin
 
-## 🛠️ Quick Start
-
-### Method 1: Using the Initialization Script (Recommended)
-
-1. **Clone the boilerplate**:
-   ```bash
-   git clone https://github.com/WPBoilerplate/wordpress-plugin-boilerplate.git
-   cd wordpress-plugin-boilerplate
-   ```
-
-2. **Run the initialization script**:
-   ```bash
-   ./init-plugin.sh
-   ```
-
-3. **Follow the interactive prompts**:
-   - Enter your plugin name (e.g., "My Awesome Plugin")
-   - Enter your GitHub organization name (e.g., "MyCompany")
-   - Optionally select WPBoilerplate Composer packages
-   - The script will install dependencies, generate integration code, and offer to install agent skills
-
-### Method 2: Manual Setup
+Navigate to your plugin root directory:
 
 ```bash
-git clone https://github.com/WPBoilerplate/wordpress-plugin-boilerplate.git my-plugin-name
-cd my-plugin-name
-composer install
-npm install
-npm run build
+cd your-plugin-directory
+
+# Initialize Spec Kit
+specify init --here --integration claude-code
 ```
 
-## 🏗️ Build System (@wordpress/scripts)
+When prompted:
+- **Which agent?** → Select `claude-code`
+- **Continue with setup?** → Select `yes`
 
-The plugin uses WordPress's official build tools for modern development workflows.
-
-### Build & Assets
+#### 3. Verify Installation
 
 ```bash
-# Development build with hot reloading
-npm run start
+# Check that .specify folder was created
+ls -la .specify/
 
-# Production build (optimized & minified)
-npm run build
-
-# Create a distributable plugin ZIP
-npm run plugin-zip
+# You should see:
+# .specify/
+# ├── memory/
+# │   └── constitution.md
+# ├── scripts/
+# ├── templates/
+# ├── .specifyrc.json
+# └── ...
 ```
+
+#### 4. Commit to Git
+
+```bash
+git add .specify/
+git commit -m "chore: add spec kit v0.8.7 infrastructure"
+git push
+```
+
+---
+
+## 📁 Project Memory Setup
+
+Project memory stores team standards, decisions, and lessons learned. This helps:
+- New developers understand your practices
+- Claude Code suggest code aligned with your standards
+- Team remember why decisions were made
+- Prevent repeating mistakes
+
+### Adding Memory Files
+
+Ask Claude Code to create memory files:
+
+**Prompt for Claude Code:**
+```
+Please create project memory files in .specify/memory/ with:
+1. CONSTITUTION.md - Quick reference for team standards
+2. DECISIONS.md - Record of architectural decisions
+3. GOTCHAS.md - Lessons learned
+4. README.md - Explanation of memory files
+
+The content should reference AGENTS.md as source of truth.
+Commit all files with message "chore: setup project memory infrastructure"
+```
+
+Or manually create the files:
+
+#### `.specify/memory/CONSTITUTION.md`
+
+```markdown
+# Constitution
+
+All standards, rules, and requirements are defined in AGENTS.md (source of truth).
+
+## Quick Reference (See AGENTS.md for details)
+
+### Environment
+- PHP: 7.4+
+- WordPress: 6.9+
+- Node: 18.0+
+- npm: 9.0+
+- Composer: 2.0+
+
+### Standards
+- Naming prefix: `agency_`
+- Coding: WPCS strict
+- Analysis: PHPStan level 8
+- Linting: ESLint
+
+### Security (Non-negotiable)
+- Nonces on all forms/AJAX
+- Capability checks on admin actions
+- Sanitize input at entry
+- Escape output at display
+- Use $wpdb->prepare() for SQL
+- File upload validation required
 
 ### Code Quality
+- PHPCS must pass
+- PHPStan level 8 must pass
+- ESLint must pass
+- Unit tests required
 
-```bash
-# Format code (Prettier via @wordpress/prettier-config)
-npm run format
-
-# Lint JavaScript
-npm run lint:js
-
-# Lint CSS/SCSS
-npm run lint:css
-
-# Check for outdated @wordpress/* packages
-npm run packages-update
-
-# Validate npm package usage against WordPress strategy
-npm run validate-packages
+See AGENTS.md for complete specification.
 ```
 
-### Local Environment (@wordpress/env)
+#### `.specify/memory/DECISIONS.md`
 
-```bash
-# Start the local WordPress environment
-npm run env:start
+```markdown
+# Decisions Record
 
-# Stop the environment
-npm run env:stop
+This document records all major decisions made during plugin development.
 
-# Restart (stop + start)
-npm run env:restart
+## Decision 001: PHP 7.4 Minimum
 
-# Clean all environment data (posts, settings, etc.)
-npm run env:clean
+**Date**: 2026-05-10
+**Status**: ✅ Locked
+**Decision**: Use PHP 7.4 as minimum version
 
-# Destroy and rebuild from scratch
-npm run env:reset
+**Rationale**: Broader hosting compatibility, modern features available
+
+**Impact**: Cannot use PHP 8.0+ syntax
+
+---
+
+[Add new decisions as you make them]
 ```
 
-### Agent Skills
+#### `.specify/memory/GOTCHAS.md`
 
-```bash
-# Install or update WordPress agent skills interactively
-npm run skillpack
+```markdown
+# Gotchas & Lessons Learned
 
-# Push skills to the remote agent-skills repository
-npm run skillpack:push
+This document captures problems encountered so we can prevent them in the future.
+
+## Template
+
+### Gotcha: [Short Name]
+
+**Discovered**: Date
+**Severity**: Critical/High/Medium/Low
+**Status**: Resolved/Monitoring
+
+**The Problem**: What broke?
+
+**The Solution**: How we fixed it?
+
+**Prevention**: How to avoid next time?
+
+---
+
+[Add gotchas as you work]
 ```
 
-### Asset Pipeline
+#### `.specify/memory/README.md`
 
-- **SCSS → CSS**: Automatic compilation with autoprefixing and minification
-- **Modern JavaScript**: Babel transpilation for browser compatibility
-- **Hot Reload**: Live reloading during development with `npm run start`
-- **Source Maps**: Available in development mode for debugging
+```markdown
+# Project Memory
 
-## 🏗️ Project Structure
+This folder contains institutional knowledge for the plugin.
 
-```
-wordpress-plugin-boilerplate/
-├── 📁 .github/                    # GitHub Actions, agents & prompts
-│   ├── workflows/
-│   │   ├── build-zip.yml         # Automated ZIP creation
-│   │   └── wordpress-plugin-deploy.yml  # WP.org deployment
-│   ├── agents/                   # Speckit agent files
-│   └── copilot-instructions.md   # Copilot integration
-├── 📁 .specify/                   # Specify project memory & workflows
-│   └── memory/                   # CONSTITUTION, DECISIONS, GOTCHAS
-├── 📁 .agents/skills/             # Agent skill files
-├── 📁 .wordpress-org/            # WordPress.org assets (banners, icons)
-├── 📁 admin/                     # Admin functionality
-│   ├── Main.php                 # Admin main class
-│   └── partials/               # Admin templates
-├── 📁 build/                     # Compiled assets (auto-generated)
-├── 📁 includes/                  # Core classes
-│   ├── main.php               # Main plugin class
-│   ├── loader.php             # Hook management
-│   ├── activator.php          # Activation logic
-│   ├── deactivator.php        # Deactivation logic
-│   ├── i18n.php               # Internationalization
-│   └── Autoloader.php         # PSR-4 autoloader
-├── 📁 languages/                 # Translation files
-├── 📁 public/                    # Public-facing code
-├── 📁 src/                       # Source assets (js, scss, media)
-├── 📁 vendor/                    # Composer dependencies
-├── 📄 AGENTS.md                  # Agency standards (source of truth)
-├── 📄 composer.json              # Composer configuration
-├── 📄 package.json               # npm configuration
-├── 📄 webpack.config.js          # Build configuration
-├── 📄 init-plugin.sh             # Initialization script
-└── 📄 your-plugin.php            # Main plugin file
-```
+## Files
 
-## 🔧 Architecture & Patterns
+- **CONSTITUTION.md** - Quick reference for team standards
+- **DECISIONS.md** - Record of architectural decisions
+- **GOTCHAS.md** - Lessons learned from problems
 
-### PSR-4 Autoloading
-```json
-{
-  "autoload": {
-    "psr-4": {
-      "WordPress_Plugin_Boilerplate\\Includes\\": "includes/",
-      "WordPress_Plugin_Boilerplate\\Admin\\": "admin/",
-      "WordPress_Plugin_Boilerplate\\Public\\": "public/"
-    }
-  }
-}
-```
+## How to Use
 
-### Hook Management System
-```php
-$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-$this->loader->add_filter( 'the_content', $plugin_public, 'filter_content' );
-```
+### When Starting Work
+1. Read CONSTITUTION.md (2 minutes)
+2. Read DECISIONS.md (5 minutes)
+3. Skim GOTCHAS.md (3 minutes)
 
-### Dependency Injection
-- Automatic class loading via PSR-4
-- Service container pattern for components
-- Composer dependency management
-- Plugin dependency verification
+### When You Discover Something
+1. Found a problem? → Add to GOTCHAS.md
+2. Made a decision? → Add to DECISIONS.md
+3. Changed standards? → Update AGENTS.md + CONSTITUTION.md
 
-## 🔒 Security Best Practices
+### When Onboarding New Developer
+1. Have them read CONSTITUTION.md
+2. Have them read DECISIONS.md
+3. Reference GOTCHAS.md while coding
 
-### Data Sanitization & Validation
-```php
-$clean_text  = sanitize_text_field( $_POST['user_input'] );
-$clean_email = sanitize_email( $_POST['email'] );
-$clean_url   = esc_url_raw( $_POST['url'] );
+## Single Source of Truth
 
-echo esc_html( $user_content );
-echo esc_attr( $attribute_value );
-echo esc_url( $link_url );
-```
+**AGENTS.md is the source of truth for all standards.**
 
-### Nonce Security
-```php
-wp_nonce_field( 'my_action', 'my_nonce' );
-
-if ( ! wp_verify_nonce( $_POST['my_nonce'], 'my_action' ) ) {
-    wp_die( 'Security check failed' );
-}
-```
-
-### Capability Checks
-```php
-if ( ! current_user_can( 'manage_options' ) ) {
-    wp_die( 'Insufficient permissions' );
-}
-```
-
-## 🧱 Block Development
-
-### Creating a Block
-
-1. **Scaffold a new block**:
-   ```bash
-   mkdir -p src/blocks
-   cd src/blocks
-   npx @wordpress/create-block my-block-name --no-plugin
-   ```
-
-2. **Add the block registration package**:
-   ```bash
-   composer require wpboilerplate/wpb-register-blocks
-   ```
-
-3. **Integration is automatic** — configured in `includes/main.php`:
-   ```php
-   if ( class_exists( 'WPBoilerplate\\RegisterBlocks\\RegisterBlocks' ) ) {
-       new \WPBoilerplate\RegisterBlocks\RegisterBlocks( $this->plugin_dir );
-   }
-   ```
-
-4. **Build**:
-   ```bash
-   composer update
-   npm run build
-   ```
-
-### Multiple Input File Architecture
-
-Based on the [x3p0-ideas block example](https://github.com/x3p0-dev/x3p0-ideas/tree/block-example), each block can use separate files for clean separation of concerns:
-
-```
-src/blocks/example-block/
-├── block.json       # Block metadata
-├── index.js         # Main registration
-├── edit.js          # Editor component
-├── save.js          # Save component
-├── view.js          # Frontend interactivity
-├── style.scss        # Frontend styles
-├── editor.scss       # Editor-only styles
-└── variations.js    # Block variations
-```
-
-**block.json** — declare all assets:
-```json
-{
-  "name": "my-plugin/example-block",
-  "editorScript": "file:./index.js",
-  "viewScript": "file:./view.js",
-  "style": "file:./style.css",
-  "editorStyle": "file:./editor.css"
-}
-```
-
-**index.js** — main registration:
-```javascript
-import { registerBlockType } from '@wordpress/blocks';
-import Edit from './edit';
-import Save from './save';
-import metadata from './block.json';
-
-registerBlockType( metadata.name, { ...metadata, edit: Edit, save: Save } );
-```
-
-**view.js** — frontend interactivity:
-```javascript
-import domReady from '@wordpress/dom-ready';
-
-domReady( () => {
-    // Frontend JavaScript for block interactions
-} );
-```
-
-The build system automatically handles all entry points — `npm run build` outputs to `build/blocks/example-block/`.
-
-### How Block Registration Works
-
-`wpb-register-blocks` automatically:
-- Scans your plugin's `build/blocks/` directory
-- Registers all block types found in subdirectories
-- Hooks into WordPress `init` to register blocks
-- Uses PSR-4 autoloading for optimal performance
-
-## 📦 Composer Packages
-
-### PHP Version Requirement
-
-All WPBoilerplate packages require **PHP 7.4+**, enforced in `composer.json`:
-
-```json
-{ "require": { "php": ">=7.4" } }
-```
-
-### Available Packages
-
-| Package | Purpose |
-|---|---|
-| `wpboilerplate/wpb-register-blocks` | Auto-register Gutenberg blocks from `build/blocks/` |
-| `wpboilerplate/wpb-updater-checker-github` | GitHub-based plugin auto-updates |
-| `wpboilerplate/wpb-buddypress-or-buddyboss-dependency` | BuddyPress/BuddyBoss compatibility checker |
-| `wpboilerplate/wpb-buddyboss-dependency` | BuddyBoss Platform dependency |
-| `wpboilerplate/wpb-woocommerce-dependency` | WooCommerce integration support |
-| `wpboilerplate/acrossswp-acf-pro-dependency` | Advanced Custom Fields Pro dependency |
-| `coenjacobs/mozart` | PHP dependency scoping (pre-installed) |
-
-### Install Packages
-
-```bash
-# Core
-composer require wpboilerplate/wpb-register-blocks
-composer require wpboilerplate/wpb-updater-checker-github
-
-# Plugin dependencies
-composer require wpboilerplate/wpb-buddypress-or-buddyboss-dependency
-composer require wpboilerplate/wpb-buddyboss-dependency
-composer require wpboilerplate/wpb-woocommerce-dependency
-composer require wpboilerplate/acrossswp-acf-pro-dependency
-```
-
-### Mozart (PHP Dependency Scoping)
-
-Mozart is pre-installed and prevents plugin conflicts by scoping third-party PHP dependencies.
-
-```json
-{
-  "extra": {
-    "mozart": {
-      "dep_namespace": "WordPress_Plugin_Boilerplate\\Vendor\\",
-      "dep_directory": "/src/dependencies/",
-      "packages": [ "vendor/package-name" ]
-    }
-  }
-}
-```
-
-```bash
-vendor/bin/mozart compose
-```
-
-### Integration Examples
-
-#### GitHub Auto-Updates
-```php
-if ( class_exists( 'WPBoilerplate_Updater_Checker_Github' ) ) {
-    new WPBoilerplate_Updater_Checker_Github( array(
-        'repo'             => 'https://github.com/YourOrg/your-plugin',
-        'file_path'        => YOUR_PLUGIN_FILE,
-        'plugin_name_slug' => 'your-plugin-slug',
-        'release_branch'   => 'main',
-    ) );
-}
-```
-
-#### Plugin Dependency Check
-```php
-if ( class_exists( 'WPBoilerplate_BuddyPress_BuddyBoss_Platform_Dependency' ) ) {
-    new WPBoilerplate_BuddyPress_BuddyBoss_Platform_Dependency(
-        $this->get_plugin_name(),
-        YOUR_PLUGIN_FILES
-    );
-}
-```
-
-### Installation via Script
-
-When using `./init-plugin.sh`, packages can be selected interactively. The script adds them to `composer.json`, runs `composer install`, and auto-generates integration code in `includes/main.php`.
-
-## 🌐 Internationalization (i18n)
-
-```php
-// Text domain registration
-load_plugin_textdomain( 'your-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-
-// Translation functions
-__( 'Text to translate', 'your-plugin' );
-_e( 'Text to echo', 'your-plugin' );
-_n( 'Singular', 'Plural', $count, 'your-plugin' );
-```
-
-## 🚀 Deployment & CI/CD
-
-### GitHub Actions
-
-| Workflow | Trigger | What it does |
-|---|---|---|
-| `build-zip.yml` | Release creation | Builds assets, creates and uploads a ZIP |
-| `wordpress-plugin-deploy.yml` | Release creation | Deploys to WordPress.org SVN |
-
-### Manual Release
-
-```bash
-# 1. Update version in plugin file header and package.json
-# 2. Build production assets
-npm run build
-
-# 3. Tag and push
-git tag v1.2.3
-git push origin v1.2.3
-```
-
-## 🔧 Advanced Development
-
-### Custom Post Types
-```php
-add_action( 'init', array( $this, 'register_post_types' ) );
-
-public function register_post_types() {
-    register_post_type( 'custom_type', array(
-        'labels'       => array( 'name' => __( 'Custom Types', 'textdomain' ) ),
-        'public'       => true,
-        'supports'     => array( 'title', 'editor', 'thumbnail' ),
-        'show_in_rest' => true,
-    ) );
-}
-```
-
-### REST API Endpoints
-```php
-add_action( 'rest_api_init', array( $this, 'register_api_routes' ) );
-
-public function register_api_routes() {
-    register_rest_route( 'my-plugin/v1', '/data', array(
-        'methods'             => 'GET',
-        'callback'            => array( $this, 'api_get_data' ),
-        'permission_callback' => array( $this, 'api_permissions' ),
-    ) );
-}
-```
-
-### Database Integration
-```php
-public static function create_tables() {
-    global $wpdb;
-    $table_name      = $wpdb->prefix . 'my_plugin_data';
-    $charset_collate = $wpdb->get_charset_collate();
-
-    $sql = "CREATE TABLE $table_name (
-        id mediumint(9) NOT NULL AUTO_INCREMENT,
-        name tinytext NOT NULL,
-        data longtext,
-        created_at datetime DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (id)
-    ) $charset_collate;";
-
-    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-    dbDelta( $sql );
-}
-```
-
-## 🎯 Performance Optimization
-
-### Conditional Asset Loading
-```php
-public function enqueue_scripts() {
-    if ( is_admin() && get_current_screen()->id === 'my-plugin-page' ) {
-        wp_enqueue_script( 'my-plugin-admin', $this->plugin_url . 'build/js/admin.js' );
-    }
-}
-```
-
-### Transient Caching
-```php
-$data = get_transient( 'my_plugin_expensive_data' );
-if ( false === $data ) {
-    $data = $this->expensive_operation();
-    set_transient( 'my_plugin_expensive_data', $data, HOUR_IN_SECONDS );
-}
-```
-
-## 🎓 WordPress Agent Skills
-
-[WordPress Agent Skills](https://github.com/WordPress/agent-skills) are portable instruction bundles that teach AI coding assistants (Claude, Copilot, Cursor, Codex, etc.) how to build WordPress the right way.
-
-Skills are installed to all AI tool locations at once:
-
-| Directory | Used by |
-|---|---|
-| `.github/skills/` | GitHub Copilot, VS Code |
-| `.codex/skills/` | GitHub Copilot coding agent |
-| `.claude/skills/` | Claude / Claude Code |
-| `.cursor/skills/` | Cursor |
-
-### Running the interactive manager
-
-```bash
-npm run skillpack
-```
-
-The script clones both [`WPBoilerplate/agent-skills`](https://github.com/WPBoilerplate/agent-skills) and [`WordPress/agent-skills`](https://github.com/WordPress/agent-skills), lists every available skill, and lets you pick what to install.
-
-### Available Skills
-
-| Skill | What it teaches |
-|---|---|
-| `wpboilerplate-plugin-boilerplate` | Architecture, hooks, asset pipeline, conventions for this boilerplate |
-| `wp-plugin-development` | Plugin architecture, hooks, settings API, security |
-| `wp-block-development` | Gutenberg blocks: `block.json`, attributes, rendering, deprecations |
-| `wp-block-themes` | Block themes: `theme.json`, templates, patterns, style variations |
-| `wp-rest-api` | REST API routes, schema, auth, and response shaping |
-| `wp-interactivity-api` | Frontend interactivity with `data-wp-*` directives and stores |
-| `wp-performance` | Profiling, caching, database optimization |
-| `wp-phpstan` | PHPStan static analysis for WordPress projects |
-| `wp-playground` | WordPress Playground for instant local environments |
-| `wp-wpcli-and-ops` | WP-CLI commands, automation, multisite |
-| `blueprint` | WordPress Playground Blueprints |
-| `wordpress-router` | Classifies WordPress repos and routes to the correct workflow |
-| `wp-project-triage` | Detects project type, tooling, and versions automatically |
-| `wp-abilities-api` | WordPress Abilities API |
-| `wp-plugin-directory-guidelines` | WordPress.org plugin directory guidelines |
-| `wpds` | WordPress Design System components and tokens |
-
-### During plugin init
-
-When you run `./init-plugin.sh`, the skills manager is offered automatically after `npm install`. Answer `Y` to install, or run `npm run skillpack` at any time later.
-
-## 🧠 Specify — Spec-Driven Development & Project Memory
-
-[Specify (spec-kit)](https://github.com/github/spec-kit) is a CLI tool that brings **spec-driven development** to AI coding agents. It manages your project memory, generates feature specs, plans, and tasks, and runs full development workflows across any AI agent (Claude, Copilot, Cursor, Codex, Gemini, and more).
-
-### Installation (one time, global)
-
-```bash
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@v0.8.7
-```
-
-Verify the install:
-
-```bash
-specify --version
-```
-
-### What Specify Adds to This Boilerplate
-
-```
-.specify/
-├── memory/                  # Project memory (see below)
-│   ├── CONSTITUTION.md      # Quick-reference for all team standards
-│   ├── DECISIONS.md         # Architectural decisions + rationale
-│   ├── GOTCHAS.md           # Lessons learned, mistakes to avoid
-│   └── README.md            # How to use the memory system
-├── templates/               # Spec, plan, tasks, checklist templates
-├── extensions/              # Git automation commands
-├── integrations/            # AI agent integration configs
-├── scripts/                 # Setup and automation scripts
-└── workflows/               # Full SDD automation workflows
-
-.agents/skills/              # Agent skills installed per integration
-```
-
-### Project Memory System
-
-The `.specify/memory/` folder is the **institutional knowledge base** for the plugin. AI agents read these files automatically before writing code.
-
-| File | Purpose | When to Update |
-|---|---|---|
-| `CONSTITUTION.md` | Quick-reference for all standards (mirrors AGENTS.md) | When standards change |
-| `DECISIONS.md` | Why we made major architectural choices | After any significant decision |
-| `GOTCHAS.md` | Problems we hit and how to fix them | After discovering an issue |
-
-**How memory flows to AI agents:**
-
-```
-AGENTS.md  ──→  CONSTITUTION.md  ──→  AI agent reads before coding
-                DECISIONS.md     ──→  AI avoids repeating past debates
-                GOTCHAS.md       ──→  AI avoids known pitfalls
-```
-
-> AGENTS.md is always the **single source of truth**. Memory files reference it — never replace it.
-
-### Commands
-
-```bash
-# Show all available commands
-specify --help
-
-# Check that all required tools are installed
-specify check
-
-# Show version and system info
-specify version
-```
-
-#### Integration Management
-
-```bash
-specify integration list                   # List all integrations + install status
-specify integration install claude         # Install Claude Code integration
-specify integration use claude             # Set default integration
-specify integration switch claude          # Switch from current to another
-specify integration upgrade claude         # Upgrade to latest version
-```
-
-#### Workflow Commands
-
-```bash
-specify workflow list                      # List installed workflows
-specify workflow run speckit               # Run full SDD cycle
-specify workflow status                    # Check running workflow status
-specify workflow resume                    # Resume paused/failed workflow
-```
-
-#### Extension Commands
-
-```bash
-specify extension list
-specify extension install git
-```
-
-### Full SDD Workflow
-
-```
-specify workflow run speckit
-        │
-        ▼
-  1. specify     ← AI generates a feature spec from your description
-        │
-  [Review gate] ← You approve or reject the spec
-        │
-        ▼
-  2. plan        ← AI creates an implementation plan
-        │
-  [Review gate] ← You approve or reject the plan
-        │
-        ▼
-  3. tasks       ← AI breaks the plan into discrete tasks
-        │
-        ▼
-  4. implement   ← AI implements each task
-```
-
-### Supported AI Agent Integrations
-
-| Integration | Type | Multi-install |
-|---|---|---|
-| `claude` | Claude Code (CLI) | Yes |
-| `copilot` | GitHub Copilot (IDE) | No |
-| `cursor-agent` | Cursor (IDE) | Yes |
-| `codex` | Codex CLI | Yes |
-| `gemini` | Gemini CLI | Yes |
-| `windsurf` | Windsurf (IDE) | Yes |
-
-Install multiple integrations for teams that use different tools:
-
-```bash
-specify integration install claude
-specify integration install cursor-agent
-specify integration use claude
+Update standards only in AGENTS.md, then sync CONSTITUTION.md.
 ```
 
 ---
 
-## ✅ Standards & AI Agent Configuration
+## 🎯 Using Spec Kit Workflow
 
-This boilerplate ships with two companion files that define quality standards and teach AI coding assistants how to build WordPress plugins professionally.
+### Basic Workflow
 
-### AGENTS.md — What Standards to Follow
+#### 1. Create a Feature Specification
 
-`AGENTS.md` is an agency-customizable configuration file that defines the rules every developer (human or AI) must follow in this project.
-
-| Requirement | Status |
-|---|---|
-| PHP 7.4 minimum | ✅ |
-| WordPress 6.9 minimum | ✅ |
-| Agency naming prefix | ✅ |
-| Coding standards (WPCS-strict, PHPStan level 8) | ✅ |
-| Security (nonces, capabilities, sanitization, escaping, SQL safety, file uploads) | ✅ |
-| AI Engineering Rules | ✅ |
-| 12-step workflow process | ✅ |
-| WordPress Rules | ✅ |
-| WooCommerce Rules | ✅ |
-| Testing Rules | ✅ |
-| Submodule Rules | ✅ |
-| Before Commit Checklist | ✅ |
-
-**How to customize for your agency**: Edit `AGENTS.md` to set your own PHP/WordPress minimum versions, naming prefix, PHPStan level, security rules, and workflow steps. AI agents (Claude, Cursor, Copilot, etc.) read this file automatically and enforce your standards on every code generation request.
-
-### SKILL.md — How to Implement Those Standards
-
-The `wp-plugin-development` agent skill (installed via `npm run skillpack`) provides a complete step-by-step procedure for AI agents to build plugins that conform to `AGENTS.md`.
-
-| Skill Section | Status |
-|---|---|
-| Clear when-to-use section | ✅ |
-| Required inputs | ✅ |
-| Complete 12-step procedure | ✅ |
-| Pre-ship checklist | ✅ |
-| Verification steps | ✅ |
-| Failure modes & debugging | ✅ |
-| Escalation paths | ✅ |
-| References to architecture & best practices | ✅ |
-
-### Alignment Between Files
+In Claude Code chat:
 
 ```
-AGENTS.md                    SKILL.md (wp-plugin-development)
-─────────────────────        ──────────────────────────────────
-Defines WHAT standards  →    Shows HOW to implement them
-Agency-customizable     →    Step-by-step procedure for AI agents
-Rules & constraints     →    Workflow & verification steps
+/speckit.specify
+
+Create a feature specification for: [Your feature description]
 ```
 
-### What This Enables
+This creates:
+```
+.specify/specs/001-your-feature/
+├── spec.md          # What should it do?
+├── plan.md          # How should it work?
+└── tasks.md         # What are the steps?
+```
 
-| Stakeholder | Benefit |
-|---|---|
-| **Agencies** | Customize `AGENTS.md` once — all AI tools inherit your standards |
-| **Developers** | Follow `SKILL.md` for a proven, repeatable build process |
-| **AI agents** | Claude, Cursor, Copilot read both files to enforce quality automatically |
-| **CI/CD** | Validate against `AGENTS.md` rules in every pipeline run |
-| **New team members** | Clear documentation from day one |
+#### 2. Create an Implementation Plan
 
-> Run `npm run skillpack` to install or update the `wp-plugin-development` skill and all other WordPress agent skills.
+```
+/speckit.plan
+
+Create a technical implementation plan for: [Your feature description]
+Include data models, architecture decisions, and API contracts.
+```
+
+Updates:
+```
+.specify/specs/001-your-feature/
+├── plan.md          # Updated with technical details
+├── research.md      # Tech stack research
+└── contracts/       # API specifications
+```
+
+#### 3. Generate Implementation Tasks
+
+```
+/speckit.tasks
+
+Generate a task breakdown from the plan.
+```
+
+Creates:
+```
+.specify/specs/001-your-feature/
+└── tasks.md         # Step-by-step implementation tasks
+```
+
+#### 4. Implement the Feature
+
+```
+/speckit.implement
+
+Implement the tasks from the task list.
+```
+
+#### 5. Archive the Feature
+
+Once the feature is merged to main:
+
+```
+/speckit.archive.run
+```
+
+This consolidates the feature specification into project memory.
 
 ---
 
-## 🔗 Plugin Ecosystem
+## 📊 Project Structure with Spec Kit
 
-- 🏠 **Main Repository**: [WPBoilerplate/wordpress-plugin-boilerplate](https://github.com/WPBoilerplate/wordpress-plugin-boilerplate)
-- 🧱 **Block Registration**: [WPBoilerplate/wpb-register-blocks](https://github.com/WPBoilerplate/wpb-register-blocks)
-- 🔄 **GitHub Updater**: [WPBoilerplate/wpb-updater-checker-github](https://github.com/WPBoilerplate/wpb-updater-checker-github)
-- 👥 **BuddyPress Integration**: [WPBoilerplate/wpb-buddypress-or-buddyboss-dependency](https://github.com/WPBoilerplate/wpb-buddypress-or-buddyboss-dependency)
-- 🛒 **WooCommerce Integration**: [WPBoilerplate/wpb-woocommerce-dependency](https://github.com/WPBoilerplate/wpb-woocommerce-dependency)
+After setup, your plugin structure includes:
 
-## 🤝 Contributing
-
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Commit changes**: `git commit -m 'Add amazing feature'`
-4. **Push to branch**: `git push origin feature/amazing-feature`
-5. **Open a Pull Request**
-
-### Development Guidelines
-
-- Follow WordPress Coding Standards (WPCS)
-- Write comprehensive documentation
-- Update README.md for significant changes
-- Use semantic versioning for releases
-
-## 📄 License
-
-This project is licensed under the GPL v2 or later - see the [LICENSE.txt](LICENSE.txt) file for details.
-
-## 🙏 Credits & Acknowledgments
-
-- **WordPress Community**: For the coding standards and best practices
-- **@wordpress/scripts**: Official WordPress build tools
-- **XWP**: [wp-foo-bar](https://github.com/xwp/wp-foo-bar) - Inspiration for plugin structure
-- **AcrossWP**: [Development tools and packages](https://github.com/acrosswp/)
-- **10up**: [GitHub Actions](https://github.com/10up/action-wordpress-plugin-build-zip) for deployment automation
+```
+your-plugin/
+├── AGENTS.md                          # Agency standards (source of truth)
+├── README.md                          # This file + instructions
+│
+├── .specify/                          # Spec Kit root
+│   ├── memory/
+│   │   ├── constitution.md            # Auto-generated by Spec Kit
+│   │   ├── CONSTITUTION.md            # Your standards reference
+│   │   ├── DECISIONS.md               # Your decisions
+│   │   ├── GOTCHAS.md                 # Your lessons learned
+│   │   └── README.md                  # Memory explanation
+│   │
+│   ├── specs/                         # Feature specifications
+│   │   ├── 001-feature-name/
+│   │   │   ├── spec.md
+│   │   │   ├── plan.md
+│   │   │   ├── tasks.md
+│   │   │   └── research.md
+│   │   └── 002-another-feature/
+│   │
+│   ├── scripts/                       # Spec Kit scripts
+│   ├── templates/                     # Spec templates
+│   └── .specifyrc.json               # Spec Kit config
+│
+├── .agents/
+│   ├── skills/
+│   │   ├── wp-plugin-development/
+│   │   └── wp-packages-strategy/
+│   └── tools/
+│
+├── src/                               # Your plugin code
+├── admin/
+├── includes/
+├── public/
+├── build/                             # Compiled assets
+└── ... (other plugin files)
+```
 
 ---
 
-**Made with ❤️ by the [WPBoilerplate Team](https://github.com/WPBoilerplate)**
+## 🤖 Claude Code Integration
 
-For detailed AI agent instructions, see [AGENTS.md](AGENTS.md)
+### Slash Commands Available
+
+Once Spec Kit is set up, Claude Code has these commands:
+
+```
+/speckit.specify          Create feature specification
+/speckit.clarify          Clarify and refine specs
+/speckit.analyze          Analyze specs for gaps
+/speckit.plan             Create implementation plan
+/speckit.tasks            Generate task breakdown
+/speckit.implement        Execute tasks
+/speckit.review           Review implementation
+/speckit.archive.run      Archive merged features
+```
+
+### How Claude Code Uses Memory
+
+Claude Code automatically:
+1. Reads `.specify/memory/CONSTITUTION.md` before working
+2. Knows your standards without you explaining them
+3. Suggests code aligned with your DECISIONS.md
+4. Avoids issues documented in GOTCHAS.md
+5. References AGENTS.md for complete specifications
+
+**Result:** Claude Code code suggestions match your exact standards.
+
+---
+
+## 📚 Best Practices
+
+### For Specifications
+
+- ✅ **Be explicit** - Describe what you're building and why
+- ✅ **Include acceptance criteria** - How do we know it's done?
+- ✅ **Consider edge cases** - What could go wrong?
+- ✅ **Reference decisions** - Link to DECISIONS.md
+- ❌ **Don't focus on tech stack** - Let Claude suggest tools
+- ❌ **Don't be vague** - "Make it work" is too vague
+
+### For Memory Files
+
+- ✅ **Update CONSTITUTION.md** - Keep it in sync with AGENTS.md
+- ✅ **Add DECISIONS.md** - Record why you chose something
+- ✅ **Document GOTCHAS.md** - Capture what hurt you
+- ✅ **Commit regularly** - Memory is version controlled
+- ❌ **Don't duplicate AGENTS.md** - Reference it instead
+- ❌ **Don't ignore patterns** - If something repeats, escalate it
+
+### For Team Collaboration
+
+- ✅ **New devs read memory first** - 15 minutes saves hours
+- ✅ **Review memory before coding** - Refresh your context
+- ✅ **Update after learning** - Add to GOTCHAS.md immediately
+- ✅ **Share decisions** - Record in DECISIONS.md
+- ❌ **Don't keep secrets** - Document everything
+- ❌ **Don't repeat debates** - Check DECISIONS.md first
+
+---
+
+## 🔄 Workflow Example
+
+### Scenario: Building a Payment Feature
+
+**Step 1: Specification**
+
+```
+/speckit.specify
+
+Create a specification for integrating WooCommerce payments with our plugin.
+Users should be able to process payments through Stripe.
+Include failure handling and refund management.
+```
+
+**Output**: `.specify/specs/001-woocommerce-payments/spec.md`
+
+**Step 2: Planning**
+
+```
+/speckit.plan
+
+Create an implementation plan.
+Use WooCommerce HPOS for order management.
+Integrate Stripe API for payments.
+Follow our security standards from AGENTS.md.
+```
+
+**Output**: `.specify/specs/001-woocommerce-payments/plan.md`
+
+**Step 3: Task Breakdown**
+
+```
+/speckit.tasks
+
+Generate task breakdown from the plan.
+```
+
+**Output**: `.specify/specs/001-woocommerce-payments/tasks.md`
+
+**Step 4: Implementation**
+
+```
+/speckit.implement
+
+Implement the payment feature following the task list.
+```
+
+Claude Code:
+- ✅ Uses WooCommerce CRUD objects (from DECISIONS.md)
+- ✅ Adds nonce verification (from CONSTITUTION.md)
+- ✅ Avoids the Elementor conflict (from GOTCHAS.md)
+- ✅ Follows WPCS standards (from AGENTS.md)
+
+**Step 5: Record Learnings**
+
+Add to `.specify/memory/GOTCHAS.md`:
+
+```markdown
+### Gotcha: Stripe Webhook Signature Verification
+
+**Problem**: Webhooks kept failing silently
+
+**Solution**: Used wp_remote_post() with proper timeout
+
+**Prevention**: Always test webhook flow in staging
+```
+
+**Step 6: Archive**
+
+```
+/speckit.archive.run
+
+Archive the payment feature into project memory.
+```
+
+---
+
+## 🔧 Maintenance
+
+### Updating Spec Kit
+
+```bash
+# Check for updates
+uv tool upgrade specify-cli
+
+# Or reinstall latest
+uv tool install --force specify-cli --from git+https://github.com/github/spec-kit.git@v0.8.7
+```
+
+### Updating AGENTS.md and Memory
+
+When you change standards in AGENTS.md:
+
+```bash
+# 1. Edit AGENTS.md
+nano AGENTS.md
+
+# 2. Update CONSTITUTION.md to match
+nano .specify/memory/CONSTITUTION.md
+
+# 3. Commit together
+git add AGENTS.md .specify/memory/CONSTITUTION.md
+git commit -m "chore: update standards (PHP 8.0)"
+git push
+```
+
+### Reviewing Memory Files
+
+Monthly, review memory files:
+
+```bash
+# Check if DECISIONS need updates
+cat .specify/memory/DECISIONS.md
+
+# Review common GOTCHAS
+cat .specify/memory/GOTCHAS.md
+
+# See if patterns need escalation to CONSTITUTION.md
+```
+
+---
+
+## 📖 Learn More
+
+- **Spec Kit Docs**: https://github.com/github/spec-kit
+- **Specification-Driven Development**: https://github.com/github/spec-kit/blob/main/spec-driven.md
+- **WPBoilerplate Docs**: See AGENTS.md in this repository
+
+---
+
+## ✅ Checklist: Getting Started
+
+- [ ] Install Spec Kit CLI: `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@v0.8.7`
+- [ ] Initialize in plugin: `specify init --here --integration claude-code`
+- [ ] Create memory files: CONSTITUTION.md, DECISIONS.md, GOTCHAS.md
+- [ ] Commit: `git add .specify/ && git commit -m "chore: add spec kit"`
+- [ ] Read this guide once more
+- [ ] Try first spec: `/speckit.specify` in Claude Code
+- [ ] Ask Claude Code to implement: `/speckit.implement`
+
+---
+
+**Happy Spec-Driven Development! 🚀**
