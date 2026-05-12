@@ -162,26 +162,6 @@ final class Main {
 	}
 
 	/**
-	 * Register the plugin's autoloader.
-	 *
-	 * This autoloader will automatically load classes from the plugin's namespace
-	 * when they are instantiated.
-	 *
-	 * @since    0.0.1
-	 * @access   private
-	 */
-	private function register_autoloader() {
-		// Get the plugin path
-		$plugin_path = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
-
-		// Create autoloader instance
-		$this->autoloader = new Autoloader( 'WordPress_Plugin_Boilerplate', $plugin_path );
-
-		// Register the autoloader
-		spl_autoload_register( array( $this->autoloader, 'autoload' ) );
-	}
-
-	/**
 	 * Register all the hook once all the active plugins are loaded
 	 *
 	 * Uses the plugins_loaded to load all the hooks and filters
