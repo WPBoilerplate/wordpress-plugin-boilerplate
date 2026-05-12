@@ -1,0 +1,73 @@
+# .aiignore — LLM access policy for this repository
+#
+# SECTIONS:
+#   [HARD IGNORE]        — Never read. Binary, generated, dev-only tooling.
+#   [REQUIRES PERMISSION]— Do NOT read unless the user explicitly says so.
+#                          Ask: "May I read <folder> to help with this task?"
+#
+# Permission-gated paths are derived from runtime dependencies only:
+#   composer.json > "require"    → vendor/<package>/
+#   package.json  > "dependencies" → node_modules/<package>/
+
+# ============================================================
+# [HARD IGNORE] — never read these
+# ============================================================
+
+# Git internals
+.git/
+
+# Auto-generated agent skill bundles (npm run skills:install)
+.github/skills/
+
+# Test output and coverage reports
+tests/_output/
+coverage/
+
+# Temporary / log files
+tmp/
+logs/
+*.log
+
+# macOS / IDE metadata
+.DS_Store
+Thumbs.db
+
+# Compiled JS / CSS build output (generated from src/)
+build/
+
+# All Node.js packages (entire folder — too large, all tooling)
+node_modules/
+
+# Dependency lock files (auto-generated, low signal)
+package-lock.json
+composer.lock
+
+# Translation files (generated)
+languages/
+
+# ── vendor/ ─────────────────────────────────────────────────
+# Hard ignore all dev-only Composer packages (require-dev):
+#   wp-coding-standards/wpcs
+#   dealerdirect/phpcodesniffer-composer-installer
+#   phpunit/phpunit
+vendor/wp-coding-standards/
+vendor/dealerdirect/
+vendor/phpunit/
+vendor/composer/
+vendor/bin/
+vendor/autoload.php
+vendor/autoload_packages.php
+
+# ============================================================
+# [REQUIRES PERMISSION]
+#
+# These are RUNTIME / production dependencies.
+# They ship with the plugin and may be relevant to debug issues.
+#
+# Before reading, ask:
+#   "May I read <folder> to help with this task?"
+#
+# Source: composer.json > "require"
+#   automattic/jetpack-autoloader ^3.0
+# PERMISSION_REQUIRED: vendor/automattic/
+# ============================================================
