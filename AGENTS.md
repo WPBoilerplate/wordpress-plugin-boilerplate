@@ -1,6 +1,6 @@
 ---
-name: "AcrossAI Abilities Manager"
-description: "Agency standards for professional AcrossAI Abilities Manager"
+name: "WordPress Plugin Boilerplate"
+description: "Agency standards for professional WordPress Plugin Boilerplate"
 version: "1.0.0"
 ---
 
@@ -19,7 +19,7 @@ composer_version: "2.0"
 ## Plugin Configuration
 
 ```yaml
-naming_prefix: "acrossai_"
+naming_prefix: "wordpress_plugin_boilerplate_"
 coding_standard: "wpcs-strict"
 multisite_support: true
 ```
@@ -62,7 +62,7 @@ package_hierarchy:
 
 - [ ] PHPCS pass
 - [ ] PHPStan pass
-- [ ] All functions prefixed with "acrossai_"
+- [ ] All functions prefixed with "wordpress_plugin_boilerplate_"
 - [ ] Nonces on all forms/AJAX
 - [ ] Capabilities checked
 - [ ] Input sanitized, output escaped
