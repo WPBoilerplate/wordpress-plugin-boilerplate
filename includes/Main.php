@@ -109,18 +109,7 @@ final class Main {
 
 		$this->define_constants();
 
-		if ( defined( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION' ) ) {
-			$this->version = WORDPRESS_PLUGIN_BOILERPLATE_VERSION;
-		} else {
-			$this->version = '0.0.1';
-		}
-
-		// Load the autoloader class manually before registering it
-		$plugin_path = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
-
-		require_once $plugin_path . 'includes/Autoloader.php';
-
-		$this->register_autoloader();
+		$this->plugin_dir = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
 
 		$this->load_composer_dependencies();
 
@@ -158,20 +147,7 @@ final class Main {
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', plugin_dir_url( \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE ) );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME_SLUG', $this->plugin_name );
 		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_NAME', 'WordPress Plugin Boilerplate' );
-
-		if ( ! function_exists( 'get_plugin_data' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-		$plugin_file = defined( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE' )
-			? \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE
-			: \WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_FILE;
-		$plugin_data = get_plugin_data( $plugin_file );
-		$version     = $plugin_data['Version'];
-		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION', $version );
-
-		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_URL', $version );
-
-		$this->plugin_dir = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
+		$this->define( 'WORDPRESS_PLUGIN_BOILERPLATE_VERSION', '0.0.1' );
 	}
 
 	/**
@@ -241,13 +217,6 @@ final class Main {
 
 		if ( file_exists( $plugin_path . 'vendor/autoload_packages.php' ) ) {
 			require_once $plugin_path . 'vendor/autoload_packages.php';
-		}
-
-		/**
-		 * Check if class exists or not
-		 */
-		if ( class_exists( 'WPBoilerplate\\RegisterBlocks\\RegisterBlocks' ) ) {
-			new \WPBoilerplate\RegisterBlocks\RegisterBlocks( $this->plugin_dir );
 		}
 	}
 

@@ -7,7 +7,6 @@
 	"minimum-stability": "dev",
 	"require": {
 		"php": ">=7.4",
-		"coenjacobs/mozart": "^0.7",
 		"automattic/jetpack-autoloader": "^3.0"
 	},
 	"keywords": [

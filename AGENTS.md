@@ -1,6 +1,6 @@
 ---
-name: "WordPress Plugin Boilerplate"
-description: "Agency standards for professional WordPress Plugin Boilerplate"
+name: "AcrossAI Abilities Manager"
+description: "Agency standards for professional AcrossAI Abilities Manager"
 version: "1.0.0"
 ---
 
@@ -19,7 +19,7 @@ composer_version: "2.0"
 ## Plugin Configuration
 
 ```yaml
-naming_prefix: "wordpress_plugin_boilerplate_"
+naming_prefix: "acrossai_"
 coding_standard: "wpcs-strict"
 multisite_support: true
 ```
@@ -43,6 +43,10 @@ phpstan_level: 8
 eslint_enabled: true
 ```
 
+## Plugin Boilerplate Reference
+
+All plugin development MUST follow the `wp-plugin-development` skill: `.agents/skills/wp-plugin-development/SKILL.md`
+
 ## Package Strategy
 
 ```yaml
@@ -58,7 +62,7 @@ package_hierarchy:
 
 - [ ] PHPCS pass
 - [ ] PHPStan pass
-- [ ] All functions prefixed with "wordpress_plugin_boilerplate_"
+- [ ] All functions prefixed with "acrossai_"
 - [ ] Nonces on all forms/AJAX
 - [ ] Capabilities checked
 - [ ] Input sanitized, output escaped
@@ -84,7 +88,7 @@ package_hierarchy:
 
 # Workflow
 
-1. Read architecture.md
+1. Read `.specify/memory/CONSTITUTION.md`
 2. Read current feature spec
 3. Read related memory
 4. Read current task
@@ -112,14 +116,6 @@ package_hierarchy:
 
 ---
 
-# WooCommerce Rules
-
-- HPOS compatible
-- Use CRUD objects
-- Use wc_get_orders()
-
----
-
 # Testing Rules
 
 Feature is NOT complete without:
@@ -138,3 +134,16 @@ Never modify files inside:
 unless explicitly requested.
 
 These repositories are external dependencies and must remain isolated from plugin implementation.
+
+---
+
+# Code Organization & Module Structure
+
+Architecture and module structure are governed by the Constitution.
+Read `.specify/memory/CONSTITUTION.md` for the canonical rules on:
+- Directory layout (`admin/Partials/`, `includes/Base/`, `includes/Utilities/`, `includes/Modules/`)
+- Admin Partials Rule (admin enqueue/render classes must live in `admin/Partials/`)
+- Boot Flow Rule (`register_hooks(Loader $loader)` pattern; no hooks from `load_dependencies()`)
+- Module Contract (extend base class, expose `register_hooks()`, no sibling-module dependencies)
+- UI Contract (`@wordpress/dataforms` for forms, `@wordpress/dataviews` for tables)
+- DRY / reusability requirements

@@ -67,8 +67,6 @@ function wordpress_plugin_boilerplate_deactivate() {
 register_activation_hook( __FILE__, 'WordPress_Plugin_Boilerplate\wordpress_plugin_boilerplate_activate' );
 register_deactivation_hook( __FILE__, 'WordPress_Plugin_Boilerplate\wordpress_plugin_boilerplate_deactivate' );
 
-require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload_packages.php';
-
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
