@@ -29,7 +29,8 @@
 		"env:reset": "wp-env destroy && wp-env start",
 		"skillpack": "node scripts/skills-manager.mjs",
 		"skillpack:push": "node scripts/skillpack-push.mjs",
-		"validate-packages": "node .agents/skills/wp-packages-strategy/scripts/validate-packages.mjs --dir=."
+		"validate-packages": "node .agents/skills/wp-packages-strategy/scripts/validate-packages.mjs --dir=.",
+		"sync:ai-policy": "node scripts/sync-ai-policy.mjs"
 	},
 	"devDependencies": {
 		"@wordpress/env": "latest",

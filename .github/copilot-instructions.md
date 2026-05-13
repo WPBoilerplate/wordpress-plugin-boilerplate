@@ -6,29 +6,36 @@ shell commands, and other important information, read the current plan
 <!-- COPILOT ACCESS POLICY START -->
 ## File Access Policy
 
+> AUTO-GENERATED — edit `ai-policy.yml` and run `npm run sync:ai-policy`
+
 ### Hard Ignore — never read these paths
-The following are generated, compiled, binary, or dev-only. Do not read or
-include them in context under any circumstances:
 
 - `.git/`
+- `.github/skills/`
 - `node_modules/`
 - `build/`
-- `coverage/`
-- `tests/_output/`
-- `.github/skills/`
 - `vendor/wp-coding-standards/`
 - `vendor/dealerdirect/`
 - `vendor/phpunit/`
 - `vendor/composer/`
 - `vendor/bin/`
-- `vendor/autoload.php`, `vendor/autoload_packages.php`
-- `package-lock.json`, `composer.lock`
+- `vendor/autoload.php`
+- `vendor/autoload_packages.php`
+- `package-lock.json`
+- `composer.lock`
 - `languages/`
-- `tmp/`, `logs/`, `**/*.log`
+- `tests/_output/`
+- `coverage/`
+- `tmp/`
+- `logs/`
+- `**/*.log`
+- `.DS_Store`
+- `Thumbs.db`
 
 ### Requires Permission — ask before reading
-These are production/runtime dependencies that ship with the plugin.
-Before reading them, ask the user: "May I read <path> to help with this task?"
 
-- `vendor/automattic/` — jetpack-autoloader (composer.json › require)
+Before reading any path below, ask:
+> "May I read `<path>` to help with this task?"
+
+- `vendor/automattic/`
 <!-- COPILOT ACCESS POLICY END -->
