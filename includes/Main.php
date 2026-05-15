@@ -105,10 +105,9 @@ final class Main {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'wordpress-plugin-boilerplate';
-
 		$this->define_constants();
 
+		$this->plugin_name = 'wordpress-plugin-boilerplate';
 		$this->plugin_dir = WORDPRESS_PLUGIN_BOILERPLATE_PLUGIN_PATH;
 
 		$this->load_composer_dependencies();
@@ -176,7 +175,7 @@ final class Main {
 		 *
 		 * @since    0.0.1
 		 */
-		if ( apply_filters( 'wordpress-plugin-boilerplate-load', true ) ) {
+		if ( apply_filters( 'wordpress_plugin_boilerplate_load', true ) ) {
 			$this->define_admin_hooks();
 			$this->define_public_hooks();
 		}

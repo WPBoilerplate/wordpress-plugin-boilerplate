@@ -140,10 +140,24 @@ These repositories are external dependencies and must remain isolated from plugi
 # Code Organization & Module Structure
 
 Architecture and module structure are governed by the Constitution.
-Read `.specify/memory/CONSTITUTION.md` for the canonical rules on:
-- Directory layout (`admin/Partials/`, `includes/Base/`, `includes/Utilities/`, `includes/Modules/`)
-- Admin Partials Rule (admin enqueue/render classes must live in `admin/Partials/`)
-- Boot Flow Rule (`register_hooks(Loader $loader)` pattern; no hooks from `load_dependencies()`)
-- Module Contract (extend base class, expose `register_hooks()`, no sibling-module dependencies)
-- UI Contract (`@wordpress/dataforms` for forms, `@wordpress/dataviews` for tables)
-- DRY / reusability requirements
+Read `.specify/memory/CONSTITUTION.md` for the canonical rules. Key rules summarised here:
+
+**Directory layout**: `admin/Partials/` (admin classes), `includes/Utilities/` (shared logic), `includes/Modules/` (feature modules). There is NO `includes/Base/` directory and NO abstract module base class.
+
+**Singleton pattern (plugin-wide convention)**: Every feature class MUST implement:
+```php
+protected static $_instance = null;
+public static function instance(): self {
+    if ( null === self::$_instance ) { self::$_instance = new self(); }
+    return self::$_instance;
+}
+private function __construct() { /* dependencies via OtherClass::instance() only */ }
+```
+
+**Hook registration**: `includes/Main.php` is the ONLY file that calls `$this->loader->add_action()` / `$this->loader->add_filter()`. All hooks wire directly in `define_admin_hooks()` or `define_public_hooks()` using singleton instances — e.g. `$this->loader->add_action( 'rest_api_init', MyClass::instance(), 'register_routes' )`. There is NO `register_hooks( Loader $loader )` delegation pattern and NO module orchestrator class.
+
+**Admin Partials Rule**: Classes that call `add_menu_page()`, enqueue assets, or render HTML live in `admin/Partials/`. Asset enqueue (`wp_enqueue_script/style`) MUST be in `Admin\Main::enqueue_scripts()/enqueue_styles()` only — never in Partials page classes or module classes.
+
+**UI Contract**: `@wordpress/dataforms` for all admin forms; `@wordpress/dataviews` for all admin tables/lists.
+
+See `.agents/skills/wp-plugin-development/SKILL.md` and `.agents/skills/wp-plugin-development/references/boot-flow.md` for full examples and anti-patterns.
