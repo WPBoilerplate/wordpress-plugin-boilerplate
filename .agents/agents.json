@@ -1,0 +1,79 @@
+{
+	"schemaVersion": 3,
+	"instructions": {
+		"path": "AGENTS.md"
+	},
+	"integrations": {
+		"enabled": [
+			"codex",
+			"claude",
+			"cursor",
+			"copilot_vscode",
+			"gemini"
+		],
+		"options": {
+			"cursorAutoApprove": true,
+			"antigravityGlobalSync": true
+		}
+	},
+	"syncMode": "source-only",
+	"mcp": {
+		"servers": {
+			"deepwiki": {
+				"label": "DeepWiki",
+				"description": "GitHub repository documentation via DeepWiki",
+				"transport": "stdio",
+				"command": "npx",
+				"args": [
+					"-y",
+					"mcp-remote@latest",
+					"https://mcp.deepwiki.com/mcp"
+				],
+				"targets": [
+					"codex",
+					"claude",
+					"gemini",
+					"copilot_vscode",
+					"cursor"
+				],
+				"enabled": true
+			},
+			"mcp-local-wp": {
+				"label": "Local WP",
+				"description": "WordPress database access via Local by Flywheel",
+				"transport": "stdio",
+				"command": "npx",
+				"args": [
+					"-y",
+					"@verygoodplugins/mcp-local-wp@latest"
+				],
+				"targets": [
+					"codex",
+					"claude",
+					"gemini",
+					"copilot_vscode",
+					"cursor"
+				],
+				"enabled": true
+			}
+		}
+	},
+	"workspace": {
+		"vscode": {
+			"hideGenerated": true,
+			"hiddenPaths": [
+				"**/.codex",
+				"**/.claude",
+				"**/.gemini",
+				"**/.cursor",
+				"**/.antigravity",
+				"**/.windsurf",
+				"**/.opencode",
+				"**/opencode.json",
+				"**/.agents/generated"
+			]
+		}
+	},
+	"lastSync": "2026-05-17T06:03:59.284Z",
+	"lastSyncSourceHash": "5683f98ca84e07fddad23f104ca3cbc2d7262104764272c9635245ca1a74821a"
+}
