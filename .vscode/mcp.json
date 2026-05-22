@@ -1,19 +1,31 @@
 {
-	"servers": {
-		"deepwiki": {
-			"command": "npx",
-			"args": [
-				"-y",
-				"mcp-remote@latest",
-				"https://mcp.deepwiki.com/mcp"
-			]
-		},
-		"mcp-local-wp": {
-			"command": "npx",
-			"args": [
-				"-y",
-				"@verygoodplugins/mcp-local-wp@latest"
-			]
-		}
-	}
+  "servers": {
+    "deepwiki": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote@latest",
+        "https://mcp.deepwiki.com/mcp"
+      ]
+    },
+    "mcp-local-wp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@verygoodplugins/mcp-local-wp@latest"
+      ]
+    },
+    "wordpress-design-system": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "--ignore-scripts",
+        "--min-release-age=2",
+        "@wordpress/design-system-mcp@latest"
+      ]
+    }
+  }
 }

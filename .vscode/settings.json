@@ -31,7 +31,16 @@
 		"**/logs": true,
 		"**/*.log": true,
 		".DS_Store": true,
-		"Thumbs.db": true
+    "Thumbs.db": true,
+    "**/.codex": true,
+    "**/.claude": true,
+    "**/.gemini": true,
+    "**/.cursor": true,
+    "**/.antigravity": true,
+    "**/.windsurf": true,
+    "**/.opencode": true,
+    "**/opencode.json": true,
+    "**/.agents/generated": true
 	},
 	"search.exclude": {
 		"**/.git": true,
@@ -54,6 +63,15 @@
 		"**/logs": true,
 		"**/*.log": true,
 		".DS_Store": true,
-		"Thumbs.db": true
+    "Thumbs.db": true,
+    "**/.codex": true,
+    "**/.claude": true,
+    "**/.gemini": true,
+    "**/.cursor": true,
+    "**/.antigravity": true,
+    "**/.windsurf": true,
+    "**/.opencode": true,
+    "**/opencode.json": true,
+    "**/.agents/generated": true
 	}
 }
