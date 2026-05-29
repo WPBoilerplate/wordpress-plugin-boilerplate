@@ -1,0 +1,58 @@
+name: Plugin Check
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_call:
+
+jobs:
+  plugin-check:
+    name: Run WordPress Plugin Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build plugin
+        run: npm run build
+
+      - name: Run Plugin Check
+        uses: wordpress/plugin-check-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          exclude-directories: |
+            .wordpress-org
+            .git
+            .github
+            .agents
+            node_modules
+            vendor
+            src
+            tests
+          exclude-files: |
+            .gitattributes
+            .distignore
+            .gitignore
+            .travis.yml
+            composer.json
+            composer.lock
+            package.json
+            package-lock.json
+            README.md
+            webpack.config.js
+          ignore-warnings: false
+          ignore-errors: false
+          include-experimental: false
+          wp-version: latest
