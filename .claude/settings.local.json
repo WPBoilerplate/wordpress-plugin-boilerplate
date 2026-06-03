@@ -7,7 +7,13 @@
       "Bash(git -C /Users/raftaar1191/local-sites/wordpress-7-0/app/public/wp-content/plugins/wordpress-plugin-boilerplate diff)",
       "Bash(git -C /Users/raftaar1191/local-sites/wordpress-7-0/app/public/wp-content/plugins/wordpress-plugin-boilerplate add package.json)",
       "Bash(git -C /Users/raftaar1191/local-sites/wordpress-7-0/app/public/wp-content/plugins/wordpress-plugin-boilerplate commit -m ' *)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(gh issue *)",
+      "WebFetch(domain:github.com)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "deepwiki",
+    "mcp-local-wp"
+  ]
 }
